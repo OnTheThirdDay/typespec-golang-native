@@ -1,0 +1,59 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Profile": {
+      "pydantic": {
+        "properties": {
+          "firstName": {
+            "title": "Firstname",
+            "type": "string"
+          },
+          "last-name": {
+            "title": "Last-Name",
+            "type": "string"
+          },
+          "display name": {
+            "title": "Display Name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "firstName",
+          "last-name",
+          "display name"
+        ],
+        "title": "Profile",
+        "type": "object"
+      },
+      "strict": {
+        "properties": {
+          "firstName": {
+            "title": "Firstname",
+            "type": "string"
+          },
+          "last-name": {
+            "title": "Last-Name",
+            "type": "string"
+          },
+          "display name": {
+            "title": "Display Name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "firstName",
+          "last-name",
+          "display name"
+        ],
+        "title": "Profile",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "Profile"
+    }
+  }
+}

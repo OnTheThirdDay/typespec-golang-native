@@ -1,0 +1,9 @@
+emit:
+  - typespec-go
+  - typespec-structured-output
+options:
+  typespec-go:
+    module: example.com/widgets/api
+    emitter-output-dir: "{project-root}/api"
+  typespec-structured-output:
+    emitter-output-dir: "{project-root}/schemas"

@@ -1,0 +1,117 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Primitives": {
+      "pydantic": {
+        "properties": {
+          "text": {
+            "title": "Text",
+            "type": "string"
+          },
+          "flag": {
+            "title": "Flag",
+            "type": "boolean"
+          },
+          "count": {
+            "title": "Count",
+            "type": "integer"
+          },
+          "ratio": {
+            "title": "Ratio",
+            "type": "number"
+          },
+          "created": {
+            "format": "date-time",
+            "title": "Created",
+            "type": "string"
+          },
+          "day": {
+            "format": "date",
+            "title": "Day",
+            "type": "string"
+          },
+          "at": {
+            "format": "time",
+            "title": "At",
+            "type": "string"
+          },
+          "span": {
+            "format": "duration",
+            "title": "Span",
+            "type": "string"
+          }
+        },
+        "required": [
+          "text",
+          "flag",
+          "count",
+          "ratio",
+          "created",
+          "day",
+          "at",
+          "span"
+        ],
+        "title": "Primitives",
+        "type": "object"
+      },
+      "strict": {
+        "properties": {
+          "text": {
+            "title": "Text",
+            "type": "string"
+          },
+          "flag": {
+            "title": "Flag",
+            "type": "boolean"
+          },
+          "count": {
+            "title": "Count",
+            "type": "integer"
+          },
+          "ratio": {
+            "title": "Ratio",
+            "type": "number"
+          },
+          "created": {
+            "format": "date-time",
+            "title": "Created",
+            "type": "string"
+          },
+          "day": {
+            "format": "date",
+            "title": "Day",
+            "type": "string"
+          },
+          "at": {
+            "format": "time",
+            "title": "At",
+            "type": "string"
+          },
+          "span": {
+            "format": "duration",
+            "title": "Span",
+            "type": "string"
+          }
+        },
+        "required": [
+          "text",
+          "flag",
+          "count",
+          "ratio",
+          "created",
+          "day",
+          "at",
+          "span"
+        ],
+        "title": "Primitives",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "Primitives"
+    }
+  }
+}

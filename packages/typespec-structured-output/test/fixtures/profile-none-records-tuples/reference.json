@@ -1,0 +1,145 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Loose": {
+      "pydantic": {
+        "$defs": {
+          "Extra": {
+            "additionalProperties": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer"
+            },
+            "properties": {
+              "name": {
+                "title": "Name",
+                "type": "string"
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "title": "Extra",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "counts": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "Counts",
+            "type": "object"
+          },
+          "pair": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "title": "Pair",
+            "type": "array"
+          },
+          "extra": {
+            "$ref": "#/$defs/Extra"
+          },
+          "anything": {
+            "title": "Anything"
+          },
+          "link": {
+            "format": "uri",
+            "minLength": 1,
+            "title": "Link",
+            "type": "string"
+          }
+        },
+        "required": [
+          "counts",
+          "pair",
+          "extra",
+          "anything",
+          "link"
+        ],
+        "title": "Loose",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "Extra": {
+            "additionalProperties": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer"
+            },
+            "properties": {
+              "name": {
+                "title": "Name",
+                "type": "string"
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "title": "Extra",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "counts": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "Counts",
+            "type": "object"
+          },
+          "pair": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "title": "Pair",
+            "type": "array"
+          },
+          "extra": {
+            "$ref": "#/$defs/Extra"
+          },
+          "anything": {
+            "title": "Anything"
+          },
+          "link": {
+            "format": "uri",
+            "minLength": 1,
+            "title": "Link",
+            "type": "string"
+          }
+        },
+        "required": [
+          "counts",
+          "pair",
+          "extra",
+          "anything",
+          "link"
+        ],
+        "title": "Loose",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "Loose"
+    }
+  }
+}

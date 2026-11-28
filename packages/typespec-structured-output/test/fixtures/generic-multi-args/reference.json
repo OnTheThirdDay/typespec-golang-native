@@ -1,0 +1,207 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Bag": {
+      "pydantic": {
+        "$defs": {
+          "Item": {
+            "properties": {
+              "id": {
+                "title": "Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "title": "Item",
+            "type": "object"
+          },
+          "Kind": {
+            "enum": [
+              "a",
+              "b"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "Pair_Kind_int_": {
+            "properties": {
+              "key": {
+                "$ref": "#/$defs/Kind"
+              },
+              "value": {
+                "title": "Value",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "key",
+              "value"
+            ],
+            "title": "Pair[Kind, int]",
+            "type": "object"
+          },
+          "Pair_bool_float_": {
+            "properties": {
+              "key": {
+                "title": "Key",
+                "type": "boolean"
+              },
+              "value": {
+                "title": "Value",
+                "type": "number"
+              }
+            },
+            "required": [
+              "key",
+              "value"
+            ],
+            "title": "Pair[bool, float]",
+            "type": "object"
+          },
+          "Pair_str_Item_": {
+            "properties": {
+              "key": {
+                "title": "Key",
+                "type": "string"
+              },
+              "value": {
+                "$ref": "#/$defs/Item"
+              }
+            },
+            "required": [
+              "key",
+              "value"
+            ],
+            "title": "Pair[str, Item]",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "p1": {
+            "$ref": "#/$defs/Pair_str_Item_"
+          },
+          "p2": {
+            "$ref": "#/$defs/Pair_Kind_int_"
+          },
+          "p3": {
+            "$ref": "#/$defs/Pair_bool_float_"
+          }
+        },
+        "required": [
+          "p1",
+          "p2",
+          "p3"
+        ],
+        "title": "Bag",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "Item": {
+            "properties": {
+              "id": {
+                "title": "Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "title": "Item",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "Kind": {
+            "enum": [
+              "a",
+              "b"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "Pair_Kind_int_": {
+            "properties": {
+              "key": {
+                "$ref": "#/$defs/Kind"
+              },
+              "value": {
+                "title": "Value",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "key",
+              "value"
+            ],
+            "title": "Pair[Kind, int]",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "Pair_bool_float_": {
+            "properties": {
+              "key": {
+                "title": "Key",
+                "type": "boolean"
+              },
+              "value": {
+                "title": "Value",
+                "type": "number"
+              }
+            },
+            "required": [
+              "key",
+              "value"
+            ],
+            "title": "Pair[bool, float]",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "Pair_str_Item_": {
+            "properties": {
+              "key": {
+                "title": "Key",
+                "type": "string"
+              },
+              "value": {
+                "$ref": "#/$defs/Item"
+              }
+            },
+            "required": [
+              "key",
+              "value"
+            ],
+            "title": "Pair[str, Item]",
+            "type": "object",
+            "additionalProperties": false
+          }
+        },
+        "properties": {
+          "p1": {
+            "$ref": "#/$defs/Pair_str_Item_"
+          },
+          "p2": {
+            "$ref": "#/$defs/Pair_Kind_int_"
+          },
+          "p3": {
+            "$ref": "#/$defs/Pair_bool_float_"
+          }
+        },
+        "required": [
+          "p1",
+          "p2",
+          "p3"
+        ],
+        "title": "Bag",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "Bag"
+    }
+  }
+}

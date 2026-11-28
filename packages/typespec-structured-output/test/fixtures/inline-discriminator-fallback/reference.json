@@ -1,0 +1,125 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "M": {
+      "pydantic": {
+        "$defs": {
+          "A": {
+            "properties": {
+              "kind": {
+                "const": "a",
+                "title": "Kind",
+                "type": "string"
+              },
+              "x": {
+                "title": "X",
+                "type": "string"
+              }
+            },
+            "required": [
+              "kind",
+              "x"
+            ],
+            "title": "A",
+            "type": "object"
+          },
+          "U_Fallback": {
+            "properties": {
+              "kind": {
+                "pattern": "^(?:|[^a][\\s\\S]*|a[\\s\\S][\\s\\S]*)$",
+                "title": "Kind",
+                "type": "string"
+              }
+            },
+            "required": [
+              "kind"
+            ],
+            "title": "U_Fallback",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "u": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/A"
+              },
+              {
+                "$ref": "#/$defs/U_Fallback"
+              }
+            ],
+            "title": "U"
+          }
+        },
+        "required": [
+          "u"
+        ],
+        "title": "M",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "A": {
+            "properties": {
+              "kind": {
+                "const": "a",
+                "title": "Kind",
+                "type": "string"
+              },
+              "x": {
+                "title": "X",
+                "type": "string"
+              }
+            },
+            "required": [
+              "kind",
+              "x"
+            ],
+            "title": "A",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "U_Fallback": {
+            "properties": {
+              "kind": {
+                "pattern": "^(?:|[^a][\\s\\S]*|a[\\s\\S][\\s\\S]*)$",
+                "title": "Kind",
+                "type": "string"
+              }
+            },
+            "required": [
+              "kind"
+            ],
+            "title": "U_Fallback",
+            "type": "object",
+            "additionalProperties": false
+          }
+        },
+        "properties": {
+          "u": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/A"
+              },
+              {
+                "$ref": "#/$defs/U_Fallback"
+              }
+            ],
+            "title": "U"
+          }
+        },
+        "required": [
+          "u"
+        ],
+        "title": "M",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "M"
+    }
+  }
+}

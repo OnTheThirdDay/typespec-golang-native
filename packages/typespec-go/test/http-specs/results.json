@@ -1,0 +1,4023 @@
+{
+  "summary": {
+    "specs": {
+      "implemented-passing": 67
+    },
+    "scenarios": {
+      "passed": 843,
+      "failed": 0,
+      "notApplicable": 13
+    }
+  },
+  "specs": [
+    {
+      "spec": "authentication/api-key",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Authentication_ApiKey_invalid",
+          "status": "passed"
+        },
+        {
+          "name": "Authentication_ApiKey_valid",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "authentication/http/custom",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Authentication_Http_Custom_valid",
+          "status": "passed"
+        },
+        {
+          "name": "Authentication_Http_Custom_invalid",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "authentication/noauth/union",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Authentication_Noauth_Union_validNoAuth",
+          "status": "passed"
+        },
+        {
+          "name": "Authentication_Noauth_Union_validToken",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "authentication/oauth2",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Authentication_OAuth2_valid",
+          "status": "passed"
+        },
+        {
+          "name": "Authentication_OAuth2_invalid",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "authentication/union",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Authentication_Union_validKey",
+          "status": "passed"
+        },
+        {
+          "name": "Authentication_Union_validToken",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "documentation",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Documentation_Lists_bulletPointsOp",
+          "status": "passed"
+        },
+        {
+          "name": "Documentation_Lists_bulletPointsModel",
+          "status": "passed"
+        },
+        {
+          "name": "Documentation_Lists_numbered",
+          "status": "passed"
+        },
+        {
+          "name": "Documentation_TextFormatting_boldText",
+          "status": "passed"
+        },
+        {
+          "name": "Documentation_TextFormatting_italicText",
+          "status": "passed"
+        },
+        {
+          "name": "Documentation_TextFormatting_combinedFormatting",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "encode/array",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Encode_Array_Property_commaDelimited",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Array_Property_spaceDelimited",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Array_Property_pipeDelimited",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Array_Property_newlineDelimited",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Array_Property_enumCommaDelimited",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Array_Property_enumSpaceDelimited",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Array_Property_enumPipeDelimited",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Array_Property_enumNewlineDelimited",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Array_Property_extensibleEnumCommaDelimited",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Array_Property_extensibleEnumSpaceDelimited",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Array_Property_extensibleEnumPipeDelimited",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Array_Property_extensibleEnumNewlineDelimited",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "encode/boolean",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Encode_Boolean_Property_trueLower",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Boolean_Property_falseLower",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Boolean_Property_trueUpper",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Boolean_Property_falseMixed",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "encode/bytes",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Encode_Bytes_Query_default",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Bytes_Query_base64",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Bytes_Query_base64url",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Bytes_Query_base64urlArray",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Bytes_Property_default",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Bytes_Property_base64",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Bytes_Property_base64url",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Bytes_Property_base64urlArray",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Bytes_Header_default",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Bytes_Header_base64",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Bytes_Header_base64url",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Bytes_Header_base64urlArray",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Bytes_RequestBody_default",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Bytes_RequestBody_base64",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Bytes_RequestBody_base64url",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Bytes_RequestBody_customContentType",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Bytes_RequestBody_octetStream",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Bytes_ResponseBody_default",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Bytes_ResponseBody_base64",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Bytes_ResponseBody_base64url",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Bytes_ResponseBody_customContentType",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Bytes_ResponseBody_octetStream",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "encode/datetime",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Encode_Datetime_Query_default",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Datetime_Query_rfc3339",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Datetime_Query_rfc7231",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Datetime_Query_unixTimestamp",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Datetime_Query_unixTimestampArray",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Datetime_Property_default",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Datetime_Property_rfc3339",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Datetime_Property_rfc7231",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Datetime_Property_unixTimestamp",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Datetime_Property_unixTimestampArray",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Datetime_Header_default",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Datetime_Header_rfc3339",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Datetime_Header_rfc7231",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Datetime_Header_unixTimestamp",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Datetime_Header_unixTimestampArray",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Datetime_ResponseHeader_default",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Datetime_ResponseHeader_rfc3339",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Datetime_ResponseHeader_rfc7231",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Datetime_ResponseHeader_unixTimestamp",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "encode/duration",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Encode_Duration_Property_default",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Property_floatSeconds",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Property_float64Seconds",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Property_int32Seconds",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Property_iso8601",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Property_floatSecondsArray",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Property_int32Milliseconds",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Property_floatMilliseconds",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Property_float64Milliseconds",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Property_floatMillisecondsArray",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Property_int32SecondsLargerUnit",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Property_floatSecondsLargerUnit",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Property_int32MillisecondsLargerUnit",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Property_floatMillisecondsLargerUnit",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Query_default",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Query_iso8601",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Query_int32Seconds",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Query_int32SecondsArray",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Query_floatSeconds",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Query_float64Seconds",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Query_int32Milliseconds",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Query_floatMilliseconds",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Query_float64Milliseconds",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Query_int32MillisecondsArray",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Query_int32SecondsLargerUnit",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Query_floatSecondsLargerUnit",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Query_int32MillisecondsLargerUnit",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Query_floatMillisecondsLargerUnit",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Header_default",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Header_iso8601",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Header_int32Seconds",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Header_floatSeconds",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Header_float64Seconds",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Header_iso8601Array",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Header_int32Milliseconds",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Header_floatMilliseconds",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Header_float64Milliseconds",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Header_int32MillisecondsArray",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Header_int32SecondsLargerUnit",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Header_floatSecondsLargerUnit",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Header_int32MillisecondsLargerUnit",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Header_floatMillisecondsLargerUnit",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Lossy_intSeconds",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Duration_Lossy_intMilliseconds",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "encode/numeric",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Encode_Numeric_Property_safeintAsString",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Numeric_Property_uint32AsStringOptional",
+          "status": "passed"
+        },
+        {
+          "name": "Encode_Numeric_Property_uint8AsString",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "parameters/basic",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Parameters_Basic_ExplicitBody_simple",
+          "status": "passed"
+        },
+        {
+          "name": "Parameters_Basic_ImplicitBody_simple",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "parameters/body-optionality",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Parameters_BodyOptionality_requiredExplicit",
+          "status": "passed"
+        },
+        {
+          "name": "Parameters_BodyOptionality_OptionalExplicit_0",
+          "status": "passed"
+        },
+        {
+          "name": "Parameters_BodyOptionality_OptionalExplicit_1",
+          "status": "passed"
+        },
+        {
+          "name": "Parameters_BodyOptionality_requiredImplicit",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "parameters/body-root",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Parameters_BodyRoot_nested",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "parameters/collection-format",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Parameters_CollectionFormat_Query_multi",
+          "status": "passed"
+        },
+        {
+          "name": "Parameters_CollectionFormat_Query_csv",
+          "status": "passed"
+        },
+        {
+          "name": "Parameters_CollectionFormat_Query_ssv",
+          "status": "passed"
+        },
+        {
+          "name": "Parameters_CollectionFormat_Query_pipes",
+          "status": "passed"
+        },
+        {
+          "name": "Parameters_CollectionFormat_Header_csv",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "parameters/path",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Parameters_Path_normal",
+          "status": "passed"
+        },
+        {
+          "name": "Parameters_Path_optional_0",
+          "status": "passed"
+        },
+        {
+          "name": "Parameters_Path_optional_1",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "parameters/query",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Parameters_Query_Constant_post",
+          "status": "passed"
+        },
+        {
+          "name": "Parameters_Query_SpecialChar_dollarSign",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "parameters/spread",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Parameters_Spread_Model_spreadAsRequestBody",
+          "status": "passed"
+        },
+        {
+          "name": "Parameters_Spread_Model_spreadCompositeRequestOnlyWithBody",
+          "status": "passed"
+        },
+        {
+          "name": "Parameters_Spread_Model_spreadCompositeRequestWithoutBody",
+          "status": "passed"
+        },
+        {
+          "name": "Parameters_Spread_Model_spreadCompositeRequest",
+          "status": "passed"
+        },
+        {
+          "name": "Parameters_Spread_Model_spreadCompositeRequestMix",
+          "status": "passed"
+        },
+        {
+          "name": "Parameters_Spread_Alias_spreadAsRequestBody",
+          "status": "passed"
+        },
+        {
+          "name": "Parameters_Spread_Alias_spreadAsRequestParameter",
+          "status": "passed"
+        },
+        {
+          "name": "Parameters_Spread_Alias_spreadWithMultipleParameters",
+          "status": "passed"
+        },
+        {
+          "name": "Parameters_Spread_Alias_spreadParameterWithInnerModel",
+          "status": "passed"
+        },
+        {
+          "name": "Parameters_Spread_Alias_spreadParameterWithInnerAlias",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "payload/content-negotiation",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Payload_ContentNegotiation_SameBody_0",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_ContentNegotiation_SameBody_1",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_ContentNegotiation_SameBody_2",
+          "status": "skipped",
+          "reason": "the mock answers an unacceptable Accept with 400 and an error body the spec does not declare; the server answers 406 Not Acceptable (replacement)"
+        },
+        {
+          "name": "Payload_ContentNegotiation_DifferentBody_0",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_ContentNegotiation_DifferentBody_1",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_ContentNegotiation_DifferentBody_2",
+          "status": "skipped",
+          "reason": "the mock answers an unacceptable Accept with 400 and an error body the spec does not declare; the server answers 406 Not Acceptable (replacement)"
+        },
+        {
+          "name": "Replacement_Payload_ContentNegotiation_SameBody_2",
+          "status": "passed",
+          "replacement": "Payload_ContentNegotiation_SameBody_2"
+        },
+        {
+          "name": "Replacement_Payload_ContentNegotiation_DifferentBody_2",
+          "status": "passed",
+          "replacement": "Payload_ContentNegotiation_DifferentBody_2"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "payload/head",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Payload_Head_contentTypeHeaderInResponse",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "payload/json-merge-patch",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Payload_JsonMergePatch_createResource",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_JsonMergePatch_updateResource",
+          "status": "passed",
+          "adjustment": "request media type corrected to application/merge-patch+json"
+        },
+        {
+          "name": "Payload_JsonMergePatch_updateOptionalResource",
+          "status": "passed",
+          "adjustment": "request media type corrected to application/merge-patch+json"
+        },
+        {
+          "name": "Replacement_Payload_JsonMergePatch_updateOptionalResource",
+          "status": "passed",
+          "replacement": "Payload_JsonMergePatch_updateOptionalResource"
+        },
+        {
+          "name": "Replacement_Payload_JsonMergePatch_updateResource",
+          "status": "passed",
+          "replacement": "Payload_JsonMergePatch_updateResource"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "payload/media-type",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Payload_MediaType_StringBody_sendAsText",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_MediaType_StringBody_getAsText",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_MediaType_StringBody_sendAsJson",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_MediaType_StringBody_getAsJson",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "payload/multipart",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Payload_MultiPart_FormData_basic",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_MultiPart_FormData_withWireName",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_MultiPart_FormData_optionalParts_0",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_MultiPart_FormData_optionalParts_1",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_MultiPart_FormData_optionalParts_2",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_MultiPart_FormData_fileArrayAndBasic",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_MultiPart_FormData_jsonPart",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_MultiPart_FormData_binaryArrayParts",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_MultiPart_FormData_multiBinaryParts_0",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_MultiPart_FormData_multiBinaryParts_1",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_MultiPart_FormData_checkFileNameAndContentType",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_MultiPart_FormData_anonymousModel",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_MultiPart_FormData_HttpParts_ContentType_imageJpegContentType",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_MultiPart_FormData_HttpParts_ContentType_requiredContentType",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_MultiPart_FormData_HttpParts_ContentType_optionalContentType",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_MultiPart_FormData_HttpParts_jsonArrayAndFileArray",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_MultiPart_FormData_HttpParts_NonString_float",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_MultiPart_FormData_File_uploadFileSpecificContentType",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_MultiPart_FormData_File_uploadFileRequiredFilename",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_MultiPart_FormData_File_uploadFileArray",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "payload/pageable",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Payload_Pageable_ServerDrivenPagination_link_0",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Pageable_ServerDrivenPagination_link_1",
+          "status": "skipped",
+          "reason": "request to the next-page link, a URL chosen by the server implementation rather than an operation of the spec"
+        },
+        {
+          "name": "Payload_Pageable_ServerDrivenPagination_linkString_0",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Pageable_ServerDrivenPagination_linkString_1",
+          "status": "skipped",
+          "reason": "request to the next-page link, a URL chosen by the server implementation rather than an operation of the spec"
+        },
+        {
+          "name": "Payload_Pageable_ServerDrivenPagination_nestedLink_0",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Pageable_ServerDrivenPagination_nestedLink_1",
+          "status": "skipped",
+          "reason": "request to the next-page link, a URL chosen by the server implementation rather than an operation of the spec"
+        },
+        {
+          "name": "Payload_Pageable_ServerDrivenPagination_AlternateInitialVerb_post_0",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Pageable_ServerDrivenPagination_AlternateInitialVerb_post_1",
+          "status": "skipped",
+          "reason": "request to the next-page link, a URL chosen by the server implementation rather than an operation of the spec"
+        },
+        {
+          "name": "Payload_Pageable_ServerDrivenPagination_ContinuationToken_requestQueryResponseBody_0",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Pageable_ServerDrivenPagination_ContinuationToken_requestQueryResponseBody_1",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Pageable_ServerDrivenPagination_ContinuationToken_requestHeaderResponseBody_0",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Pageable_ServerDrivenPagination_ContinuationToken_requestHeaderResponseBody_1",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Pageable_ServerDrivenPagination_ContinuationToken_requestQueryResponseHeader_0",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Pageable_ServerDrivenPagination_ContinuationToken_requestQueryResponseHeader_1",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Pageable_ServerDrivenPagination_ContinuationToken_requestHeaderResponseHeader_0",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Pageable_ServerDrivenPagination_ContinuationToken_requestHeaderResponseHeader_1",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Pageable_PageSize_listWithoutContinuation",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Pageable_PageSize_listWithPageSize_0",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Pageable_PageSize_listWithPageSize_1",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Pageable_ServerDrivenPagination_ContinuationToken_requestQueryNestedResponseBody_0",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Pageable_ServerDrivenPagination_ContinuationToken_requestQueryNestedResponseBody_1",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Pageable_ServerDrivenPagination_ContinuationToken_requestHeaderNestedResponseBody_0",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Pageable_ServerDrivenPagination_ContinuationToken_requestHeaderNestedResponseBody_1",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Pageable_XmlPagination_listWithContinuation_0",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Pageable_XmlPagination_listWithContinuation_1",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Pageable_XmlPagination_listWithNextLink_0",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Pageable_XmlPagination_listWithNextLink_1",
+          "status": "skipped",
+          "reason": "request to the next-page link, a URL chosen by the server implementation rather than an operation of the spec"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "payload/xml",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Payload_Xml_ModelWithDatetimeValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithDatetimeValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_SimpleModelValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_SimpleModelValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithRenamedPropertyValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithRenamedPropertyValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithRenamedFieldsValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithRenamedFieldsValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithNestedModelValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithNestedModelValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithRenamedNestedModelValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithRenamedNestedModelValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithSimpleArraysValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithSimpleArraysValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithUnwrappedArrayValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithUnwrappedArrayValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithRenamedArraysValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithRenamedArraysValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithWrappedPrimitiveCustomItemNamesValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithWrappedPrimitiveCustomItemNamesValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithArrayOfModelValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithArrayOfModelValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithUnwrappedModelArrayValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithUnwrappedModelArrayValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithRenamedWrappedModelArrayValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithRenamedWrappedModelArrayValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithRenamedUnwrappedModelArrayValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithRenamedUnwrappedModelArrayValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithRenamedWrappedAndItemModelArrayValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithRenamedWrappedAndItemModelArrayValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithAttributesValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithAttributesValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithRenamedAttributeValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithRenamedAttributeValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithNamespaceValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithNamespaceValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithNamespaceOnPropertiesValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithNamespaceOnPropertiesValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithTextValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithTextValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithOptionalFieldValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithOptionalFieldValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithEmptyArrayValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithEmptyArrayValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithDictionaryValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithDictionaryValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithEncodedNamesValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithEncodedNamesValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithEnumValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_ModelWithEnumValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Payload_Xml_XmlErrorValue_get",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "response/body-or-no-content",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Response_BodyOrNoContent_getBody",
+          "status": "passed"
+        },
+        {
+          "name": "Response_BodyOrNoContent_getNoContent",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "response/status-code-range",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Response_StatusCodeRange_errorResponseStatusCodeInRange",
+          "status": "passed"
+        },
+        {
+          "name": "Response_StatusCodeRange_errorResponseStatusCode404",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "routes",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Routes_InInterface",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_fixed",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_PathParameters_templateOnly",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_PathParameters_explicit",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_PathParameters_annotationOnly",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_PathParameters_ReservedExpansion_template",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_PathParameters_ReservedExpansion_annotation",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_PathParameters_SimpleExpansion_Standard_primitive",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_PathParameters_SimpleExpansion_Standard_array",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_PathParameters_SimpleExpansion_Standard_record",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_PathParameters_SimpleExpansion_Explode_primitive",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_PathParameters_SimpleExpansion_Explode_array",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_PathParameters_SimpleExpansion_Explode_record",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_PathParameters_PathExpansion_Standard_primitive",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_PathParameters_PathExpansion_Standard_array",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_PathParameters_PathExpansion_Standard_record",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_PathParameters_PathExpansion_Explode_primitive",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_PathParameters_PathExpansion_Explode_array",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_PathParameters_PathExpansion_Explode_record",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_PathParameters_LabelExpansion_Standard_primitive",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_PathParameters_LabelExpansion_Standard_array",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_PathParameters_LabelExpansion_Standard_record",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_PathParameters_LabelExpansion_Explode_primitive",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_PathParameters_LabelExpansion_Explode_array",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_PathParameters_LabelExpansion_Explode_record",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_PathParameters_MatrixExpansion_Standard_primitive",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_PathParameters_MatrixExpansion_Standard_array",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_PathParameters_MatrixExpansion_Standard_record",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_PathParameters_MatrixExpansion_Explode_primitive",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_PathParameters_MatrixExpansion_Explode_array",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_PathParameters_MatrixExpansion_Explode_record",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_QueryParameters_templateOnly",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_QueryParameters_explicit",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_QueryParameters_annotationOnly",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_QueryParameters_QueryExpansion_Standard_primitive",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_QueryParameters_QueryExpansion_Standard_array",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_QueryParameters_QueryExpansion_Standard_record",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_QueryParameters_QueryExpansion_Standard_model",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_QueryParameters_QueryExpansion_Explode_primitive",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_QueryParameters_QueryExpansion_Explode_array",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_QueryParameters_QueryExpansion_Explode_record",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_QueryParameters_QueryExpansion_Explode_model",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_QueryParameters_QueryContinuation_Standard_primitive",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_QueryParameters_QueryContinuation_Standard_array",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_QueryParameters_QueryContinuation_Standard_record",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_QueryParameters_QueryContinuation_Standard_model",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_QueryParameters_QueryContinuation_Explode_primitive",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_QueryParameters_QueryContinuation_Explode_array",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_QueryParameters_QueryContinuation_Explode_record",
+          "status": "passed"
+        },
+        {
+          "name": "Routes_QueryParameters_QueryContinuation_Explode_model",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "serialization/encoded-name/json",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Serialization_EncodedName_Json_Property_send",
+          "status": "passed"
+        },
+        {
+          "name": "Serialization_EncodedName_Json_Property_get",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "server/endpoint/not-defined",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Server_Endpoint_NotDefined_valid",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "server/path/multiple",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Server_Path_Multiple_noOperationParams",
+          "status": "passed"
+        },
+        {
+          "name": "Server_Path_Multiple_withOperationPathParam",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "server/path/single",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Server_Path_Single_myOp",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "server/versions/not-versioned",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Server_Versions_NotVersioned_withoutApiVersion",
+          "status": "passed"
+        },
+        {
+          "name": "Server_Versions_NotVersioned_withPathApiVersion",
+          "status": "passed"
+        },
+        {
+          "name": "Server_Versions_NotVersioned_withQueryApiVersion",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "server/versions/versioned",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Server_Versions_Versioned_withoutApiVersion",
+          "status": "passed"
+        },
+        {
+          "name": "Server_Versions_Versioned_withPathApiVersion",
+          "status": "passed"
+        },
+        {
+          "name": "Server_Versions_Versioned_withQueryOldApiVersion",
+          "status": "passed"
+        },
+        {
+          "name": "Server_Versions_Versioned_withQueryApiVersion",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "special-headers/conditional-request",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "SpecialHeaders_ConditionalRequest_postIfUnmodifiedSince",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialHeaders_ConditionalRequest_headIfModifiedSince",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialHeaders_ConditionalRequest_postIfMatch",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialHeaders_ConditionalRequest_postIfNoneMatch",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "special-headers/repeatability",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "SpecialHeaders_Repeatability_immediateSuccess",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "special-words",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "SpecialWords_ModelProperties_sameAsModel",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_ModelProperties_dictMethods",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_ModelProperties_withList",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Models_and",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Models_as",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Models_assert",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Models_async",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Models_await",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Models_break",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Models_class",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Models_constructor",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Models_continue",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Models_def",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Models_del",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Models_elif",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Models_else",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Models_except",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Models_exec",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Models_finally",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Models_for",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Models_from",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Models_global",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Models_if",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Models_import",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Models_in",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Models_is",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Models_lambda",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Models_not",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Models_or",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Models_pass",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Models_raise",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Models_return",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Models_try",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Models_while",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Models_with",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Models_yield",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Operations_and",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Operations_as",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Operations_assert",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Operations_async",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Operations_await",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Operations_break",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Operations_class",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Operations_constructor",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Operations_continue",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Operations_def",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Operations_del",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Operations_elif",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Operations_else",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Operations_except",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Operations_exec",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Operations_finally",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Operations_for",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Operations_from",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Operations_global",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Operations_if",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Operations_import",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Operations_in",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Operations_is",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Operations_lambda",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Operations_not",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Operations_or",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Operations_pass",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Operations_raise",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Operations_return",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Operations_try",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Operations_while",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Operations_with",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Operations_yield",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Parameters_and",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Parameters_as",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Parameters_assert",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Parameters_async",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Parameters_await",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Parameters_break",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Parameters_class",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Parameters_constructor",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Parameters_continue",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Parameters_def",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Parameters_del",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Parameters_elif",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Parameters_else",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Parameters_except",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Parameters_exec",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Parameters_finally",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Parameters_for",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Parameters_from",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Parameters_global",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Parameters_if",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Parameters_import",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Parameters_in",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Parameters_is",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Parameters_lambda",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Parameters_not",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Parameters_or",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Parameters_pass",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Parameters_raise",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Parameters_return",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Parameters_try",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Parameters_while",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Parameters_with",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Parameters_yield",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_Parameters_cancellationToken",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_ReservedOperationBodyParams_withItems",
+          "status": "passed"
+        },
+        {
+          "name": "SpecialWords_ExtensibleStrings_putExtensibleStringValue",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "streaming/jsonl",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Streaming_Jsonl_Basic_send",
+          "status": "passed"
+        },
+        {
+          "name": "Streaming_Jsonl_Basic_receive",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "streaming/sse",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Streaming_Sse_Unnamed_receive",
+          "status": "passed"
+        },
+        {
+          "name": "Streaming_Sse_Named_receive",
+          "status": "passed"
+        },
+        {
+          "name": "Streaming_Sse_Retrieve_stream",
+          "status": "passed"
+        },
+        {
+          "name": "Streaming_Sse_Protocol_Data_withEnvelope",
+          "status": "passed"
+        },
+        {
+          "name": "Streaming_Sse_Protocol_Data_withoutEnvelope",
+          "status": "passed"
+        },
+        {
+          "name": "Streaming_Sse_Protocol_id",
+          "status": "passed"
+        },
+        {
+          "name": "Streaming_Sse_Protocol_invalidId",
+          "status": "passed"
+        },
+        {
+          "name": "Streaming_Sse_Protocol_retry",
+          "status": "passed"
+        },
+        {
+          "name": "Streaming_Sse_Protocol_invalidRetry",
+          "status": "passed"
+        },
+        {
+          "name": "Streaming_Sse_Protocol_reconnect",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "type/array",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Type_Array_Int32Value_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Array_Int32Value_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Array_Int64Value_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Array_Int64Value_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Array_BooleanValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Array_BooleanValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Array_StringValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Array_StringValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Array_Float32Value_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Array_Float32Value_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Array_DatetimeValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Array_DatetimeValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Array_DurationValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Array_DurationValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Array_UnknownValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Array_UnknownValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Array_ModelValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Array_ModelValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Array_NullableFloatValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Array_NullableFloatValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Array_NullableBooleanValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Array_NullableBooleanValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Array_NullableInt32Value_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Array_NullableInt32Value_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Array_NullableStringValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Array_NullableStringValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Array_NullableModelValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Array_NullableModelValue_put",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "type/dictionary",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Type_Dictionary_Int32Value_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Dictionary_Int32Value_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Dictionary_Int64Value_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Dictionary_Int64Value_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Dictionary_BooleanValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Dictionary_BooleanValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Dictionary_StringValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Dictionary_StringValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Dictionary_Float32Value_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Dictionary_Float32Value_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Dictionary_DatetimeValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Dictionary_DatetimeValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Dictionary_DurationValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Dictionary_DurationValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Dictionary_UnknownValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Dictionary_UnknownValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Dictionary_ModelValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Dictionary_ModelValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Dictionary_RecursiveModelValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Dictionary_RecursiveModelValue_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Dictionary_NullableFloatValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Dictionary_NullableFloatValue_put",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "type/enum/extensible",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Type_Enum_Extensible_String_getKnownValue",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Enum_Extensible_String_putKnownValue",
+          "status": "passed",
+          "adjustment": "request media type corrected to application/json"
+        },
+        {
+          "name": "Type_Enum_Extensible_String_getUnknownValue",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Enum_Extensible_String_putUnknownValue",
+          "status": "passed",
+          "adjustment": "request media type corrected to application/json"
+        },
+        {
+          "name": "Replacement_Type_Enum_Extensible_String_putUnknownValue",
+          "status": "passed",
+          "replacement": "Type_Enum_Extensible_String_putUnknownValue"
+        },
+        {
+          "name": "Replacement_Type_Enum_Extensible_String_putKnownValue",
+          "status": "passed",
+          "replacement": "Type_Enum_Extensible_String_putKnownValue"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "type/enum/fixed",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Type_Enum_Fixed_String_getKnownValue",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Enum_Fixed_String_putKnownValue",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Enum_Fixed_String_putUnknownValue",
+          "status": "skipped",
+          "reason": "the mock sends an unknown closed-enum value and expects 500 to test clients; the request is invalid under the declared contract (400 replacement)"
+        },
+        {
+          "name": "Replacement_Type_Enum_Fixed_String_putUnknownValue",
+          "status": "passed",
+          "replacement": "Type_Enum_Fixed_String_putUnknownValue"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "type/file",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Type_File_Body_uploadFileSpecificContentType",
+          "status": "passed"
+        },
+        {
+          "name": "Type_File_Body_uploadFileJsonContentType",
+          "status": "passed"
+        },
+        {
+          "name": "Type_File_Body_downloadFileJsonContentType",
+          "status": "passed"
+        },
+        {
+          "name": "Type_File_Body_downloadFileSpecificContentType",
+          "status": "passed"
+        },
+        {
+          "name": "Type_File_Body_uploadFileMultipleContentTypes",
+          "status": "passed"
+        },
+        {
+          "name": "Type_File_Body_downloadFileMultipleContentTypes",
+          "status": "passed"
+        },
+        {
+          "name": "Type_File_Body_uploadFileDefaultContentType",
+          "status": "passed"
+        },
+        {
+          "name": "Type_File_Body_downloadFileDefaultContentType",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "type/model/empty",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Type_Model_Empty_putEmpty",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Model_Empty_getEmpty",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Model_Empty_postRoundTripEmpty",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "type/model/inheritance/enum-discriminator",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Type_Model_Inheritance_EnumDiscriminator_getExtensibleModel",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Model_Inheritance_EnumDiscriminator_putExtensibleModel",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Model_Inheritance_EnumDiscriminator_getFixedModel",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Model_Inheritance_EnumDiscriminator_putFixedModel",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Model_Inheritance_EnumDiscriminator_getExtensibleModelMissingDiscriminator",
+          "status": "skipped",
+          "reason": "client-tolerance scenario: the mock response omits the required discriminator"
+        },
+        {
+          "name": "Type_Model_Inheritance_EnumDiscriminator_getExtensibleModelWrongDiscriminator",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Model_Inheritance_EnumDiscriminator_getFixedModelMissingDiscriminator",
+          "status": "skipped",
+          "reason": "client-tolerance scenario: the mock response omits the required discriminator"
+        },
+        {
+          "name": "Type_Model_Inheritance_EnumDiscriminator_getFixedModelWrongDiscriminator",
+          "status": "skipped",
+          "reason": "client-tolerance scenario: the mock response violates the closed enum discriminator"
+        },
+        {
+          "name": "Replacement_Type_Model_Inheritance_EnumDiscriminator_getExtensibleModelMissingDiscriminator",
+          "status": "passed",
+          "replacement": "Type_Model_Inheritance_EnumDiscriminator_getExtensibleModelMissingDiscriminator"
+        },
+        {
+          "name": "Replacement_Type_Model_Inheritance_EnumDiscriminator_getFixedModelMissingDiscriminator",
+          "status": "passed",
+          "replacement": "Type_Model_Inheritance_EnumDiscriminator_getFixedModelMissingDiscriminator"
+        },
+        {
+          "name": "Replacement_Type_Model_Inheritance_EnumDiscriminator_getFixedModelWrongDiscriminator",
+          "status": "passed",
+          "replacement": "Type_Model_Inheritance_EnumDiscriminator_getFixedModelWrongDiscriminator"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "type/model/inheritance/nested-discriminator",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Type_Model_Inheritance_NestedDiscriminator_getModel",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Model_Inheritance_NestedDiscriminator_putModel",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Model_Inheritance_NestedDiscriminator_getRecursiveModel",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Model_Inheritance_NestedDiscriminator_putRecursiveModel",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Model_Inheritance_NestedDiscriminator_getMissingDiscriminator",
+          "status": "skipped",
+          "reason": "client-tolerance scenario: the mock response omits the required discriminator"
+        },
+        {
+          "name": "Type_Model_Inheritance_NestedDiscriminator_getWrongDiscriminator",
+          "status": "passed"
+        },
+        {
+          "name": "Replacement_Type_Model_Inheritance_NestedDiscriminator_getMissingDiscriminator",
+          "status": "passed",
+          "replacement": "Type_Model_Inheritance_NestedDiscriminator_getMissingDiscriminator"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "type/model/inheritance/not-discriminated",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Type_Model_Inheritance_NotDiscriminated_postValid",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Model_Inheritance_NotDiscriminated_getValid",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Model_Inheritance_NotDiscriminated_putValid",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "type/model/inheritance/recursive",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Type_Model_Inheritance_Recursive_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Model_Inheritance_Recursive_get",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "type/model/inheritance/single-discriminator",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Type_Model_Inheritance_SingleDiscriminator_getModel",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Model_Inheritance_SingleDiscriminator_putModel",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Model_Inheritance_SingleDiscriminator_getRecursiveModel",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Model_Inheritance_SingleDiscriminator_putRecursiveModel",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Model_Inheritance_SingleDiscriminator_getMissingDiscriminator",
+          "status": "skipped",
+          "reason": "client-tolerance scenario: the mock response omits the required discriminator"
+        },
+        {
+          "name": "Type_Model_Inheritance_SingleDiscriminator_getWrongDiscriminator",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Model_Inheritance_SingleDiscriminator_getLegacyModel",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Model_Inheritance_SingleDiscriminator_getNoSubtypesModel",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Model_Inheritance_SingleDiscriminator_putNoSubtypesModel",
+          "status": "passed"
+        },
+        {
+          "name": "Replacement_Type_Model_Inheritance_SingleDiscriminator_getMissingDiscriminator",
+          "status": "passed",
+          "replacement": "Type_Model_Inheritance_SingleDiscriminator_getMissingDiscriminator"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "type/model/usage",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Type_Model_Usage_input",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Model_Usage_output",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Model_Usage_inputAndOutput",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "type/model/visibility",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Type_Model_Visibility_putReadOnlyModel",
+          "status": "passed",
+          "adjustment": "required explicit JSON body supplied as {}"
+        },
+        {
+          "name": "Type_Model_Visibility_headModel",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Model_Visibility_getModel",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Model_Visibility_putModel",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Model_Visibility_patchModel",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Model_Visibility_postModel",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Model_Visibility_deleteModel",
+          "status": "passed"
+        },
+        {
+          "name": "Replacement_Type_Model_Visibility_putReadOnlyModel",
+          "status": "passed",
+          "replacement": "Type_Model_Visibility_putReadOnlyModel"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "type/property/additional-properties",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Type_Property_AdditionalProperties_ExtendsUnknown_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_ExtendsUnknown_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_ExtendsUnknownDerived_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_ExtendsUnknownDerived_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_ExtendsUnknownDiscriminated_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_ExtendsUnknownDiscriminated_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_IsUnknown_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_IsUnknown_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_IsUnknownDerived_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_IsUnknownDerived_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_IsUnknownDiscriminated_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_IsUnknownDiscriminated_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_ExtendsString_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_ExtendsString_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_IsString_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_IsString_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_ExtendsFloat_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_ExtendsFloat_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_IsFloat_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_IsFloat_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_ExtendsModel_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_ExtendsModel_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_IsModel_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_IsModel_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_ExtendsModelArray_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_ExtendsModelArray_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_IsModelArray_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_IsModelArray_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_SpreadString_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_SpreadString_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_SpreadFloat_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_SpreadFloat_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_SpreadModel_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_SpreadModel_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_SpreadModelArray_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_SpreadModelArray_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_SpreadDifferentString_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_SpreadDifferentString_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_SpreadDifferentFloat_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_SpreadDifferentFloat_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_SpreadDifferentModel_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_SpreadDifferentModel_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_SpreadDifferentModelArray_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_SpreadDifferentModelArray_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_ExtendsDifferentSpreadString_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_ExtendsDifferentSpreadString_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_ExtendsDifferentSpreadFloat_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_ExtendsDifferentSpreadFloat_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_ExtendsDifferentSpreadModel_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_ExtendsDifferentSpreadModel_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_ExtendsDifferentSpreadModelArray_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_ExtendsDifferentSpreadModelArray_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_MultipleSpread_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_MultipleSpread_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_SpreadRecordUnion_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_SpreadRecordUnion_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_SpreadRecordNonDiscriminatedUnion_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_SpreadRecordNonDiscriminatedUnion_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_SpreadRecordNonDiscriminatedUnion2_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_SpreadRecordNonDiscriminatedUnion2_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_SpreadRecordNonDiscriminatedUnion3_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_AdditionalProperties_SpreadRecordNonDiscriminatedUnion3_put",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "type/property/nullable",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Type_Property_Nullable_String_getNonNull",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Nullable_String_getNull",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Nullable_String_patchNonNull",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Nullable_String_patchNull",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Nullable_Bytes_getNonNull",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Nullable_Bytes_getNull",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Nullable_Bytes_patchNonNull",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Nullable_Bytes_patchNull",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Nullable_Datetime_getNonNull",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Nullable_Datetime_getNull",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Nullable_Datetime_patchNonNull",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Nullable_Datetime_patchNull",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Nullable_Duration_getNonNull",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Nullable_Duration_getNull",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Nullable_Duration_patchNonNull",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Nullable_Duration_patchNull",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Nullable_CollectionsByte_getNonNull",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Nullable_CollectionsByte_getNull",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Nullable_CollectionsByte_patchNonNull",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Nullable_CollectionsByte_patchNull",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Nullable_CollectionsModel_getNonNull",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Nullable_CollectionsModel_getNull",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Nullable_CollectionsModel_patchNonNull",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Nullable_CollectionsModel_patchNull",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Nullable_CollectionsString_getNonNull",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Nullable_CollectionsString_getNull",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Nullable_CollectionsString_patchNonNull",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Nullable_CollectionsString_patchNull",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "type/property/optionality",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Type_Property_Optional_String_getDefault",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_String_putDefault",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_String_getAll",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_String_putAll",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_Bytes_getDefault",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_Bytes_putDefault",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_Bytes_getAll",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_Bytes_putAll",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_Datetime_getDefault",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_Datetime_putDefault",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_Datetime_getAll",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_Datetime_putAll",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_Duration_getDefault",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_Duration_putDefault",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_Duration_getAll",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_Duration_putAll",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_PlainDate_getDefault",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_PlainDate_putDefault",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_PlainDate_getAll",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_PlainDate_putAll",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_PlainTime_getDefault",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_PlainTime_putDefault",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_PlainTime_getAll",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_PlainTime_putAll",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_CollectionsByte_getDefault",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_CollectionsByte_putDefault",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_CollectionsByte_getAll",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_CollectionsByte_putAll",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_CollectionsModel_getDefault",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_CollectionsModel_putDefault",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_CollectionsModel_getAll",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_CollectionsModel_putAll",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_StringLiteral_getDefault",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_StringLiteral_putDefault",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_StringLiteral_getAll",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_StringLiteral_putAll",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_IntLiteral_getDefault",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_IntLiteral_putDefault",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_IntLiteral_getAll",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_IntLiteral_putAll",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_FloatLiteral_getDefault",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_FloatLiteral_putDefault",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_FloatLiteral_getAll",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_FloatLiteral_putAll",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_BooleanLiteral_getDefault",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_BooleanLiteral_putDefault",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_BooleanLiteral_getAll",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_BooleanLiteral_putAll",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_UnionStringLiteral_getDefault",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_UnionStringLiteral_putDefault",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_UnionStringLiteral_getAll",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_UnionStringLiteral_putAll",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_UnionIntLiteral_getDefault",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_UnionIntLiteral_putDefault",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_UnionIntLiteral_getAll",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_UnionIntLiteral_putAll",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_UnionFloatLiteral_getDefault",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_UnionFloatLiteral_putDefault",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_UnionFloatLiteral_getAll",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_UnionFloatLiteral_putAll",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_RequiredAndOptional_getRequiredOnly",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_RequiredAndOptional_putRequiredOnly",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_RequiredAndOptional_getAll",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_Optional_RequiredAndOptional_putAll",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "type/property/value-types",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Type_Property_ValueTypes_Boolean_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_Boolean_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_String_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_String_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_Bytes_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_Bytes_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_Int_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_Int_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_Float_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_Float_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_Decimal_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_Decimal_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_Decimal128_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_Decimal128_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_Datetime_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_Datetime_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_Duration_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_Duration_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_Enum_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_Enum_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_ExtensibleEnum_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_ExtensibleEnum_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_Model_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_Model_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_CollectionsString_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_CollectionsString_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_CollectionsInt_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_CollectionsInt_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_CollectionsModel_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_CollectionsModel_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_DictionaryString_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_DictionaryString_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_Never_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_Never_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_UnknownString_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_UnknownString_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_UnknownInt_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_UnknownInt_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_UnknownDict_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_UnknownDict_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_UnknownArray_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_UnknownArray_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_StringLiteral_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_StringLiteral_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_IntLiteral_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_IntLiteral_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_FloatLiteral_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_FloatLiteral_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_BooleanLiteral_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_BooleanLiteral_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_UnionStringLiteral_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_UnionStringLiteral_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_UnionIntLiteral_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_UnionIntLiteral_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_UnionFloatLiteral_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_UnionFloatLiteral_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_UnionEnumValue_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Property_ValueTypes_UnionEnumValue_put",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "type/scalar",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Type_Scalar_String_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Scalar_String_put",
+          "status": "passed",
+          "adjustment": "request media type corrected to application/json"
+        },
+        {
+          "name": "Type_Scalar_Boolean_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Scalar_Boolean_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Scalar_Unknown_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Scalar_Unknown_put",
+          "status": "passed",
+          "adjustment": "request media type corrected to application/json"
+        },
+        {
+          "name": "Type_Scalar_DecimalType_responseBody",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Scalar_Decimal128Type_responseBody",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Scalar_DecimalType_requestBody",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Scalar_Decimal128Type_requestBody",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Scalar_DecimalType_requestParameter",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Scalar_Decimal128Type_requestParameter",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Scalar_DecimalVerify_prepareVerify",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Scalar_Decimal128Verify_prepareVerify",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Scalar_DecimalVerify_verify",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Scalar_Decimal128Verify_verify",
+          "status": "passed"
+        },
+        {
+          "name": "Replacement_Type_Scalar_String_put",
+          "status": "passed",
+          "replacement": "Type_Scalar_String_put"
+        },
+        {
+          "name": "Replacement_Type_Scalar_Unknown_put",
+          "status": "passed",
+          "replacement": "Type_Scalar_Unknown_put"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "type/union",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Type_Union_StringsOnly_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_StringsOnly_send",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_StringExtensible_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_StringExtensible_send",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_StringExtensibleNamed_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_StringExtensibleNamed_send",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_IntsOnly_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_IntsOnly_send",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_FloatsOnly_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_FloatsOnly_send",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_ModelsOnly_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_ModelsOnly_send",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_EnumsOnly_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_EnumsOnly_send",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_StringAndArray_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_StringAndArray_send",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_MixedLiterals_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_MixedLiterals_send",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_MixedTypes_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_MixedTypes_send",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "type/union/discriminated",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Type_Union_Discriminated_Envelope_Object_Default_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_Discriminated_Envelope_Object_Default_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_Discriminated_Envelope_Object_CustomProperties_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_Discriminated_Envelope_Object_CustomProperties_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_Discriminated_NoEnvelope_Default_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_Discriminated_NoEnvelope_Default_put",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_Discriminated_NoEnvelope_CustomDiscriminator_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_Discriminated_NoEnvelope_CustomDiscriminator_put",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "type/union/discriminated/extends",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Type_Union_Discriminated_Extends_ExplicitDiscriminator_Operations_getCat",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_Discriminated_Extends_ExplicitDiscriminator_Operations_putCat",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_Discriminated_Extends_ExplicitDiscriminator_Operations_getDog",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_Discriminated_Extends_ExplicitDiscriminator_Operations_putDog",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_Discriminated_Extends_InjectedDiscriminator_Operations_getCat",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_Discriminated_Extends_InjectedDiscriminator_Operations_putCat",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_Discriminated_Extends_InjectedDiscriminator_Operations_getDog",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_Discriminated_Extends_InjectedDiscriminator_Operations_putDog",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_Discriminated_Extends_CustomDiscriminator_Operations_getCat",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_Discriminated_Extends_CustomDiscriminator_Operations_putCat",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_Discriminated_Extends_CustomDiscriminator_Operations_getDog",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_Discriminated_Extends_CustomDiscriminator_Operations_putDog",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_Discriminated_Extends_EnumDiscriminator_Operations_getCat",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_Discriminated_Extends_EnumDiscriminator_Operations_putCat",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_Discriminated_Extends_EnumDiscriminator_Operations_getDog",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_Discriminated_Extends_EnumDiscriminator_Operations_putDog",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_Discriminated_Extends_Recursive_get",
+          "status": "passed"
+        },
+        {
+          "name": "Type_Union_Discriminated_Extends_Recursive_put",
+          "status": "passed"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "versioning/added",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Versioning_Added_v1",
+          "status": "passed",
+          "version": "v2"
+        },
+        {
+          "name": "Versioning_Added_v2",
+          "status": "passed",
+          "version": "v2"
+        },
+        {
+          "name": "Versioning_Added_InterfaceV2",
+          "status": "passed",
+          "version": "v2"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "versioning/madeOptional",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Versioning_MadeOptional_test",
+          "status": "passed",
+          "version": "v2"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "versioning/removed",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Versioning_Removed_v2",
+          "status": "passed",
+          "version": "v2"
+        },
+        {
+          "name": "Versioning_Removed_modelV3_V2",
+          "status": "passed",
+          "version": "v2"
+        },
+        {
+          "name": "Versioning_Removed_modelV3",
+          "status": "passed",
+          "version": "v1"
+        },
+        {
+          "name": "Versioning_Removed_modelV3_V2preview",
+          "status": "passed",
+          "version": "v2preview"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "versioning/renamedFrom",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Versioning_RenamedFrom_newOp",
+          "status": "passed",
+          "version": "v2"
+        },
+        {
+          "name": "Versioning_RenamedFrom_NewInterface",
+          "status": "passed",
+          "version": "v2"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "versioning/returnTypeChangedFrom",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Versioning_ReturnTypeChangedFrom_test",
+          "status": "passed",
+          "adjustment": "request media type corrected to application/json",
+          "version": "v2"
+        },
+        {
+          "name": "Replacement_Versioning_ReturnTypeChangedFrom_test",
+          "status": "passed",
+          "replacement": "Versioning_ReturnTypeChangedFrom_test"
+        }
+      ],
+      "category": "implemented-passing"
+    },
+    {
+      "spec": "versioning/typeChangedFrom",
+      "status": "passed",
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "Versioning_TypeChangedFrom_test",
+          "status": "passed",
+          "version": "v2"
+        }
+      ],
+      "category": "implemented-passing"
+    }
+  ]
+}

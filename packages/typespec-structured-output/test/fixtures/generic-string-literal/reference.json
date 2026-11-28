@@ -1,0 +1,107 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Labels": {
+      "pydantic": {
+        "$defs": {
+          "Box_Literal__it_s_here___": {
+            "properties": {
+              "value": {
+                "const": "it's here",
+                "title": "Value",
+                "type": "string"
+              }
+            },
+            "required": [
+              "value"
+            ],
+            "title": "Box[Literal[\"it's here\"]]",
+            "type": "object"
+          },
+          "Box_Literal__tab_t_quote____": {
+            "properties": {
+              "value": {
+                "const": "tab\t\"quote\"",
+                "title": "Value",
+                "type": "string"
+              }
+            },
+            "required": [
+              "value"
+            ],
+            "title": "Box[Literal['tab\\t\"quote\"']]",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "first": {
+            "$ref": "#/$defs/Box_Literal__it_s_here___"
+          },
+          "second": {
+            "$ref": "#/$defs/Box_Literal__tab_t_quote____"
+          }
+        },
+        "required": [
+          "first",
+          "second"
+        ],
+        "title": "Labels",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "Box_Literal__it_s_here___": {
+            "properties": {
+              "value": {
+                "const": "it's here",
+                "title": "Value",
+                "type": "string"
+              }
+            },
+            "required": [
+              "value"
+            ],
+            "title": "Box[Literal[\"it's here\"]]",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "Box_Literal__tab_t_quote____": {
+            "properties": {
+              "value": {
+                "const": "tab\t\"quote\"",
+                "title": "Value",
+                "type": "string"
+              }
+            },
+            "required": [
+              "value"
+            ],
+            "title": "Box[Literal['tab\\t\"quote\"']]",
+            "type": "object",
+            "additionalProperties": false
+          }
+        },
+        "properties": {
+          "first": {
+            "$ref": "#/$defs/Box_Literal__it_s_here___"
+          },
+          "second": {
+            "$ref": "#/$defs/Box_Literal__tab_t_quote____"
+          }
+        },
+        "required": [
+          "first",
+          "second"
+        ],
+        "title": "Labels",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "Labels"
+    }
+  }
+}

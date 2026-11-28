@@ -1,0 +1,188 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Drive": {
+      "pydantic": {
+        "$defs": {
+          "Drive": {
+            "properties": {
+              "root": {
+                "$ref": "#/$defs/Folder"
+              },
+              "parent": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/Drive"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "root",
+              "parent"
+            ],
+            "title": "Drive",
+            "type": "object"
+          },
+          "File": {
+            "properties": {
+              "name": {
+                "title": "Name",
+                "type": "string"
+              },
+              "size": {
+                "maximum": 9223372036854775807,
+                "minimum": -9223372036854775808,
+                "title": "Size",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "name",
+              "size"
+            ],
+            "title": "File",
+            "type": "object"
+          },
+          "Folder": {
+            "properties": {
+              "name": {
+                "title": "Name",
+                "type": "string"
+              },
+              "entries": {
+                "items": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/$defs/Folder"
+                    },
+                    {
+                      "$ref": "#/$defs/File"
+                    }
+                  ]
+                },
+                "title": "Entries",
+                "type": "array"
+              }
+            },
+            "required": [
+              "name",
+              "entries"
+            ],
+            "title": "Folder",
+            "type": "object"
+          }
+        },
+        "$ref": "#/$defs/Drive"
+      },
+      "strict": {
+        "$defs": {
+          "Drive": {
+            "properties": {
+              "root": {
+                "$ref": "#/$defs/Folder"
+              },
+              "parent": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/Drive"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "root",
+              "parent"
+            ],
+            "title": "Drive",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "File": {
+            "properties": {
+              "name": {
+                "title": "Name",
+                "type": "string"
+              },
+              "size": {
+                "maximum": 9223372036854775807,
+                "minimum": -9223372036854775808,
+                "title": "Size",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "name",
+              "size"
+            ],
+            "title": "File",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "Folder": {
+            "properties": {
+              "name": {
+                "title": "Name",
+                "type": "string"
+              },
+              "entries": {
+                "items": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/$defs/Folder"
+                    },
+                    {
+                      "$ref": "#/$defs/File"
+                    }
+                  ]
+                },
+                "title": "Entries",
+                "type": "array"
+              }
+            },
+            "required": [
+              "name",
+              "entries"
+            ],
+            "title": "Folder",
+            "type": "object",
+            "additionalProperties": false
+          }
+        },
+        "properties": {
+          "root": {
+            "$ref": "#/$defs/Folder"
+          },
+          "parent": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Drive"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "root",
+          "parent"
+        ],
+        "title": "Drive",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "Drive"
+    }
+  }
+}

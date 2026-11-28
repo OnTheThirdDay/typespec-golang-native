@@ -1,0 +1,69 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "M": {
+      "pydantic": {
+        "properties": {
+          "head": {
+            "title": "Head",
+            "type": "string"
+          },
+          "1": {
+            "title": "1",
+            "type": "string"
+          },
+          "__proto__": {
+            "title": "Proto",
+            "type": "string"
+          },
+          "0": {
+            "title": "0",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "head",
+          "1",
+          "__proto__",
+          "0"
+        ],
+        "title": "M",
+        "type": "object"
+      },
+      "strict": {
+        "properties": {
+          "head": {
+            "title": "Head",
+            "type": "string"
+          },
+          "1": {
+            "title": "1",
+            "type": "string"
+          },
+          "__proto__": {
+            "title": "Proto",
+            "type": "string"
+          },
+          "0": {
+            "title": "0",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "head",
+          "1",
+          "__proto__",
+          "0"
+        ],
+        "title": "M",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "M"
+    }
+  }
+}

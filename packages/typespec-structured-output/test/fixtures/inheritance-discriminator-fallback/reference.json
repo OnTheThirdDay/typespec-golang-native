@@ -1,0 +1,119 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "M": {
+      "pydantic": {
+        "$defs": {
+          "Cat": {
+            "properties": {
+              "kind": {
+                "const": "cat",
+                "title": "Kind",
+                "type": "string"
+              }
+            },
+            "required": [
+              "kind"
+            ],
+            "title": "Cat",
+            "type": "object"
+          },
+          "Pet": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Cat"
+              },
+              {
+                "$ref": "#/$defs/Pet_Fallback"
+              }
+            ]
+          },
+          "Pet_Fallback": {
+            "properties": {
+              "kind": {
+                "pattern": "^(?:|[^c][\\s\\S]*|c(?:|[^a][\\s\\S]*|a(?:|[^t][\\s\\S]*|t[\\s\\S][\\s\\S]*)))$",
+                "title": "Kind",
+                "type": "string"
+              }
+            },
+            "required": [
+              "kind"
+            ],
+            "title": "Pet_Fallback",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "pet": {
+            "$ref": "#/$defs/Pet"
+          }
+        },
+        "required": [
+          "pet"
+        ],
+        "title": "M",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "Cat": {
+            "properties": {
+              "kind": {
+                "const": "cat",
+                "title": "Kind",
+                "type": "string"
+              }
+            },
+            "required": [
+              "kind"
+            ],
+            "title": "Cat",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "Pet": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Cat"
+              },
+              {
+                "$ref": "#/$defs/Pet_Fallback"
+              }
+            ]
+          },
+          "Pet_Fallback": {
+            "properties": {
+              "kind": {
+                "pattern": "^(?:|[^c][\\s\\S]*|c(?:|[^a][\\s\\S]*|a(?:|[^t][\\s\\S]*|t[\\s\\S][\\s\\S]*)))$",
+                "title": "Kind",
+                "type": "string"
+              }
+            },
+            "required": [
+              "kind"
+            ],
+            "title": "Pet_Fallback",
+            "type": "object",
+            "additionalProperties": false
+          }
+        },
+        "properties": {
+          "pet": {
+            "$ref": "#/$defs/Pet"
+          }
+        },
+        "required": [
+          "pet"
+        ],
+        "title": "M",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "M"
+    }
+  }
+}

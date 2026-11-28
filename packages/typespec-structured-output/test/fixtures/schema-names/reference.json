@@ -1,0 +1,359 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Order": {
+      "pydantic": {
+        "$defs": {
+          "Billing__PostalAddress": {
+            "properties": {
+              "line": {
+                "title": "Line",
+                "type": "string"
+              }
+            },
+            "required": [
+              "line"
+            ],
+            "title": "PostalAddress",
+            "type": "object"
+          },
+          "CopyOfOriginal": {
+            "description": "`is` copies decorators, but the name belongs to the declaration that writes it.",
+            "properties": {
+              "a": {
+                "title": "A",
+                "type": "string"
+              }
+            },
+            "required": [
+              "a"
+            ],
+            "title": "CopyOfOriginal",
+            "type": "object"
+          },
+          "Envelope_Item_": {
+            "properties": {
+              "item": {
+                "$ref": "#/$defs/Item"
+              }
+            },
+            "required": [
+              "item"
+            ],
+            "title": "Envelope[Item]",
+            "type": "object"
+          },
+          "FriendlyOnly": {
+            "properties": {
+              "b": {
+                "title": "B",
+                "type": "string"
+              }
+            },
+            "required": [
+              "b"
+            ],
+            "title": "FriendlyOnly",
+            "type": "object"
+          },
+          "Item": {
+            "properties": {
+              "name": {
+                "title": "Name",
+                "type": "string"
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "title": "Item",
+            "type": "object"
+          },
+          "Renamed": {
+            "properties": {
+              "a": {
+                "title": "A",
+                "type": "string"
+              }
+            },
+            "required": [
+              "a"
+            ],
+            "title": "Renamed",
+            "type": "object"
+          },
+          "Shipping__PostalAddress": {
+            "properties": {
+              "street": {
+                "title": "Street",
+                "type": "string"
+              }
+            },
+            "required": [
+              "street"
+            ],
+            "title": "PostalAddress",
+            "type": "object"
+          },
+          "Tier": {
+            "enum": [
+              "gold",
+              "silver"
+            ],
+            "title": "Tier",
+            "type": "string"
+          },
+          "Wins": {
+            "properties": {
+              "c": {
+                "title": "C",
+                "type": "string"
+              }
+            },
+            "required": [
+              "c"
+            ],
+            "title": "Wins",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "bill": {
+            "$ref": "#/$defs/Billing__PostalAddress"
+          },
+          "ship": {
+            "$ref": "#/$defs/Shipping__PostalAddress"
+          },
+          "level": {
+            "$ref": "#/$defs/Tier"
+          },
+          "wrapped": {
+            "$ref": "#/$defs/Envelope_Item_"
+          },
+          "original": {
+            "$ref": "#/$defs/Renamed"
+          },
+          "duplicate": {
+            "$ref": "#/$defs/CopyOfOriginal"
+          },
+          "friendly": {
+            "$ref": "#/$defs/FriendlyOnly"
+          },
+          "both": {
+            "$ref": "#/$defs/Wins"
+          }
+        },
+        "required": [
+          "bill",
+          "ship",
+          "level",
+          "wrapped",
+          "original",
+          "duplicate",
+          "friendly",
+          "both"
+        ],
+        "title": "Order",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "Billing__PostalAddress": {
+            "properties": {
+              "line": {
+                "title": "Line",
+                "type": "string"
+              }
+            },
+            "required": [
+              "line"
+            ],
+            "title": "PostalAddress",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "CopyOfOriginal": {
+            "description": "`is` copies decorators, but the name belongs to the declaration that writes it.",
+            "properties": {
+              "a": {
+                "title": "A",
+                "type": "string"
+              }
+            },
+            "required": [
+              "a"
+            ],
+            "title": "CopyOfOriginal",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "Envelope_Item_": {
+            "properties": {
+              "item": {
+                "$ref": "#/$defs/Item"
+              }
+            },
+            "required": [
+              "item"
+            ],
+            "title": "Envelope[Item]",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "FriendlyOnly": {
+            "properties": {
+              "b": {
+                "title": "B",
+                "type": "string"
+              }
+            },
+            "required": [
+              "b"
+            ],
+            "title": "FriendlyOnly",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "Item": {
+            "properties": {
+              "name": {
+                "title": "Name",
+                "type": "string"
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "title": "Item",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "Renamed": {
+            "properties": {
+              "a": {
+                "title": "A",
+                "type": "string"
+              }
+            },
+            "required": [
+              "a"
+            ],
+            "title": "Renamed",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "Shipping__PostalAddress": {
+            "properties": {
+              "street": {
+                "title": "Street",
+                "type": "string"
+              }
+            },
+            "required": [
+              "street"
+            ],
+            "title": "PostalAddress",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "Tier": {
+            "enum": [
+              "gold",
+              "silver"
+            ],
+            "title": "Tier",
+            "type": "string"
+          },
+          "Wins": {
+            "properties": {
+              "c": {
+                "title": "C",
+                "type": "string"
+              }
+            },
+            "required": [
+              "c"
+            ],
+            "title": "Wins",
+            "type": "object",
+            "additionalProperties": false
+          }
+        },
+        "properties": {
+          "bill": {
+            "$ref": "#/$defs/Billing__PostalAddress"
+          },
+          "ship": {
+            "$ref": "#/$defs/Shipping__PostalAddress"
+          },
+          "level": {
+            "$ref": "#/$defs/Tier"
+          },
+          "wrapped": {
+            "$ref": "#/$defs/Envelope_Item_"
+          },
+          "original": {
+            "$ref": "#/$defs/Renamed"
+          },
+          "duplicate": {
+            "$ref": "#/$defs/CopyOfOriginal"
+          },
+          "friendly": {
+            "$ref": "#/$defs/FriendlyOnly"
+          },
+          "both": {
+            "$ref": "#/$defs/Wins"
+          }
+        },
+        "required": [
+          "bill",
+          "ship",
+          "level",
+          "wrapped",
+          "original",
+          "duplicate",
+          "friendly",
+          "both"
+        ],
+        "title": "Order",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "Order"
+    },
+    "RenamedRoot": {
+      "pydantic": {
+        "properties": {
+          "x": {
+            "title": "X",
+            "type": "string"
+          }
+        },
+        "required": [
+          "x"
+        ],
+        "title": "RenamedRoot",
+        "type": "object"
+      },
+      "strict": {
+        "properties": {
+          "x": {
+            "title": "X",
+            "type": "string"
+          }
+        },
+        "required": [
+          "x"
+        ],
+        "title": "RenamedRoot",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "RenamedRoot"
+    }
+  }
+}

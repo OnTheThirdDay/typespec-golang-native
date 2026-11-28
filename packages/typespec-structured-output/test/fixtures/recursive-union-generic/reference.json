@@ -1,0 +1,145 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Holder": {
+      "pydantic": {
+        "$defs": {
+          "Box_Tree_": {
+            "properties": {
+              "v": {
+                "$ref": "#/$defs/Tree"
+              }
+            },
+            "required": [
+              "v"
+            ],
+            "title": "Box[Tree]",
+            "type": "object"
+          },
+          "Box_Union_str__Annotated_int__FieldInfo_annotation_NoneType__required_True__metadata__Ge_ge_-2147483648___Le_le_2147483647______": {
+            "properties": {
+              "v": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "maximum": 2147483647,
+                    "minimum": -2147483648,
+                    "type": "integer"
+                  }
+                ],
+                "title": "V"
+              }
+            },
+            "required": [
+              "v"
+            ],
+            "title": "Box[Union[str, Annotated[int, FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=-2147483648), Le(le=2147483647)])]]]",
+            "type": "object"
+          },
+          "Tree": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "items": {
+                  "$ref": "#/$defs/Tree"
+                },
+                "type": "array"
+              }
+            ]
+          }
+        },
+        "properties": {
+          "b": {
+            "$ref": "#/$defs/Box_Tree_"
+          },
+          "plain": {
+            "$ref": "#/$defs/Box_Union_str__Annotated_int__FieldInfo_annotation_NoneType__required_True__metadata__Ge_ge_-2147483648___Le_le_2147483647______"
+          }
+        },
+        "required": [
+          "b",
+          "plain"
+        ],
+        "title": "Holder",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "Box_Tree_": {
+            "properties": {
+              "v": {
+                "$ref": "#/$defs/Tree"
+              }
+            },
+            "required": [
+              "v"
+            ],
+            "title": "Box[Tree]",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "Box_Union_str__Annotated_int__FieldInfo_annotation_NoneType__required_True__metadata__Ge_ge_-2147483648___Le_le_2147483647______": {
+            "properties": {
+              "v": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "maximum": 2147483647,
+                    "minimum": -2147483648,
+                    "type": "integer"
+                  }
+                ],
+                "title": "V"
+              }
+            },
+            "required": [
+              "v"
+            ],
+            "title": "Box[Union[str, Annotated[int, FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=-2147483648), Le(le=2147483647)])]]]",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "Tree": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "items": {
+                  "$ref": "#/$defs/Tree"
+                },
+                "type": "array"
+              }
+            ]
+          }
+        },
+        "properties": {
+          "b": {
+            "$ref": "#/$defs/Box_Tree_"
+          },
+          "plain": {
+            "$ref": "#/$defs/Box_Union_str__Annotated_int__FieldInfo_annotation_NoneType__required_True__metadata__Ge_ge_-2147483648___Le_le_2147483647______"
+          }
+        },
+        "required": [
+          "b",
+          "plain"
+        ],
+        "title": "Holder",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "Holder"
+    }
+  }
+}

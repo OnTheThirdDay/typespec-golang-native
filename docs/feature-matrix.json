@@ -1,0 +1,1514 @@
+{
+  "$comment": "Machine-readable feature coverage. status: supported | restricted (supported with documented restrictions) | unsupported (compilation diagnostic) | not-applicable. Every supported/restricted entry lists executable tests as 'path#needle' (needle must occur in the file). Checked by tools/feature-matrix/check.mjs; docs/feature-matrix.md is generated from this file.",
+  "version": 2,
+  "features": [
+    {
+      "id": "scalars.builtin",
+      "area": "Types",
+      "feature": "Built-in scalars (string, boolean, int8–uint64, safeint, float32/64)",
+      "go": {
+        "status": "supported",
+        "tests": [
+          "packages/typespec-go/test/go/models/models_test.go#TestRoundTrip",
+          "packages/typespec-go/runtime/runtime_test.go#TestIntCodec",
+          "packages/typespec-go/runtime/errors_test.go#TestSafeIntDetailRetainsFullWidthLimit",
+          "packages/typespec-go/test/http-specs/results.json#type/scalar"
+        ]
+      },
+      "so": {
+        "status": "supported",
+        "notes": "Sized integers carry their range as minimum/maximum (Pydantic Annotated[int, Field(ge, le)]).",
+        "tests": [
+          "packages/typespec-structured-output/test/fixtures/primitives/main.tsp#int",
+          "packages/typespec-structured-output/test/fixtures/scalar-chain/model.py#18446744073709551615"
+        ]
+      }
+    },
+    {
+      "id": "scalars.precision",
+      "area": "Types",
+      "feature": "Arbitrary precision (integer, numeric, decimal, decimal128), int64/uint64 extremes",
+      "go": {
+        "status": "restricted",
+        "notes": "tsgo.Integer (big.Int) and tsgo.Decimal (exact text); decimal128 digits validated; float bounds compared in binary64 or exactly via big.Rat when the bound is not representable. Literals and defaults keep every digit; float literal membership (enums, literal types, unions, text parameters) is checked on the wire token before binary rounding. Exact numbers are bounded (10,000 significant digits, exponent ±10,000) so untrusted input cannot force expensive conversions. Distinct literals that TypeSpec 1.18 conflates are rejected. Option integer-type: int64 maps integer to int64 everywhere (fields, collections, unions, parameters, derived scalars); out-of-range input is rejected, out-of-range defaults and unsatisfiable bounds fail the compilation.",
+        "tests": [
+          "packages/typespec-go/test/go/combinations/combinations_test.go#TestNumericPrecisionAndRange",
+          "packages/typespec-go/runtime/runtime_test.go#TestDecimalAndInteger",
+          "packages/typespec-go/test/go/regressions/regressions_test.go#TestLargeDefaultsAreExact",
+          "packages/typespec-go/test/diagnostics.test.ts#conflated-numeric-literal",
+          "packages/typespec-go/runtime/numbers_test.go#TestHugeExponentsAreRejectedCheaply",
+          "packages/typespec-go/runtime/numbers_test.go#TestSameNumberTextIsExact",
+          "packages/typespec-go/test/go/regressions/regressions_test.go#TestFractionalMembershipBeforeRounding",
+          "packages/typespec-go/test/go/regressions/regressions_test.go#TestFloatLiteralsAreExactEverywhere",
+          "packages/typespec-go/test/go/int64/int64_test.go#TestOutOfRangeIntegersAreRejected",
+          "packages/typespec-go/test/go/int64/int64_test.go#TestParameters",
+          "packages/typespec-go/test/diagnostics.test.ts#int64-array-default",
+          "packages/typespec-go/test/diagnostics.test.ts#int64-exclusive-minimum"
+        ]
+      },
+      "so": {
+        "status": "restricted",
+        "notes": "integer → JSON integer; numeric/decimal rejected by default (Pydantic's Decimal schema accepts arbitrary strings); option scalar-encodings: wire maps them to JSON numbers (Annotated[Decimal, WithJsonSchema]).",
+        "tests": [
+          "packages/typespec-structured-output/test/fixtures/neg-decimal/expected-diagnostics.json#unsupported-type",
+          "packages/typespec-structured-output/test/fixtures/exact-defaults/reference.json#18446744073709551615",
+          "packages/typespec-structured-output/test/fixtures/neg-conflated-numeric-literal/expected-diagnostics.json#conflated-numeric-literal",
+          "packages/typespec-structured-output/test/fixtures/wire-scalar-annotations/reference.json#amount"
+        ]
+      }
+    },
+    {
+      "id": "scalars.datetime",
+      "area": "Types",
+      "feature": "utcDateTime, offsetDateTime, plainDate, plainTime, duration",
+      "go": {
+        "status": "supported",
+        "notes": "time.Time, tsgo.Date, tsgo.TimeOfDay, tsgo.Duration (ISO 8601 components, calendar units kept).",
+        "tests": [
+          "packages/typespec-go/test/http-specs/results.json#encode/datetime",
+          "packages/typespec-go/test/http-specs/results.json#encode/duration",
+          "packages/typespec-go/runtime/runtime_test.go#TestDuration"
+        ]
+      },
+      "so": {
+        "status": "supported",
+        "notes": "Only the default (RFC 3339 / ISO 8601) encodings, as Pydantic.",
+        "tests": [
+          "packages/typespec-structured-output/test/fixtures/primitives/model.py#timedelta",
+          "packages/typespec-structured-output/test/fixtures/neg-encoding/expected-diagnostics.json#unsupported-encoding"
+        ]
+      }
+    },
+    {
+      "id": "scalars.bytes",
+      "area": "Types",
+      "feature": "bytes (base64, base64url, binary bodies)",
+      "go": {
+        "status": "supported",
+        "tests": [
+          "packages/typespec-go/test/http-specs/results.json#encode/bytes",
+          "packages/typespec-go/runtime/runtime_test.go#TestBase64"
+        ]
+      },
+      "so": {
+        "status": "restricted",
+        "notes": "Rejected by default (Pydantic's default bytes form is UTF-8 text); option scalar-encodings: wire emits canonical base64/base64url string patterns.",
+        "tests": [
+          "packages/typespec-structured-output/test/fixtures/neg-bytes/expected-diagnostics.json#unsupported-type",
+          "packages/typespec-structured-output/test/fixtures/wire-scalar-annotations/reference.json#padded"
+        ]
+      }
+    },
+    {
+      "id": "scalars.misc",
+      "area": "Types",
+      "feature": "url, unknown, null, never",
+      "go": {
+        "status": "supported",
+        "notes": "url validated as absolute URL; unknown = json.RawMessage (well-formed JSON, verbatim); never properties must be absent.",
+        "tests": [
+          "packages/typespec-go/test/go/models/models_test.go#/widgets/next",
+          "packages/typespec-go/test/http-specs/results.json#type/property/value-types"
+        ]
+      },
+      "so": {
+        "status": "restricted",
+        "notes": "url/unknown produce schemas the OpenAI profile rejects (format uri, empty schema).",
+        "tests": [
+          "packages/typespec-structured-output/test/fixtures/neg-url-format/expected-diagnostics.json#target-incompatible",
+          "packages/typespec-structured-output/test/fixtures/neg-unknown/expected-diagnostics.json#target-incompatible",
+          "packages/typespec-structured-output/test/fixtures/neg-never/expected-diagnostics.json#unsupported-type"
+        ]
+      }
+    },
+    {
+      "id": "scalars.custom",
+      "area": "Types",
+      "feature": "Custom scalars, inherited scalar constraints",
+      "go": {
+        "status": "supported",
+        "notes": "Defined Go types; constraints of the whole scalar chain and of the property are all enforced.",
+        "tests": [
+          "packages/typespec-go/test/go/combinations/combinations_test.go#TestBoundsAndInheritedConstraints"
+        ]
+      },
+      "so": {
+        "status": "supported",
+        "notes": "Intersected constraints; two different patterns cannot be expressed in one Pydantic field (diagnostic).",
+        "tests": [
+          "packages/typespec-structured-output/test/fixtures/scalar-chain/main.tsp#ShortId",
+          "packages/typespec-structured-output/test/fixtures/neg-conflicting-patterns/expected-diagnostics.json#unsupported-type"
+        ]
+      }
+    },
+    {
+      "id": "encodings",
+      "area": "Serialization",
+      "feature": "@encode (date-time, duration, bytes, numbers as strings, delimited arrays, boolean as string)",
+      "go": {
+        "status": "supported",
+        "tests": [
+          "packages/typespec-go/test/http-specs/results.json#encode/array",
+          "packages/typespec-go/test/http-specs/results.json#encode/numeric",
+          "packages/typespec-go/test/http-specs/results.json#encode/boolean"
+        ]
+      },
+      "so": {
+        "status": "restricted",
+        "notes": "Default encodings only, as Pydantic; with scalar-encodings: wire also base64url bytes and @encode(string) booleans. Other encodings are rejected.",
+        "tests": [
+          "packages/typespec-structured-output/test/fixtures/neg-encoding/expected-diagnostics.json#unsupported-encoding",
+          "packages/typespec-structured-output/test/fixtures/wire-scalar-annotations/main.tsp#base64url"
+        ]
+      }
+    },
+    {
+      "id": "models.composition",
+      "area": "Types",
+      "feature": "Models, inheritance, spread, `is`",
+      "go": {
+        "status": "supported",
+        "notes": "Inheritance is flattened (base properties first).",
+        "tests": [
+          "packages/typespec-go/test/http-specs/results.json#type/model/inheritance/not-discriminated",
+          "packages/typespec-go/test/go/models/main.tsp#extends Base"
+        ]
+      },
+      "so": {
+        "status": "supported",
+        "tests": [
+          "packages/typespec-structured-output/test/fixtures/inheritance-defaults/main.tsp#extends",
+          "packages/typespec-structured-output/test/fixtures/friendly-name-spread-is/main.tsp#...Audit",
+          "packages/typespec-structured-output/test/fixtures/combo-inheritance-override/main.tsp#extends"
+        ]
+      }
+    },
+    {
+      "id": "models.generics",
+      "area": "Types",
+      "feature": "Template instantiations, @friendlyName",
+      "go": {
+        "status": "supported",
+        "notes": "Names concatenate template arguments (Page<Widget> → PageWidget).",
+        "tests": [
+          "packages/typespec-go/test/go/models/models_test.go#PageWidget"
+        ]
+      },
+      "so": {
+        "status": "restricted",
+        "notes": "Arguments are spelled as Pydantic displays them: models, enums, scalars (sized integers as Annotated bounds), date/time types, lists, dicts, tuples, unions, recursive union aliases by name, numeric/boolean/string literals (Python repr), null and unknown. Anonymous objects and values are rejected.",
+        "tests": [
+          "packages/typespec-structured-output/test/fixtures/generics/model.py#Page[Page[Item]]",
+          "packages/typespec-structured-output/test/fixtures/generic-bounded-and-list/reference.json#Box[list[str]]",
+          "packages/typespec-structured-output/test/fixtures/neg-template-arg-unspellable/expected-diagnostics.json#template-argument",
+          "packages/typespec-structured-output/test/fixtures/generic-string-literal/reference.json#it's here",
+          "packages/typespec-structured-output/test/fixtures/recursive-union-generic/reference.json#Box[Tree]"
+        ]
+      }
+    },
+    {
+      "id": "enums",
+      "area": "Types",
+      "feature": "Enums, literal types, literal unions, open enums",
+      "go": {
+        "status": "supported",
+        "notes": "Closed enums reject undeclared values; `\"a\" | string` is open. Enums mixing string and number members are closed sum types of their literal values.",
+        "tests": [
+          "packages/typespec-go/test/http-specs/results.json#type/enum/fixed",
+          "packages/typespec-go/test/http-specs/results.json#type/enum/extensible",
+          "packages/typespec-go/test/http-specs/results.json#type/union",
+          "packages/typespec-go/test/go/regressions/regressions_test.go#TestMixedEnumIsClosed"
+        ]
+      },
+      "so": {
+        "status": "supported",
+        "tests": [
+          "packages/typespec-structured-output/test/fixtures/enums-literals/main.tsp#Color",
+          "packages/typespec-structured-output/test/fixtures/enum-variants/main.tsp#Priority",
+          "packages/typespec-structured-output/test/fixtures/typed-mixed-enum/options.json#typed-union",
+          "packages/typespec-structured-output/test/fixtures/neg-mixed-literals-openai/expected-diagnostics.json#target-incompatible"
+        ],
+        "notes": "Pydantic representation; mixed-type enums are type-less (rejected by OpenAI profiles) unless mixed-enums: typed-union splits them into typed branches."
+      }
+    },
+    {
+      "id": "collections",
+      "area": "Types",
+      "feature": "Arrays, records, tuples",
+      "go": {
+        "status": "supported",
+        "tests": [
+          "packages/typespec-go/test/http-specs/results.json#type/array",
+          "packages/typespec-go/test/http-specs/results.json#type/dictionary",
+          "packages/typespec-go/test/go/models/models_test.go#tuple arity"
+        ]
+      },
+      "so": {
+        "status": "restricted",
+        "notes": "Records and tuples are generated as Pydantic does but rejected by the OpenAI profile.",
+        "tests": [
+          "packages/typespec-structured-output/test/fixtures/profile-none-records-tuples/model.py#tuple",
+          "packages/typespec-structured-output/test/fixtures/neg-record/expected-diagnostics.json#target-incompatible"
+        ]
+      }
+    },
+    {
+      "id": "nullability",
+      "area": "Types",
+      "feature": "Optional, nullable, optional+nullable (absent / null / value)",
+      "go": {
+        "status": "supported",
+        "notes": "*T, tsgo.Nullable[T], *tsgo.Nullable[T]. Option response-unset-nullable (null for all, or a list of models and properties) writes unset optional nullable properties as null in server responses (nested values, JSON Lines and SSE included); unselected and request models, MarshalJSON and request decoding unchanged.",
+        "tests": [
+          "packages/typespec-go/test/go/combinations/combinations_test.go#TestOptionalNullableTriState",
+          "packages/typespec-go/test/go/models/models_test.go#TestPresenceAndNull",
+          "packages/typespec-go/test/http-specs/results.json#type/property/nullable",
+          "packages/typespec-go/test/go/nullresp/nullresp_test.go#TestResponsesWriteUnsetNullablePropertiesAsNull",
+          "packages/typespec-go/test/go/nullresp/nullresp_test.go#TestValuesRequestsAndStandaloneEncodingAreUnchanged",
+          "packages/typespec-go/test/go/nullresp-selective/selective_test.go#TestOnlySelectedPropertiesAreWrittenAsNull",
+          "packages/typespec-go/test/go/nullresp-selective/selective_test.go#TestModelsReusedByRequestsAreUnchanged",
+          "packages/typespec-go/test/diagnostics.test.ts#response-null-not-nullable",
+          "packages/typespec-go/test/go/nullresp-selective/selective_test.go#TestSelectedModelSharedWithRequests",
+          "packages/typespec-go/test/diagnostics.test.ts#response-null-request-only-model",
+          "packages/typespec-go/test/diagnostics.test.ts#response-null-create-only-property"
+        ]
+      },
+      "so": {
+        "status": "restricted",
+        "notes": "Structured Outputs require every property: `a?: T` needs option optional-properties=nullable (explicit policy); `a?: T | null` maps to `T | None = None`.",
+        "tests": [
+          "packages/typespec-structured-output/test/fixtures/optional-nullable/model.py#Optional",
+          "packages/typespec-structured-output/test/fixtures/optional-nullable-policy/options.json#nullable",
+          "packages/typespec-structured-output/test/fixtures/neg-optional-not-nullable/expected-diagnostics.json#optional-property"
+        ]
+      }
+    },
+    {
+      "id": "recursion",
+      "area": "Types",
+      "feature": "Nested and recursive models (incl. through unions)",
+      "go": {
+        "status": "supported",
+        "notes": "Required non-nullable self-containment has no finite value and is rejected.",
+        "tests": [
+          "packages/typespec-go/test/go/combinations/combinations_test.go#TestNestedAndRecursiveUnions",
+          "packages/typespec-go/test/diagnostics.test.ts#infinite-type",
+          "packages/typespec-go/test/http-specs/results.json#type/model/inheritance/recursive"
+        ]
+      },
+      "so": {
+        "status": "supported",
+        "tests": [
+          "packages/typespec-structured-output/test/fixtures/recursive/main.tsp#TreeNode",
+          "packages/typespec-structured-output/test/fixtures/mutual-recursion/main.tsp#Folder",
+          "packages/typespec-structured-output/test/fixtures/combo-recursive-generic-nullable/main.tsp#Comment",
+          "packages/typespec-structured-output/test/fixtures/recursive-union-array/model.py#TypeAliasType",
+          "packages/typespec-structured-output/test/fixtures/recursive-union-variants/model.py#TypeAliasType",
+          "packages/typespec-structured-output/test/fixtures/neg-strict-recursive-ref/expected-diagnostics.json#invalid-root"
+        ],
+        "notes": "Recursive models and recursive named unions (TypeAliasType definitions, also mutual and through dicts), as Pydantic; a recursive reference with its own metadata is rejected in strict mode, where the SDK's transformation recurses forever."
+      }
+    },
+    {
+      "id": "unions",
+      "area": "Types",
+      "feature": "Undiscriminated unions, nested unions, ambiguous variants",
+      "go": {
+        "status": "supported",
+        "notes": "Documented policy: declaration order; the first variant that decodes, validates and re-encodes to JSON equivalent to the input (nested properties and exact numbers included); then the first valid; then the first decodable (Validate reports). Undeclared properties follow unknown-properties, as for plain models. Errors: the variants whose declared constants the input matches are reported (one: its own error and JSON Pointer; several: tsgo.UnionError), bounded and formatted lazily; constants never affect selection.",
+        "tests": [
+          "packages/typespec-go/test/go/combinations/combinations_test.go#Overlapping object variants",
+          "packages/typespec-go/runtime/runtime_test.go#TestDecodeUnionOrder",
+          "packages/typespec-go/test/http-specs/results.json#type/property/additional-properties",
+          "packages/typespec-go/test/go/regressions/regressions_test.go#TestOverlapSelectsVariantThatKeepsNestedFields",
+          "packages/typespec-go/test/go/regressions/regressions_test.go#TestUnionDefaultsRoundTrip",
+          "packages/typespec-go/test/go/unions/unions_test.go#TestTheVariantIdentifiedByItsConstantsIsReported",
+          "packages/typespec-go/test/go/unions/unions_test.go#TestRequestErrorHandlersReceiveStructuredErrors",
+          "packages/typespec-go/runtime/union_test.go#TestUnionErrorMessagesAreBounded",
+          "packages/typespec-go/runtime/union_test.go#TestUnionFailuresAreFormattedOnlyWhenReported",
+          "tests/cross-emitter/cross-emitter.test.ts#keeps nested null alternatives"
+        ]
+      },
+      "so": {
+        "status": "supported",
+        "notes": "anyOf with Pydantic flattening/dedup; literals grouped into one Literal[...].",
+        "tests": [
+          "packages/typespec-structured-output/test/fixtures/nested-unions/main.tsp#literal_mix",
+          "tests/cross-emitter/cross-emitter.test.ts#keeps nested null alternatives"
+        ]
+      }
+    },
+    {
+      "id": "union.uninhabited",
+      "area": "Types",
+      "feature": "Uninhabited alternatives in nested unions and combined record indexers",
+      "go": {
+        "status": "supported",
+        "notes": "Nested null alternatives stay nullable, and never contributes no values to a union. An empty union has no decodable representation.",
+        "tests": [
+          "tests/cross-emitter/cross-emitter.test.ts#keeps nested null alternatives"
+        ]
+      },
+      "so": {
+        "status": "supported",
+        "notes": "The pinned Pydantic fixture projects a combined closed and typed spread to typed extras under target-profile none. OpenAI profiles reject the resulting open object.",
+        "tests": [
+          "packages/typespec-structured-output/test/fixtures/closed-models-records/model.py#SpreadExtras",
+          "tests/cross-emitter/cross-emitter.test.ts#keeps nested null alternatives"
+        ]
+      }
+    },
+    {
+      "id": "unions.discriminated",
+      "area": "Types",
+      "feature": "@discriminated unions (envelope object/none, default variant)",
+      "go": {
+        "status": "supported",
+        "tests": [
+          "packages/typespec-go/test/http-specs/results.json#type/union/discriminated",
+          "packages/typespec-go/test/go/models/models_test.go#TestDiscriminatedDefaultVariant"
+        ]
+      },
+      "so": {
+        "status": "supported",
+        "notes": "envelope none: Union of the tagged variant models; envelope object: Union of synthesized <Union>_<tag> wrapper models (kind + value); a default variant becomes <Union>_Fallback with a tag-excluding string pattern (rejected when the discriminator is not a required plain string).",
+        "tests": [
+          "packages/typespec-structured-output/test/fixtures/discriminated-union/main.tsp#discriminated",
+          "packages/typespec-structured-output/test/fixtures/envelope-discriminated/reference.json#U_a",
+          "packages/typespec-structured-output/test/fixtures/neg-discriminated-default-variant/expected-diagnostics.json#unsupported-type",
+          "packages/typespec-structured-output/test/fixtures/inline-discriminator-fallback/reference.json#U_Fallback"
+        ]
+      }
+    },
+    {
+      "id": "polymorphism",
+      "area": "Types",
+      "feature": "@discriminator inheritance (single, nested, enum discriminators)",
+      "go": {
+        "status": "supported",
+        "notes": "<Base>Union sum type; undeclared values decode into the base model.",
+        "tests": [
+          "packages/typespec-go/test/http-specs/results.json#type/model/inheritance/single-discriminator",
+          "packages/typespec-go/test/http-specs/results.json#type/model/inheritance/nested-discriminator",
+          "packages/typespec-go/test/http-specs/results.json#type/model/inheritance/enum-discriminator"
+        ]
+      },
+      "so": {
+        "status": "restricted",
+        "tests": [
+          "packages/typespec-structured-output/test/fixtures/neg-inheritance-discriminator/main.tsp#pet: Pet",
+          "packages/typespec-structured-output/test/fixtures/inheritance-discriminator-fallback/reference.json#Pet_Fallback"
+        ],
+        "notes": "A @discriminator base with derived models is a TypeAliasType union of the derived models and a <Base>_Fallback with a tag-excluding pattern; rejected when the discriminator already has a pattern or is not a required plain string."
+      }
+    },
+    {
+      "id": "names.encoded",
+      "area": "Serialization",
+      "feature": "@encodedName (JSON, XML, form)",
+      "go": {
+        "status": "supported",
+        "tests": [
+          "packages/typespec-go/test/http-specs/results.json#serialization/encoded-name/json",
+          "packages/typespec-go/test/http-specs/results.json#payload/xml"
+        ]
+      },
+      "so": {
+        "status": "supported",
+        "notes": "Pydantic alias; titles derive from the alias; integer-like and Object.prototype names keep their declared position.",
+        "tests": [
+          "packages/typespec-structured-output/test/fixtures/aliases/model.py#alias",
+          "packages/typespec-structured-output/test/fixtures/ordered-json-keys/reference.json#__proto__"
+        ]
+      }
+    },
+    {
+      "id": "visibility",
+      "area": "Types",
+      "feature": "Lifecycle visibility, context-dependent representations",
+      "go": {
+        "status": "supported",
+        "notes": "Variants per visibility via @typespec/http createMetadataInfo (WidgetRead, WidgetCreate, ...); full model for standalone use. Excluded properties are undeclared in the variant (rejected by closed models and unknown-properties: reject) unless invisible-properties: ignore accepts and discards them.",
+        "tests": [
+          "packages/typespec-go/test/go/server/server_test.go#TestCreateVisibilityAndResponses",
+          "packages/typespec-go/test/http-specs/results.json#type/model/visibility",
+          "packages/typespec-go/test/go/invisible/invisible_test.go#TestVisibilityExcludedPropertiesAreAcceptedAndDiscarded",
+          "packages/typespec-go/test/go/invisible/invisible_test.go#TestUndeclaredPropertiesAreStillRejected"
+        ]
+      },
+      "so": {
+        "status": "restricted",
+        "notes": "Option visibility (Read, Create, Update, Delete, Query) keeps the properties visible in that lifecycle phase, recursively; without it, visibility is not applied and a warning is reported.",
+        "tests": [
+          "packages/typespec-structured-output/test/fixtures/visibility-filter/reference.json#Page",
+          "packages/typespec-structured-output/test/fixtures/neg-visibility-warning/expected-diagnostics.json#visibility-ignored"
+        ]
+      }
+    },
+    {
+      "id": "merge-patch",
+      "area": "Serialization",
+      "feature": "JSON merge patch (application/merge-patch+json)",
+      "go": {
+        "status": "supported",
+        "notes": "RFC 7396 representation: optional members are absent | null | value; no defaults applied.",
+        "tests": [
+          "packages/typespec-go/test/http-specs/results.json#payload/json-merge-patch"
+        ]
+      },
+      "so": {
+        "status": "not-applicable"
+      }
+    },
+    {
+      "id": "defaults",
+      "area": "Defaults",
+      "feature": "Default values (scalars, enums, objects, arrays)",
+      "go": {
+        "status": "supported",
+        "notes": "ApplyDefaults: absent optional only; explicit null kept; fresh value per application.",
+        "tests": [
+          "packages/typespec-go/test/go/combinations/combinations_test.go#TestDefaults",
+          "packages/typespec-go/test/go/models/models_test.go#TestDefaults"
+        ]
+      },
+      "so": {
+        "status": "restricted",
+        "notes": "`default` is outside the documented OpenAI subset: option default-values (error | omit | emit, where emit is only accepted with target-profile none).",
+        "tests": [
+          "packages/typespec-structured-output/test/fixtures/defaults-policy/options.json#emit",
+          "packages/typespec-structured-output/test/fixtures/neg-default-in-openai-profile/expected-diagnostics.json#default-value",
+          "packages/typespec-structured-output/test/emitter.test.ts#never allows default-values emit to bypass"
+        ]
+      }
+    },
+    {
+      "id": "constraints",
+      "area": "Validation",
+      "feature": "Length, pattern, numeric bounds (inclusive/exclusive), item counts",
+      "go": {
+        "status": "restricted",
+        "notes": "Patterns are ECMAScript regular expressions in Unicode mode (JSON Schema 2020-12), parsed with @eslint-community/regexpp and translated to RE2 with identical semantics (code points; \\s and Unicode properties, including scripts, resolved to explicit code-point sets); lookaround, backreferences, lone surrogates, set operations and nested repetitions beyond RE2's limit are rejected.",
+        "tests": [
+          "packages/typespec-go/test/go/models/models_test.go#TestValidation",
+          "packages/typespec-go/test/diagnostics.test.ts#re2-lookahead",
+          "packages/typespec-go/test/go/regressions/regressions_test.go#TestPatternsMatchCodePoints",
+          "packages/typespec-go/test/diagnostics.test.ts#pattern-identity-escape",
+          "packages/typespec-go/test/diagnostics.test.ts#pattern-lone-surrogate",
+          "packages/typespec-go/test/go/regressions/regressions_test.go#TestUnicodePropertyPredicatesAndEmptyEnum"
+        ]
+      },
+      "so": {
+        "status": "supported",
+        "tests": [
+          "packages/typespec-structured-output/test/fixtures/constraints/main.tsp#maxValueExclusive",
+          "packages/typespec-structured-output/test/fixtures/neg-fine-tuned-constraints/expected-diagnostics.json#target-incompatible",
+          "packages/typespec-structured-output/test/emitter.test.ts#keeps item bounds for the openai profile"
+        ],
+        "notes": "minItems/maxItems (and the string and number constraints) are kept for the openai profile; openai-fine-tuned reports every such keyword in the final schema as target-incompatible, it never removes one."
+      }
+    },
+    {
+      "id": "additional-properties",
+      "area": "Types",
+      "feature": "Additional properties (...Record<T>, extends Record<T>)",
+      "go": {
+        "status": "supported",
+        "tests": [
+          "packages/typespec-go/test/http-specs/results.json#type/property/additional-properties"
+        ]
+      },
+      "so": {
+        "status": "restricted",
+        "notes": "Generated as Pydantic does; rejected by the OpenAI profile (additionalProperties must be false).",
+        "tests": [
+          "packages/typespec-structured-output/test/fixtures/neg-additional-properties/expected-diagnostics.json#target-incompatible"
+        ]
+      }
+    },
+    {
+      "id": "closed-models",
+      "area": "Types",
+      "feature": "Closed models (...Record<never>): no properties beyond the declared ones",
+      "go": {
+        "status": "supported",
+        "notes": "The nearest indexer in the inheritance chain decides (inherited, reopened with ...Record<T>, or closed over an open base). Undeclared JSON properties are rejected whatever unknown-properties says, including visibility and merge-patch variants and union variant selection; form, query-object, XML and multipart inputs reject undeclared keys, elements, attributes and parts.",
+        "tests": [
+          "packages/typespec-go/test/go/closed/closed_test.go#TestClosedModelsRejectUndeclaredProperties",
+          "packages/typespec-go/test/go/closed/closed_test.go#TestClosedRequestBodies",
+          "packages/typespec-go/test/go/closed/closed_test.go#TestClosedVariantCannotAbsorbUndeclaredProperty",
+          "tests/cross-emitter/cross-emitter.test.ts#agree with the official OpenAPI 3 emitter",
+          "packages/typespec-go/test/go/wire-objects/wire_test.go#TestClosedXMLWire",
+          "packages/typespec-go/test/go/wire-objects/wire_test.go#TestClosedMultipartWire"
+        ]
+      },
+      "so": {
+        "status": "supported",
+        "notes": "Pydantic ConfigDict(extra=\"forbid\"): additionalProperties: false in the model's own schema, at Pydantic's key position in both pydantic and strict modes (the SDK keeps it in place). Accepted by the OpenAI profiles.",
+        "tests": [
+          "packages/typespec-structured-output/test/fixtures/closed-models/model.py#extra=\"forbid\"",
+          "packages/typespec-structured-output/test/fixtures/closed-models-records/model.py#extra=\"allow\"",
+          "packages/typespec-structured-output/test/emitter.test.ts#keeps closed-model key order",
+          "tests/cross-emitter/cross-emitter.test.ts#agree with the official OpenAPI 3 emitter"
+        ]
+      }
+    },
+    {
+      "id": "naming",
+      "area": "Types",
+      "feature": "Namespaces, name collisions, reserved identifiers",
+      "go": {
+        "status": "supported",
+        "notes": "One Go package; colliding names are namespace-qualified, then numbered; Go keywords and generated identifiers reserved. Union variants and template arguments distinguish genuine maps (Record<T>) from named models with indexers (closed models included); anonymous types are named after the canonical declaring model, independent of visibility variants.",
+        "tests": [
+          "packages/typespec-go/test/http-specs/results.json#special-words",
+          "packages/typespec-go/test/naming.test.ts#names closed-model variants after the models",
+          "packages/typespec-go/test/naming.test.ts#keeps canonical names whether or not a visibility variant is generated",
+          "packages/typespec-go/test/naming.test.ts#applies request visibility through unions of closed models"
+        ]
+      },
+      "so": {
+        "status": "supported",
+        "notes": "Pydantic definition-name collision algorithm (module = namespace).",
+        "tests": [
+          "packages/typespec-structured-output/test/fixtures/namespace-collision/model.py#Billing",
+          "packages/typespec-structured-output/test/fixtures/namespace-identical-collision/model.py#Tag"
+        ]
+      }
+    },
+    {
+      "id": "file-layout",
+      "area": "Types",
+      "feature": "File layout / output organization (single, per namespace, per source file)",
+      "go": {
+        "status": "supported",
+        "notes": "Option file-layout. One Go package; anonymous and synthetic declarations live with their owners, template instances with their first project argument; portable names (no build-constraint or test suffixes, case-folded collisions numbered); identical public API and declarations in every layout; manifest-based removal of stale files; a change to one declaration changes only its file.",
+        "tests": [
+          "packages/typespec-go/test/layout.test.ts#generates the same package in every layout",
+          "packages/typespec-go/test/layout.test.ts#places anonymous, synthetic and generic declarations with their owners",
+          "packages/typespec-go/test/layout.test.ts#generates equivalent packages and confines changes to the affected file",
+          "packages/typespec-go/test/layout.test.ts#removes the files of previous layouts and of removed declarations",
+          "packages/typespec-go/test/layout.test.ts#are portable Go source names without build constraints"
+        ]
+      },
+      "so": {
+        "status": "supported",
+        "notes": "Option file-layout: root schemas in namespace or source-file directories; byte-identical, self-contained schemas in every layout; portable, collision-numbered directories; manifest removes files and emptied directories of previous layouts. @schemaName names classes independently of declarations (titles, $defs, refs, collisions).",
+        "tests": [
+          "packages/typespec-structured-output/test/layout.test.ts#writes identical, self-contained schemas in every layout",
+          "packages/typespec-structured-output/test/layout.test.ts#writes the expected paths",
+          "packages/typespec-structured-output/test/layout.test.ts#removes moved and removed roots, previous layouts and emptied directories",
+          "packages/typespec-structured-output/test/layout.test.ts#names portable, collision-free directories",
+          "packages/typespec-structured-output/test/fixtures/schema-names/reference.json#Billing__PostalAddress"
+        ]
+      }
+    },
+    {
+      "id": "shared-packages",
+      "area": "Types",
+      "feature": "Separately compiled specifications sharing generated packages (external mappings)",
+      "go": {
+        "status": "supported",
+        "notes": "Options export-contract and external: mapped namespaces/types are imported (type identity) after verifying each declaration's fingerprint, the representation options and the shared runtime; missing variants and instances are generated in the consumer; mismatches are diagnosed. XML of mapped declarations is generated in the consumer; dependencies of a mapped type are bound to the same package. Dotted names map through tspconfig lists or nested objects; anonymous types are identified by declaration (containing declaration, path, template arguments, projection), not content; exporters may select any of their declarations for response nulls.",
+        "tests": [
+          "packages/typespec-go/test/external/consumer_test.go#TestSharedTypeIdentity",
+          "packages/typespec-go/test/external/consumer_test.go#TestHTTPContractWithSharedTypes",
+          "packages/typespec-go/test/external.test.ts#generates a consumer that uses the shared types",
+          "packages/typespec-go/test/external.test.ts#derived-model",
+          "packages/typespec-go/test/external.test.ts#vendored-runtime",
+          "packages/typespec-go/test/external/xml_test.go#TestImportedXMLWire",
+          "packages/typespec-go/test/external.test.ts#maps a dotted namespace from tspconfig.yaml",
+          "packages/typespec-go/test/external/consumer_test.go#TestAnonymousTypesKeepTheirIdentity",
+          "packages/typespec-go/test/external.test.ts#shares ordered records between packages"
+        ]
+      },
+      "so": {
+        "status": "not-applicable",
+        "notes": "Every schema is self-contained ($defs)."
+      }
+    },
+    {
+      "id": "standalone",
+      "area": "Types",
+      "feature": "Standalone models not referenced by operations",
+      "go": {
+        "status": "supported",
+        "tests": [
+          "packages/typespec-go/test/go/models/main.tsp#model Catalog"
+        ]
+      },
+      "so": {
+        "status": "supported",
+        "notes": "Roots via @structuredOutput or emit-all-models.",
+        "tests": [
+          "packages/typespec-structured-output/test/emitter.test.ts#emit-all-models"
+        ]
+      }
+    },
+    {
+      "id": "versioning",
+      "area": "Types",
+      "feature": "@typespec/versioning",
+      "go": {
+        "status": "supported",
+        "notes": "One projected version per generation (option api-version, default latest), via the official versioning mutators.",
+        "tests": [
+          "packages/typespec-go/test/http-specs/results.json#versioning/removed",
+          "packages/typespec-go/test/http-specs/results.json#versioning/renamedFrom"
+        ]
+      },
+      "so": {
+        "status": "supported",
+        "notes": "One projected version per generation (option api-version, default latest), via the official versioning mutators.",
+        "tests": [
+          "packages/typespec-structured-output/test/fixtures/version-snapshot/options.json#api-version",
+          "packages/typespec-structured-output/test/fixtures/neg-unknown-api-version/expected-diagnostics.json#invalid-root"
+        ]
+      }
+    },
+    {
+      "id": "fail-closed",
+      "area": "Safety",
+      "feature": "Unknown decorators and semantics fail closed; stale outputs removed",
+      "go": {
+        "status": "supported",
+        "tests": [
+          "packages/typespec-go/test/diagnostics.test.ts#unknown-decorator",
+          "packages/typespec-go/test/diagnostics.test.ts#removes stale outputs",
+          "packages/typespec-go/test/gofmt.test.ts#generates gofmt-clean Go in every layout and configuration",
+          "packages/typespec-go/test/go/long-names/long_names_test.go#TestLongNamesBehave"
+        ],
+        "notes": "Every generated Go file is gofmt-clean as emitted, in every layout and package configuration (all fixtures, http-specs and the example) and with long identifiers (function literals are always multi-line)."
+      },
+      "so": {
+        "status": "supported",
+        "tests": [
+          "packages/typespec-structured-output/test/fixtures/neg-unknown-decorator/expected-diagnostics.json#unsupported-decorator",
+          "packages/typespec-structured-output/test/emitter.test.ts#removes previous outputs"
+        ]
+      }
+    },
+    {
+      "id": "cross-emitter",
+      "area": "Types",
+      "feature": "Cross-emitter value-domain consistency (same TypeSpec, both emitters)",
+      "go": {
+        "status": "restricted",
+        "notes": "Absent, null and zero survive for the tested overlapping representations with aligned policies. Binary floats can round an accepted number or reject overflow.",
+        "tests": [
+          "tests/cross-emitter/cross-emitter.test.ts#sampled Structured Outputs instances",
+          "tests/cross-emitter/cross-emitter.test.ts#binary32 rounding",
+          "tests/cross-emitter/cross-emitter.test.ts#checks versioned read projections"
+        ]
+      },
+      "so": {
+        "status": "restricted",
+        "notes": "Pydantic float projects to JSON number. JSON Schema cannot express the entire IEEE-754 binary32 value set in the OpenAI subset. Strict schemas require explicit keys, including nullable keys.",
+        "tests": [
+          "tests/cross-emitter/cross-emitter.test.ts#sampled Structured Outputs instances",
+          "tests/cross-emitter/cross-emitter.test.ts#binary32 rounding",
+          "tests/cross-emitter/cross-emitter.test.ts#checks versioned read projections"
+        ]
+      }
+    },
+    {
+      "id": "http.routing",
+      "area": "HTTP",
+      "feature": "Routing on net/http.ServeMux (RFC 6570 templates: simple, reserved, label, matrix, path, optional, explode, records, literal query)",
+      "go": {
+        "status": "restricted",
+        "notes": "Expressions with several variables are supported for required scalar values (not with + or .); prefix modifiers when @maxLength does not exceed the prefix; fragments are never sent to servers.",
+        "tests": [
+          "packages/typespec-go/test/http-specs/results.json#\"routes\"",
+          "packages/typespec-go/test/http-specs/results.json#parameters/path",
+          "packages/typespec-go/test/diagnostics.test.ts#fragment-expansion",
+          "packages/typespec-go/test/diagnostics.test.ts#uri-prefix-modifier",
+          "packages/typespec-go/test/go/wire/main.tsp#/lookup/{a,b}",
+          "packages/typespec-go/test/go/wire/main.tsp#/prefix/{s:3}"
+        ]
+      },
+      "so": {
+        "status": "not-applicable"
+      }
+    },
+    {
+      "id": "http.params",
+      "area": "HTTP",
+      "feature": "Path, query, header, cookie parameters (arrays, records, flat models in path and query, encodings)",
+      "go": {
+        "status": "restricted",
+        "notes": "Nullable parameters (no wire form for null) and record/model header and cookie parameters are rejected. Flat path models use RFC 6570 key/value pairs and the declared field codecs. Nested fields, reserved expansion and exploded label expansion for models are diagnosed.",
+        "tests": [
+          "packages/typespec-go/test/go/server/server_test.go#TestQueryHeaderBindingAndDefaults",
+          "packages/typespec-go/test/http-specs/results.json#parameters/query",
+          "packages/typespec-go/test/http-specs/results.json#parameters/collection-format",
+          "packages/typespec-go/test/diagnostics.test.ts#model-header",
+          "packages/typespec-go/test/diagnostics.test.ts#model-cookie",
+          "packages/typespec-go/test/diagnostics.test.ts#model-path",
+          "packages/typespec-go/test/diagnostics.test.ts#record-cookie",
+          "packages/typespec-go/test/diagnostics.test.ts#record-header",
+          "packages/typespec-go/test/diagnostics.test.ts#nullable-query",
+          "packages/typespec-go/test/go/wire-objects/wire_test.go#TestModelPathWire",
+          "packages/typespec-go/test/diagnostics.test.ts#model-path-ambiguous"
+        ]
+      },
+      "so": {
+        "status": "not-applicable"
+      }
+    },
+    {
+      "id": "http.bodies",
+      "area": "HTTP",
+      "feature": "Request/response bodies: JSON, text, binary, Http.File, multipart (model and tuple form), form-urlencoded, XML",
+      "go": {
+        "status": "restricted",
+        "notes": "Multipart and form-urlencoded responses are encoded from the typed response; XML follows @typespec/xml (nullable and nested collections have no XML mapping).",
+        "tests": [
+          "packages/typespec-go/test/go/server/server_test.go#TestTextBinaryMultipart",
+          "packages/typespec-go/test/go/server/server_test.go#TestFormCookiesNewlinesTupleMultipart",
+          "packages/typespec-go/test/http-specs/results.json#payload/multipart",
+          "packages/typespec-go/test/http-specs/results.json#payload/xml",
+          "packages/typespec-go/test/http-specs/results.json#type/file",
+          "packages/typespec-go/test/diagnostics.test.ts#xml-nullable",
+          "packages/typespec-go/test/diagnostics.test.ts#xml-nested-collection",
+          "packages/typespec-go/test/go/wire/wire_test.go#TestIndependentWire",
+          "packages/typespec-go/test/go/wire-objects/wire_test.go#TestXMLModelRecordWireValues"
+        ]
+      },
+      "so": {
+        "status": "not-applicable"
+      }
+    },
+    {
+      "id": "http.responses",
+      "area": "HTTP",
+      "feature": "Operation-specific response variants: status codes, ranges, default, headers",
+      "go": {
+        "status": "supported",
+        "tests": [
+          "packages/typespec-go/test/go/server/server_test.go#TestPathCookieHeadersAndStatusRanges",
+          "packages/typespec-go/test/http-specs/results.json#response/status-code-range"
+        ]
+      },
+      "so": {
+        "status": "not-applicable"
+      }
+    },
+    {
+      "id": "http.negotiation",
+      "area": "HTTP",
+      "feature": "Multiple media types, @sharedRoute content negotiation (406/415)",
+      "go": {
+        "status": "supported",
+        "tests": [
+          "packages/typespec-go/test/http-specs/results.json#payload/content-negotiation",
+          "packages/typespec-go/test/http-specs/results.json#payload/media-type",
+          "packages/typespec-go/test/go/regressions/regressions_test.go#TestAcceptQualityAndMalformedQuery"
+        ]
+      },
+      "so": {
+        "status": "not-applicable"
+      }
+    },
+    {
+      "id": "http.streams",
+      "area": "HTTP",
+      "feature": "Streaming: server-sent events, JSON Lines (requests and responses)",
+      "go": {
+        "status": "restricted",
+        "notes": "iter.Seq bodies, per-item flush, cancellation through the request context, lazy per-item decoding/defaults/validation; an invalid request item fails the request (400) even if the handler stopped reading; with ValidateResponses each response item is validated (500 before the first item, aborted stream after). Union-typed event variants, nested @data envelopes and text events of any type with a text codec are supported; set optional envelope fields are a runtime error (never dropped). Rejected: text events without a text codec, @data envelopes with other required properties.",
+        "tests": [
+          "packages/typespec-go/test/go/streaming/streaming_test.go#TestSSEIsStreamedIncrementally",
+          "packages/typespec-go/test/go/streaming/streaming_test.go#TestJSONLRequestIsDecodedLazily",
+          "packages/typespec-go/test/http-specs/results.json#streaming/sse",
+          "packages/typespec-go/test/http-specs/results.json#streaming/jsonl",
+          "packages/typespec-go/test/diagnostics.test.ts#sse-text-non-string",
+          "packages/typespec-go/test/diagnostics.test.ts#sse-data-extra-required",
+          "packages/typespec-go/test/go/sse-nested/sse_nested_test.go#TestNestedEventUnionOnTheWire",
+          "packages/typespec-go/test/go/streaming/streaming_test.go#TestStreamValidationCommit",
+          "packages/typespec-go/test/go/streaming/streaming_test.go#TestUnconsumedStreamCannotSucceed"
+        ]
+      },
+      "so": {
+        "status": "not-applicable"
+      }
+    },
+    {
+      "id": "http.auth",
+      "area": "HTTP",
+      "feature": "Authentication hooks (@useAuth schemes as OperationInfo.Security)",
+      "go": {
+        "status": "supported",
+        "notes": "Credential verification is application code (Authenticate hook); operations fail closed without one.",
+        "tests": [
+          "packages/typespec-go/test/go/server/server_test.go#TestAuthMiddlewareAndLimits",
+          "packages/typespec-go/test/go/server/server_test.go#TestAuthenticationProblemStatus",
+          "packages/typespec-go/test/go/server/server_test.go#TestAuthenticationClassifiesTheReportedFailure",
+          "packages/typespec-go/test/go/server/server_test.go#TestAuthenticationBoundsForwardingAdapters",
+          "packages/typespec-go/test/http-specs/results.json#authentication/union"
+        ]
+      },
+      "so": {
+        "status": "not-applicable"
+      }
+    },
+    {
+      "id": "http.runtime",
+      "area": "HTTP",
+      "feature": "Middleware, request/response validation, problem details, body limits, cancellation, concurrency",
+      "go": {
+        "status": "supported",
+        "tests": [
+          "packages/typespec-go/test/go/server/server_test.go#TestOperationInfosAndProblems",
+          "packages/typespec-go/test/go/combinations/combinations_test.go#TestCancellation",
+          "packages/typespec-go/test/go/combinations/combinations_test.go#TestConcurrentRequests",
+          "packages/typespec-go/test/go/streaming/streaming_test.go#TestJSONLResponseAndLimits"
+        ]
+      },
+      "so": {
+        "status": "not-applicable"
+      }
+    },
+    {
+      "id": "http.server-url",
+      "area": "HTTP",
+      "feature": "@server URLs and base paths",
+      "go": {
+        "status": "restricted",
+        "notes": "Deployment configuration: the handler serves operation routes; mount under the server path (http.StripPrefix).",
+        "tests": [
+          "packages/typespec-go/test/http-specs/results.json#server/path/multiple"
+        ]
+      },
+      "so": {
+        "status": "not-applicable"
+      }
+    },
+    {
+      "id": "http.openapi-crosscheck",
+      "area": "HTTP",
+      "feature": "Agreement with @typespec/openapi3 (operations, parameters, status codes)",
+      "go": {
+        "status": "restricted",
+        "tests": [
+          "packages/typespec-go/test/openapi-crosscheck.test.ts#getOpenAPI3",
+          "packages/typespec-go/test/http-specs/openapi-crosscheck.json#agrees",
+          "packages/typespec-go/test/openapi-crosscheck.test.ts#REFERENCE_WORKAROUNDS"
+        ],
+        "notes": "Latest version per spec. Checks normalized routes, parameter identity and presence, request body requirement, statuses, media and header names. Payload schemas and serialization are checked separately on selected cases. Eight literal-query operations have no reference route. The reference requires a body for two metadata-only visibility requests whose upstream scenarios specify no body."
+      },
+      "so": {
+        "status": "not-applicable"
+      }
+    },
+    {
+      "id": "so.pydantic",
+      "area": "Structured Outputs",
+      "feature": "Pydantic 2.14.4 model_json_schema reproduction (key order, titles, $defs naming, root unpacking)",
+      "go": {
+        "status": "not-applicable"
+      },
+      "so": {
+        "status": "supported",
+        "tests": [
+          "packages/typespec-structured-output/test/fixtures.test.ts#mode === \"strict\"",
+          "tools/pydantic-reference/generate.py#model_json_schema"
+        ]
+      }
+    },
+    {
+      "id": "so.strict",
+      "area": "Structured Outputs",
+      "feature": "OpenAI SDK 3.59.0 strict transformation (to_strict_json_schema)",
+      "go": {
+        "status": "not-applicable"
+      },
+      "so": {
+        "status": "supported",
+        "tests": [
+          "packages/typespec-structured-output/test/fixtures.test.ts#schema equals reference",
+          "packages/typespec-structured-output/test/emitter.test.ts#strict transformation port",
+          "packages/typespec-structured-output/test/fixtures/sdk-query/model.py#Port of openai-python"
+        ]
+      }
+    },
+    {
+      "id": "so.profile",
+      "area": "Structured Outputs",
+      "feature": "OpenAI target validation (keywords, formats, root, required, additionalProperties, limits, fine-tuned profile)",
+      "go": {
+        "status": "not-applicable"
+      },
+      "so": {
+        "status": "supported",
+        "tests": [
+          "packages/typespec-structured-output/test/emitter.test.ts#OpenAI profile validator",
+          "packages/typespec-structured-output/test/fixtures/neg-nesting-depth/expected-diagnostics.json#target-incompatible",
+          "packages/typespec-structured-output/test/fixtures/neg-property-limit/expected-diagnostics.json#target-incompatible",
+          "packages/typespec-structured-output/test/fixtures/neg-enum-limit/expected-diagnostics.json#target-incompatible",
+          "packages/typespec-structured-output/test/acceptance.test.mjs#does not count HTTP"
+        ]
+      }
+    },
+    {
+      "id": "so.leaf-parity",
+      "area": "Structured Outputs",
+      "feature": "Leaf keyword parity with @typespec/json-schema",
+      "go": {
+        "status": "not-applicable"
+      },
+      "so": {
+        "status": "supported",
+        "tests": [
+          "packages/typespec-structured-output/test/oracle.test.ts#leaf parity"
+        ]
+      }
+    },
+    {
+      "id": "so.output",
+      "area": "Structured Outputs",
+      "feature": "Output formats (schema, Responses text.format, Chat response_format)",
+      "go": {
+        "status": "not-applicable"
+      },
+      "so": {
+        "status": "supported",
+        "tests": [
+          "packages/typespec-structured-output/test/emitter.test.ts#Responses API and Chat Completions wrappers"
+        ]
+      }
+    },
+    {
+      "id": "numeric.interning",
+      "area": "Representation boundaries",
+      "feature": "Exact literals that the pinned compiler interns to the same number",
+      "go": {
+        "status": "restricted",
+        "notes": "A source-level guard diagnoses a lost digit before generation.",
+        "tests": [
+          "packages/typespec-go/test/diagnostics.test.ts#conflated-decimal-literal"
+        ]
+      },
+      "so": {
+        "status": "restricted",
+        "notes": "The same compiler limitation applies to schema bounds and defaults.",
+        "tests": [
+          "packages/typespec-structured-output/test/fixtures/neg-conflated-numeric-literal/expected-diagnostics.json"
+        ]
+      }
+    },
+    {
+      "id": "numeric.binary-float",
+      "area": "Representation boundaries",
+      "feature": "Binary floating point compared with the JSON number domain",
+      "go": {
+        "status": "restricted",
+        "notes": "Rounds to the declared binary width. Overflow and nonzero underflow fail decoding.",
+        "tests": [
+          "tests/cross-emitter/cross-emitter.test.ts#binary32 rounding",
+          "packages/typespec-go/test/go/regressions/regressions_test.go#TestFloatRangeIsNotSilentlyChanged"
+        ]
+      },
+      "so": {
+        "status": "restricted",
+        "notes": "The Pydantic float annotation has no binary32 range or binary precision keyword.",
+        "tests": [
+          "tests/cross-emitter/cross-emitter.test.ts#binary32 rounding"
+        ]
+      }
+    },
+    {
+      "id": "numeric.integer-policy",
+      "area": "Representation boundaries",
+      "feature": "Machine-sized integer representation policy",
+      "go": {
+        "status": "restricted",
+        "notes": "The explicit int64 option checks range on decode and generation.",
+        "tests": [
+          "packages/typespec-go/test/go/int64/int64_test.go#TestOutOfRangeIntegersAreRejected"
+        ]
+      },
+      "so": {
+        "status": "supported",
+        "notes": "TypeSpec sized integers include exact Pydantic annotation bounds.",
+        "tests": [
+          "packages/typespec-structured-output/test/fixtures/scalar-chain/model.py#18446744073709551615"
+        ]
+      }
+    },
+    {
+      "id": "records.empty",
+      "area": "Representation boundaries",
+      "feature": "Record<never> as a value, array item and template argument",
+      "go": {
+        "status": "supported",
+        "notes": "The sole value is an empty object.",
+        "tests": [
+          "tests/cross-emitter/cross-emitter.test.ts#accepts only empty objects"
+        ]
+      },
+      "so": {
+        "status": "supported",
+        "notes": "Profile v2 maps the built-in empty record to a closed EmptyRecord class.",
+        "tests": [
+          "packages/typespec-structured-output/test/fixtures/empty-record/model.py#EmptyRecord",
+          "tests/cross-emitter/cross-emitter.test.ts#accepts only empty objects"
+        ]
+      }
+    },
+    {
+      "id": "names.numeric-order",
+      "area": "Representation boundaries",
+      "feature": "Integer-like encoded property names and declaration order",
+      "go": {
+        "status": "supported",
+        "notes": "Numeric aliases survive decoding and encoding at property boundaries.",
+        "tests": [
+          "tests/cross-emitter/cross-emitter.test.ts#keeps numeric aliases"
+        ]
+      },
+      "so": {
+        "status": "supported",
+        "notes": "Ordered schema output preserves the declared alias order, including after remapping generic definitions.",
+        "tests": [
+          "packages/typespec-structured-output/test/emitter.test.ts#keeps integer-like",
+          "packages/typespec-structured-output/test/fixtures/closed-generic-aliases/model.py"
+        ]
+      }
+    },
+    {
+      "id": "modules.transitive",
+      "area": "Packages and representations",
+      "feature": "Transitive type identity and representation drift across Go modules",
+      "go": {
+        "status": "supported",
+        "notes": "Mapped nominal types and dependencies retain identity across three separately generated modules. Changing a reachable contract fails generation.",
+        "tests": [
+          "packages/typespec-go/test/external.test.ts#preserves dependencies",
+          "packages/typespec-go/test/external.test.ts#rejects drift",
+          "packages/typespec-go/test/external/consumer_test.go#TestDistinctTemplateArgumentDeclarations"
+        ]
+      },
+      "so": {
+        "status": "not-applicable"
+      }
+    },
+    {
+      "id": "modules.null-policy",
+      "area": "Packages and representations",
+      "feature": "Consumer-local and exported nullable-response policy",
+      "go": {
+        "status": "supported",
+        "notes": "Mapped types must agree on their response codec. Local selections can differ. Model-only exporters can publish the selected codec.",
+        "tests": [
+          "packages/typespec-go/test/external.test.ts#allows a consumer to select",
+          "packages/typespec-go/test/external.test.ts#inherits the response nulls of shared declarations from their contract"
+        ]
+      },
+      "so": {
+        "status": "not-applicable"
+      }
+    },
+    {
+      "id": "files.ownership",
+      "area": "Packages and representations",
+      "feature": "File layout changes and ownership of stale artifacts",
+      "go": {
+        "status": "supported",
+        "notes": "The output manifest drives cleanup of generated files when layout or declarations change.",
+        "tests": [
+          "packages/typespec-go/test/layout.test.ts#removes the files of previous layouts"
+        ]
+      },
+      "so": {
+        "status": "supported",
+        "notes": "Manifests preserve unrelated files and remove stale schema paths.",
+        "tests": [
+          "packages/typespec-structured-output/test/layout.test.ts",
+          "tools/packed-install.mjs#per-namespace"
+        ]
+      }
+    },
+    {
+      "id": "http.presence",
+      "area": "Wire contracts",
+      "feature": "Absent body, present empty representation and unknown request length",
+      "go": {
+        "status": "supported",
+        "notes": "Required empty JSON objects still need an object. A media type distinguishes a present empty text body from absence. Untyped nonempty chunked input is rejected.",
+        "tests": [
+          "packages/typespec-go/test/go/wire-objects/wire_test.go#TestRequestBodyPresenceAndMedia"
+        ]
+      },
+      "so": {
+        "status": "not-applicable"
+      }
+    },
+    {
+      "id": "http.raw-delimiters",
+      "area": "Wire contracts",
+      "feature": "Escaped separators inside RFC 6570 query list and record values",
+      "go": {
+        "status": "supported",
+        "notes": "Separate the raw delimiters before decoding each component.",
+        "tests": [
+          "packages/typespec-go/test/go/wire-objects/wire_test.go#TestEscapedQueryDelimiters"
+        ]
+      },
+      "so": {
+        "status": "not-applicable"
+      }
+    },
+    {
+      "id": "http.stream-commit",
+      "area": "Wire contracts",
+      "feature": "Response item validation and HTTP commitment",
+      "go": {
+        "status": "supported",
+        "notes": "Invalid first item produces a problem response. A later invalid item aborts an already-started stream.",
+        "tests": [
+          "packages/typespec-go/test/go/streaming/streaming_test.go#TestStreamValidationCommit"
+        ]
+      },
+      "so": {
+        "status": "not-applicable"
+      }
+    },
+    {
+      "id": "http.stream-drain",
+      "area": "Wire contracts",
+      "feature": "Single-cursor request validation after a partial or concurrent read",
+      "go": {
+        "status": "supported",
+        "notes": "The handler and final drain consume one bounded cursor. The first failure survives repeated finalization.",
+        "tests": [
+          "packages/typespec-go/test/go/streaming/streaming_test.go#TestUnconsumedStreamCannotSucceed",
+          "packages/typespec-go/runtime/runtime2_test.go#TestJSONLFramesAndConcurrentDrain"
+        ]
+      },
+      "so": {
+        "status": "not-applicable"
+      }
+    },
+    {
+      "id": "http.jsonl-framing",
+      "area": "Wire contracts",
+      "feature": "Physical record boundaries for JSON Lines",
+      "go": {
+        "status": "supported",
+        "notes": "Indented raw JSON occupies one wire line. A malformed codec result fails encoding.",
+        "tests": [
+          "packages/typespec-go/runtime/runtime2_test.go#TestJSONLFramesAndConcurrentDrain"
+        ]
+      },
+      "so": {
+        "status": "not-applicable"
+      }
+    },
+    {
+      "id": "http.sse-envelope",
+      "area": "Wire contracts",
+      "feature": "SSE data projection, nested event unions and envelope metadata",
+      "go": {
+        "status": "restricted",
+        "notes": "Only the data field is serialized. Unrepresentable required envelope fields and selections that can never affect JSON data are diagnosed.",
+        "tests": [
+          "packages/typespec-go/test/go/sse-nested/sse_nested_test.go#TestEnvelopeEventPayload",
+          "packages/typespec-go/test/diagnostics.test.ts#sse-envelope-response-null"
+        ]
+      },
+      "so": {
+        "status": "not-applicable"
+      }
+    },
+    {
+      "id": "http.decoded-params",
+      "area": "Wire contracts",
+      "feature": "Independent values of decoded official query, path and header fixtures",
+      "go": {
+        "status": "supported",
+        "notes": "Checks concrete handler arguments for eighteen pinned scenarios including optional path, percent-encoded names, array separators and URI-template query expansions.",
+        "tests": [
+          "packages/typespec-go/test/http-specs/harness.ts#EXPECTED_FIELDS",
+          "packages/typespec-go/test/http-specs.test.ts#Object.keys(EXPECTED_FIELDS)",
+          "packages/typespec-go/test/http-specs.test.ts#distinguishes CSV punctuation"
+        ]
+      },
+      "so": {
+        "status": "not-applicable"
+      }
+    },
+    {
+      "id": "so.profile-combinations",
+      "area": "Structured Outputs",
+      "feature": "Typed literal membership and object depth across composition",
+      "go": {
+        "status": "not-applicable"
+      },
+      "so": {
+        "status": "supported",
+        "notes": "The offline profile checks enum and const declarations and follows branches alongside object properties.",
+        "tests": [
+          "packages/typespec-structured-output/test/emitter.test.ts#validates constraint values and typed literal membership",
+          "packages/typespec-structured-output/test/emitter.test.ts#counts an anyOf branch"
+        ]
+      }
+    },
+    {
+      "id": "ordered-records",
+      "area": "Serialization",
+      "feature": "Records that keep insertion order (opt-in)",
+      "go": {
+        "status": "supported",
+        "notes": "Option ordered-records: tsgo.OrderedMap[T] for records and additional properties, through decoding, mutation, defaults, unions, responses and external packages; ordered XML record elements, including model values; record parameters and form additional properties diagnosed. Standalone MarshalJSON/UnmarshalJSON use the runtime's default codecs (tsgo.DefaultCodec), other policies per codec (OrderedMapCodec), no global setting.",
+        "tests": [
+          "packages/typespec-go/test/go/ordered/ordered_test.go#TestDecodeMutateEncodeKeepsOrder",
+          "packages/typespec-go/test/go/ordered/ordered_test.go#TestAdditionalPropertiesKeepOrder",
+          "packages/typespec-go/test/diagnostics.test.ts#ordered-query-record",
+          "packages/typespec-go/runtime/ordered_test.go#TestOrderedMapStandaloneEncoding",
+          "packages/typespec-go/runtime/ordered_test.go#TestOrderedMapStandaloneDecoding",
+          "packages/typespec-go/runtime/ordered_test.go#FuzzOrderedMapCopies",
+          "packages/typespec-go/test/go/ordered/ordered_test.go#TestXMLRecordsKeepWireOrder",
+          "packages/typespec-go/runtime/ordered_test.go#TestOrderedMapsPreserveNestedPartialValuesAndNilMarshalers"
+        ]
+      },
+      "so": {
+        "status": "not-applicable",
+        "notes": "JSON Schema objects are unordered."
+      }
+    },
+    {
+      "id": "json-policies",
+      "area": "Serialization",
+      "feature": "JSON text policies matching pydantic-core or Python's json.dumps (float format, string escaping)",
+      "go": {
+        "status": "supported",
+        "notes": "Options float-format: pydantic or python-repr and string-escaping: minimal, verified byte for byte against the pinned Pydantic and against CPython's json.dumps (3,000 values: negative zero, both exponent thresholds, subnormals, extremes, rounding, random bit patterns, float32, control characters, U+2028, keys).",
+        "tests": [
+          "packages/typespec-go/test/go/pydantic-json/pydantic_json_test.go#TestFloatsAsPydantic",
+          "packages/typespec-go/test/go/pydantic-json/pydantic_json_test.go#TestStringsAsPydantic",
+          "packages/typespec-go/test/go/python-repr/python_repr_test.go#TestFloat64AsPythonJSONDumps",
+          "packages/typespec-go/test/go/python-repr/python_repr_test.go#TestFloat32AsPythonJSONDumps",
+          "packages/typespec-go/test/go/python-repr/testdata/reference.json#\"python\": \"3.12"
+        ]
+      },
+      "so": {
+        "status": "not-applicable",
+        "notes": "Schemas only."
+      }
+    },
+    {
+      "id": "error-details",
+      "area": "Validation",
+      "feature": "Machine-readable request errors, collected errors, application validation hooks",
+      "go": {
+        "status": "supported",
+        "notes": "tsgo.Details (kind, location, JSON Pointer, constraint and limit, value, identified union variants with their paths, candidates); decoding problems as data (tsgo.DecodeProblem: type, required, enum, literal, discriminator, range, format, ... with expected type, allowed values and range); ServerOptions.CollectErrors (every parameter and the body, bounded, fail-fast by default) and ErrorDetails; option validation-hooks after decoding only.",
+        "tests": [
+          "packages/typespec-go/test/go/errors/errors_test.go#TestCollectErrors",
+          "packages/typespec-go/test/go/errors/errors_test.go#TestValidationDetails",
+          "packages/typespec-go/test/go/errors/errors_test.go#TestValidationHooks",
+          "packages/typespec-go/test/go/errors/errors_test.go#TestCollectionIsBounded",
+          "packages/typespec-go/runtime/errors_test.go#TestCollectedErrorsKeepFailFastBehaviour",
+          "packages/typespec-go/test/go/collect/collect_test.go#TestDecodingProblemsAreData",
+          "packages/typespec-go/test/go/collect/collect_test.go#TestParameterProblemsAreData",
+          "packages/typespec-go/test/go/collect/collect_test.go#TestIdentifiedVariantKeepsEveryFailure",
+          "packages/typespec-go/test/go/collect/collect_test.go#TestNestedUnionsReportEveryVariant",
+          "packages/typespec-go/test/go/collect/collect_test.go#TestParametersAreCollectedWithTheBody",
+          "packages/typespec-go/test/go/collect/collect_test.go#TestWideEnumErrorValuesAreExactJSON",
+          "packages/typespec-go/runtime/errors_test.go#TestWrappedRequestDetailsPreserveAllLocations",
+          "packages/typespec-go/runtime/errors_test.go#TestWrappedPlainErrorDetailsKeepTheirMessage",
+          "packages/typespec-go/runtime/errors_test.go#TestWrappedJoinsKeepEveryError",
+          "packages/typespec-go/runtime/errtree_test.go#TestErrorTreesKeepEveryProblem",
+          "packages/typespec-go/runtime/errtree_test.go#TestErrorTreesPartialValidation",
+          "packages/typespec-go/runtime/errtree_test.go#TestErrorTreeBoundsStopFormatting",
+          "packages/typespec-go/runtime/errtree_consumer_test.go#TestIndependentPlainJoinAndBounds",
+          "packages/typespec-go/runtime/errtree_contract_test.go#TestForwardingAdapterPreservesActualBranches",
+          "packages/typespec-go/runtime/errtree_contract_test.go#TestTraversalExhaustionSubprocess",
+          "packages/typespec-go/runtime/errtree_contract_test.go#TestWorkBudgetSharedByRecordedSubtrees",
+          "packages/typespec-go/runtime/errtree_contract_test.go#TestValidationMessagesAcrossConsumers",
+          "packages/typespec-go/runtime/errtree_consumer_test.go#TestAsViewsPreserveSiblingOrderAndActualCauses",
+          "packages/typespec-go/runtime/errtree_consumer_test.go#TestRecordedFailuresOutsideRequestWrappers",
+          "packages/typespec-go/test/go/collect/error_tree_test.go#TestExistingGoAsAdapterAtLeaf",
+          "packages/typespec-go/test/go/collect/error_tree_test.go#TestValidationEntriesRemainValidation",
+          "packages/typespec-go/test/go/collect/error_tree_test.go#TestHTTPCompleteValidationListAndBoundedDetails",
+          "packages/typespec-go/runtime/errors_test.go#TestUnencodableHookMetadataKeepsProblemDocument"
+        ]
+      },
+      "so": {
+        "status": "not-applicable",
+        "notes": "Schemas only."
+      }
+    },
+    {
+      "id": "exclude",
+      "area": "Types",
+      "feature": "Declarations excluded from Go generation but used by other emitters",
+      "go": {
+        "status": "supported",
+        "notes": "Option exclude; references from generated code are diagnosed (excluded-declaration).",
+        "tests": [
+          "packages/typespec-go/test/exclude.test.ts#omits excluded declarations from Go while other emitters still use them",
+          "packages/typespec-go/test/exclude.test.ts#rejects references from generated models"
+        ]
+      },
+      "so": {
+        "status": "not-applicable",
+        "notes": "Every declaration remains available."
+      }
+    },
+    {
+      "id": "doc-comments",
+      "area": "Safety",
+      "feature": "Arbitrary documentation in gofmt-clean Go doc comments",
+      "go": {
+        "status": "supported",
+        "notes": "Port of go/doc/comment and go/printer's doc comment formatting, iterated to a fixed point; checked against Go's implementation and gofmt.",
+        "tests": [
+          "packages/typespec-go/test/doccomment.test.ts#match go/doc/comment on random documentation",
+          "packages/typespec-go/test/doccomment.test.ts#are gofmt fixed points for random documentation (seeded)",
+          "packages/typespec-go/test/go/docs/main.tsp#double backticks"
+        ]
+      },
+      "so": {
+        "status": "not-applicable",
+        "notes": "Schema descriptions are copied unchanged."
+      }
+    },
+    {
+      "id": "so.schema-naming",
+      "area": "Structured Outputs",
+      "feature": "Explicit schema names and default factories (@schemaName, @defaultFactory)",
+      "go": {
+        "status": "not-applicable",
+        "notes": "Accepted without effect on Go (no wire change)."
+      },
+      "so": {
+        "status": "supported",
+        "notes": "@schemaName: Pydantic class name (title, $defs, refs, root name, collisions, generics); @defaultFactory: no schema default, requiredness and profile checks unchanged.",
+        "tests": [
+          "packages/typespec-structured-output/test/fixtures/schema-names/reference.json#Envelope_Item_",
+          "packages/typespec-structured-output/test/fixtures/default-factory/model.py#default_factory",
+          "packages/typespec-structured-output/test/emitter.test.ts#keeps the OpenAI profile's restriction on defaults"
+        ]
+      }
+    },
+    {
+      "id": "partial-validation",
+      "area": "Validation",
+      "feature": "Validation of the decoded parts of an invalid input; application checks on complete values only",
+      "go": {
+        "status": "supported",
+        "notes": "Decoders keep what decoded and record exactly the positions that did not (tsgo.Partial, FailedPaths, ValidateDecoded); with ServerOptions.CollectErrors siblings of failures are validated, zero values of failed parts never are; validation hooks run on values that decoded completely and never during union variant selection; custom errors with values (AddErrorValue, AddLimit).",
+        "tests": [
+          "packages/typespec-go/test/go/collect/collect_test.go#TestSiblingsOfFailuresAreValidated",
+          "packages/typespec-go/test/go/collect/collect_test.go#TestNoErrorsFromValuesThatDidNotDecode",
+          "packages/typespec-go/test/go/collect/collect_test.go#TestApplicationChecksNeverSelectVariants",
+          "packages/typespec-go/test/go/collect/collect_test.go#TestPartialValuesOutsideServers",
+          "packages/typespec-go/test/go/collect/collect_test.go#TestCustomErrorsCarryValues",
+          "packages/typespec-go/runtime/partial_test.go#TestValidationSkipsFailedPositions",
+          "packages/typespec-go/test/go/combined-options/combined_test.go#reading b decoded",
+          "packages/typespec-go/test/go/collect/collect_test.go#TestTruncatedBodyNeverInvokesItemHooks",
+          "packages/typespec-go/test/go/collect/collect_test.go#TestTransportErrorsCollectIndependentValues",
+          "packages/typespec-go/test/go/collect/collect_test.go#TestSelectionFailuresAreReportedAlone"
+        ]
+      },
+      "so": {
+        "status": "not-applicable",
+        "notes": "Schemas only."
+      }
+    },
+    {
+      "id": "named-arrays",
+      "area": "Types",
+      "feature": "Named array models (model Docs is Doc[]) and zero-element tuples",
+      "go": {
+        "status": "supported",
+        "notes": "Named slice types with codecs, defaults, validation (their item constraints wherever used) and hooks, in properties, bodies, parameters, templates and XML; [] (also OAuth2Auth's default scopes) is an empty tuple.",
+        "tests": [
+          "packages/typespec-go/test/go/arrays/arrays_test.go#TestNamedArrayValidation",
+          "packages/typespec-go/test/go/arrays/arrays_test.go#TestNamedArrayDefaults",
+          "packages/typespec-go/test/go/arrays/arrays_test.go#TestNamedArraysOnTheWire",
+          "packages/typespec-go/test/go/arrays/arrays_test.go#TestZeroElementTuples",
+          "tests/cross-emitter/cross-emitter.test.ts#preserves recursion, bounds and generic identity"
+        ]
+      },
+      "so": {
+        "status": "not-applicable",
+        "notes": "A Go representation choice: Structured Output schemas are unaffected."
+      }
+    },
+    {
+      "id": "external-response-nulls",
+      "area": "Packages and representations",
+      "feature": "Shared declarations keep their response-unset-nullable selection across packages",
+      "go": {
+        "status": "supported",
+        "notes": "The contract records each declaration's response nulls; consumers inherit them (also through local types containing shared ones) and conflicting selections are diagnosed.",
+        "tests": [
+          "packages/typespec-go/test/external.test.ts#inherits the response nulls of shared declarations from their contract"
+        ]
+      },
+      "so": {
+        "status": "not-applicable",
+        "notes": "No shared packages."
+      }
+    },
+    {
+      "id": "so.root-selection",
+      "area": "Structured Outputs",
+      "feature": "Root selection and exclusion (roots, exclude-roots)",
+      "go": {
+        "status": "not-applicable",
+        "notes": "Option exclude selects Go declarations."
+      },
+      "so": {
+        "status": "supported",
+        "notes": "Roots left out are not written as files and stay byte-identical $defs of the roots that reference them, validated there; entries that select nothing are errors.",
+        "tests": [
+          "packages/typespec-structured-output/test/emitter.test.ts#writes only the selected roots; the others remain definitions, unchanged",
+          "packages/typespec-structured-output/test/emitter.test.ts#rejects selections that select nothing",
+          "packages/typespec-structured-output/test/emitter.test.ts#selects Unicode identifiers",
+          "packages/typespec-structured-output/test/emitter.test.ts#absent from the requested API version",
+          "packages/typespec-structured-output/test/emitter.test.ts#explicitly marked root"
+        ]
+      }
+    },
+    {
+      "id": "collections.recursive",
+      "area": "Types",
+      "feature": "Recursive named list and dictionary declarations, including fields and generic arguments",
+      "go": {
+        "status": "supported",
+        "tests": [
+          "tests/cross-emitter/cross-emitter.test.ts#preserves recursion, bounds and generic identity",
+          "packages/typespec-go/test/go/arrays/arrays_test.go#TestUserCollectionsNamedArrayAndRecord"
+        ]
+      },
+      "so": {
+        "status": "restricted",
+        "notes": "Named recursive collections use Pydantic TypeAliasType definitions. Typed dictionary values require target-profile none.",
+        "tests": [
+          "packages/typespec-structured-output/test/fixtures/recursive-collections/model.py#TypeAliasType",
+          "tests/cross-emitter/cross-emitter.test.ts#cross-recursive-profile"
+        ]
+      }
+    },
+    {
+      "id": "so.unicode-titles",
+      "area": "Structured Outputs",
+      "feature": "Pydantic field titles for Unicode wire aliases",
+      "go": {
+        "status": "not-applicable",
+        "notes": "Go uses the declared wire name."
+      },
+      "so": {
+        "status": "restricted",
+        "notes": "Python titlecase, whitespace and context-sensitive lowercase conventions. Case properties can vary for characters added after the reference Unicode version.",
+        "tests": [
+          "packages/typespec-structured-output/test/fixtures/unicode-field-titles/model.py#Field(alias="
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "M": {
+      "pydantic": {
+        "properties": {
+          "a": {
+            "title": "A",
+            "type": "string"
+          }
+        },
+        "required": [
+          "a"
+        ],
+        "title": "M",
+        "type": "object"
+      },
+      "strict": {
+        "properties": {
+          "a": {
+            "title": "A",
+            "type": "string"
+          }
+        },
+        "required": [
+          "a"
+        ],
+        "title": "M",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "M"
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "TreeNode": {
+      "pydantic": {
+        "$defs": {
+          "TreeNode": {
+            "properties": {
+              "label": {
+                "title": "Label",
+                "type": "string"
+              },
+              "children": {
+                "items": {
+                  "$ref": "#/$defs/TreeNode"
+                },
+                "title": "Children",
+                "type": "array"
+              }
+            },
+            "required": [
+              "label",
+              "children"
+            ],
+            "title": "TreeNode",
+            "type": "object"
+          }
+        },
+        "$ref": "#/$defs/TreeNode"
+      },
+      "strict": {
+        "$defs": {
+          "TreeNode": {
+            "properties": {
+              "label": {
+                "title": "Label",
+                "type": "string"
+              },
+              "children": {
+                "items": {
+                  "$ref": "#/$defs/TreeNode"
+                },
+                "title": "Children",
+                "type": "array"
+              }
+            },
+            "required": [
+              "label",
+              "children"
+            ],
+            "title": "TreeNode",
+            "type": "object",
+            "additionalProperties": false
+          }
+        },
+        "properties": {
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "children": {
+            "items": {
+              "$ref": "#/$defs/TreeNode"
+            },
+            "title": "Children",
+            "type": "array"
+          }
+        },
+        "required": [
+          "label",
+          "children"
+        ],
+        "title": "TreeNode",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "TreeNode"
+    }
+  }
+}

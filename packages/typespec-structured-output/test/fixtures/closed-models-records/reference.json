@@ -1,0 +1,420 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Root": {
+      "pydantic": {
+        "$defs": {
+          "Base": {
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "title": "Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "title": "Base",
+            "type": "object"
+          },
+          "Box_OpenExtras_": {
+            "additionalProperties": false,
+            "properties": {
+              "item": {
+                "$ref": "#/$defs/OpenExtras"
+              }
+            },
+            "required": [
+              "item"
+            ],
+            "title": "Box[OpenExtras]",
+            "type": "object"
+          },
+          "Box_dict_str__str__": {
+            "additionalProperties": false,
+            "properties": {
+              "item": {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "title": "Item",
+                "type": "object"
+              }
+            },
+            "required": [
+              "item"
+            ],
+            "title": "Box[dict[str, str]]",
+            "type": "object"
+          },
+          "ClosedExtras": {
+            "additionalProperties": false,
+            "description": "Closes a base that allows typed extras.",
+            "properties": {
+              "a": {
+                "title": "A",
+                "type": "string"
+              },
+              "b": {
+                "title": "B",
+                "type": "string"
+              }
+            },
+            "required": [
+              "a",
+              "b"
+            ],
+            "title": "ClosedExtras",
+            "type": "object"
+          },
+          "InheritsExtras": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "properties": {
+              "a": {
+                "title": "A",
+                "type": "string"
+              },
+              "c": {
+                "title": "C",
+                "type": "string"
+              }
+            },
+            "required": [
+              "a",
+              "c"
+            ],
+            "title": "InheritsExtras",
+            "type": "object"
+          },
+          "OpenExtras": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "properties": {
+              "a": {
+                "title": "A",
+                "type": "string"
+              }
+            },
+            "required": [
+              "a"
+            ],
+            "title": "OpenExtras",
+            "type": "object"
+          },
+          "Reopened": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Reopens a closed base with typed extras.",
+            "properties": {
+              "id": {
+                "title": "Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "title": "Reopened",
+            "type": "object"
+          },
+          "SpreadExtras": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "properties": {
+              "id": {
+                "title": "Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "title": "SpreadExtras",
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "properties": {
+          "reopened": {
+            "$ref": "#/$defs/Reopened"
+          },
+          "spread": {
+            "$ref": "#/$defs/SpreadExtras"
+          },
+          "nested": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "maximum": 2147483647,
+                "minimum": -2147483648,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Nested"
+          },
+          "closedExtras": {
+            "$ref": "#/$defs/ClosedExtras"
+          },
+          "inheritsExtras": {
+            "$ref": "#/$defs/InheritsExtras"
+          },
+          "counts": {
+            "additionalProperties": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer"
+            },
+            "title": "Counts",
+            "type": "object"
+          },
+          "closedMap": {
+            "additionalProperties": {
+              "$ref": "#/$defs/Base"
+            },
+            "title": "Closedmap",
+            "type": "object"
+          },
+          "boxedMap": {
+            "$ref": "#/$defs/Box_dict_str__str__"
+          },
+          "boxedOpen": {
+            "$ref": "#/$defs/Box_OpenExtras_"
+          }
+        },
+        "required": [
+          "reopened",
+          "spread",
+          "nested",
+          "closedExtras",
+          "inheritsExtras",
+          "counts",
+          "closedMap",
+          "boxedMap",
+          "boxedOpen"
+        ],
+        "title": "Root",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "Base": {
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "title": "Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "title": "Base",
+            "type": "object"
+          },
+          "Box_OpenExtras_": {
+            "additionalProperties": false,
+            "properties": {
+              "item": {
+                "$ref": "#/$defs/OpenExtras"
+              }
+            },
+            "required": [
+              "item"
+            ],
+            "title": "Box[OpenExtras]",
+            "type": "object"
+          },
+          "Box_dict_str__str__": {
+            "additionalProperties": false,
+            "properties": {
+              "item": {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "title": "Item",
+                "type": "object"
+              }
+            },
+            "required": [
+              "item"
+            ],
+            "title": "Box[dict[str, str]]",
+            "type": "object"
+          },
+          "ClosedExtras": {
+            "additionalProperties": false,
+            "description": "Closes a base that allows typed extras.",
+            "properties": {
+              "a": {
+                "title": "A",
+                "type": "string"
+              },
+              "b": {
+                "title": "B",
+                "type": "string"
+              }
+            },
+            "required": [
+              "a",
+              "b"
+            ],
+            "title": "ClosedExtras",
+            "type": "object"
+          },
+          "InheritsExtras": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "properties": {
+              "a": {
+                "title": "A",
+                "type": "string"
+              },
+              "c": {
+                "title": "C",
+                "type": "string"
+              }
+            },
+            "required": [
+              "a",
+              "c"
+            ],
+            "title": "InheritsExtras",
+            "type": "object"
+          },
+          "OpenExtras": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "properties": {
+              "a": {
+                "title": "A",
+                "type": "string"
+              }
+            },
+            "required": [
+              "a"
+            ],
+            "title": "OpenExtras",
+            "type": "object"
+          },
+          "Reopened": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Reopens a closed base with typed extras.",
+            "properties": {
+              "id": {
+                "title": "Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "title": "Reopened",
+            "type": "object"
+          },
+          "SpreadExtras": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "properties": {
+              "id": {
+                "title": "Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "title": "SpreadExtras",
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "properties": {
+          "reopened": {
+            "$ref": "#/$defs/Reopened"
+          },
+          "spread": {
+            "$ref": "#/$defs/SpreadExtras"
+          },
+          "nested": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "maximum": 2147483647,
+                "minimum": -2147483648,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Nested"
+          },
+          "closedExtras": {
+            "$ref": "#/$defs/ClosedExtras"
+          },
+          "inheritsExtras": {
+            "$ref": "#/$defs/InheritsExtras"
+          },
+          "counts": {
+            "additionalProperties": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer"
+            },
+            "title": "Counts",
+            "type": "object"
+          },
+          "closedMap": {
+            "additionalProperties": {
+              "$ref": "#/$defs/Base"
+            },
+            "title": "Closedmap",
+            "type": "object"
+          },
+          "boxedMap": {
+            "$ref": "#/$defs/Box_dict_str__str__"
+          },
+          "boxedOpen": {
+            "$ref": "#/$defs/Box_OpenExtras_"
+          }
+        },
+        "required": [
+          "reopened",
+          "spread",
+          "nested",
+          "closedExtras",
+          "inheritsExtras",
+          "counts",
+          "closedMap",
+          "boxedMap",
+          "boxedOpen"
+        ],
+        "title": "Root",
+        "type": "object"
+      },
+      "name": "Root"
+    }
+  }
+}

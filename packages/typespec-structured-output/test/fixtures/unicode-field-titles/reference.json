@@ -1,0 +1,168 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Labels": {
+      "pydantic": {
+        "$defs": {
+          "Child_": {
+            "properties": {
+              "value": {
+                "title": "Value",
+                "type": "string"
+              }
+            },
+            "required": [
+              "value"
+            ],
+            "title": "Child𐐀",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "child": {
+            "$ref": "#/$defs/Child_"
+          },
+          "ßeta": {
+            "title": "Sseta",
+            "type": "string"
+          },
+          "ǳone": {
+            "title": "ǲone",
+            "type": "string"
+          },
+          "ΟΣ": {
+            "title": "Ος",
+            "type": "string"
+          },
+          "ᾀλφα": {
+            "title": "ᾈλφα",
+            "type": "string"
+          },
+          "ქართული": {
+            "title": "ქართული",
+            "type": "string"
+          },
+          "wrapped": {
+            "title": "Wrapped",
+            "type": "string"
+          },
+          "﻿kept": {
+            "title": "﻿Kept",
+            "type": "string"
+          },
+          "10": {
+            "title": "10",
+            "type": "string"
+          },
+          "2": {
+            "title": "2",
+            "type": "string"
+          },
+          "ʰHello": {
+            "title": "ʰhello",
+            "type": "string"
+          }
+        },
+        "required": [
+          "child",
+          "ßeta",
+          "ǳone",
+          "ΟΣ",
+          "ᾀλφα",
+          "ქართული",
+          "wrapped",
+          "﻿kept",
+          "10",
+          "2",
+          "ʰHello"
+        ],
+        "title": "Labels",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "Child_": {
+            "properties": {
+              "value": {
+                "title": "Value",
+                "type": "string"
+              }
+            },
+            "required": [
+              "value"
+            ],
+            "title": "Child𐐀",
+            "type": "object",
+            "additionalProperties": false
+          }
+        },
+        "properties": {
+          "child": {
+            "$ref": "#/$defs/Child_"
+          },
+          "ßeta": {
+            "title": "Sseta",
+            "type": "string"
+          },
+          "ǳone": {
+            "title": "ǲone",
+            "type": "string"
+          },
+          "ΟΣ": {
+            "title": "Ος",
+            "type": "string"
+          },
+          "ᾀλφα": {
+            "title": "ᾈλφα",
+            "type": "string"
+          },
+          "ქართული": {
+            "title": "ქართული",
+            "type": "string"
+          },
+          "wrapped": {
+            "title": "Wrapped",
+            "type": "string"
+          },
+          "﻿kept": {
+            "title": "﻿Kept",
+            "type": "string"
+          },
+          "10": {
+            "title": "10",
+            "type": "string"
+          },
+          "2": {
+            "title": "2",
+            "type": "string"
+          },
+          "ʰHello": {
+            "title": "ʰhello",
+            "type": "string"
+          }
+        },
+        "required": [
+          "child",
+          "ßeta",
+          "ǳone",
+          "ΟΣ",
+          "ᾀλφα",
+          "ქართული",
+          "wrapped",
+          "﻿kept",
+          "10",
+          "2",
+          "ʰHello"
+        ],
+        "title": "Labels",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "Labels"
+    }
+  }
+}

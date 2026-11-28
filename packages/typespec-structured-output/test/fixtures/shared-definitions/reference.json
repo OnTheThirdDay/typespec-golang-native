@@ -1,0 +1,153 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Invoice": {
+      "pydantic": {
+        "$defs": {
+          "Line": {
+            "properties": {
+              "price": {
+                "$ref": "#/$defs/Money"
+              },
+              "total": {
+                "$ref": "#/$defs/Money"
+              }
+            },
+            "required": [
+              "price",
+              "total"
+            ],
+            "title": "Line",
+            "type": "object"
+          },
+          "Money": {
+            "properties": {
+              "amount": {
+                "title": "Amount",
+                "type": "number"
+              },
+              "currency": {
+                "title": "Currency",
+                "type": "string"
+              }
+            },
+            "required": [
+              "amount",
+              "currency"
+            ],
+            "title": "Money",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "lines": {
+            "items": {
+              "$ref": "#/$defs/Line"
+            },
+            "title": "Lines",
+            "type": "array"
+          },
+          "subtotal": {
+            "$ref": "#/$defs/Money"
+          },
+          "total": {
+            "$ref": "#/$defs/Money",
+            "description": "Grand total."
+          }
+        },
+        "required": [
+          "lines",
+          "subtotal",
+          "total"
+        ],
+        "title": "Invoice",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "Line": {
+            "properties": {
+              "price": {
+                "$ref": "#/$defs/Money"
+              },
+              "total": {
+                "$ref": "#/$defs/Money"
+              }
+            },
+            "required": [
+              "price",
+              "total"
+            ],
+            "title": "Line",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "Money": {
+            "properties": {
+              "amount": {
+                "title": "Amount",
+                "type": "number"
+              },
+              "currency": {
+                "title": "Currency",
+                "type": "string"
+              }
+            },
+            "required": [
+              "amount",
+              "currency"
+            ],
+            "title": "Money",
+            "type": "object",
+            "additionalProperties": false
+          }
+        },
+        "properties": {
+          "lines": {
+            "items": {
+              "$ref": "#/$defs/Line"
+            },
+            "title": "Lines",
+            "type": "array"
+          },
+          "subtotal": {
+            "$ref": "#/$defs/Money"
+          },
+          "total": {
+            "description": "Grand total.",
+            "properties": {
+              "amount": {
+                "title": "Amount",
+                "type": "number"
+              },
+              "currency": {
+                "title": "Currency",
+                "type": "string"
+              }
+            },
+            "required": [
+              "amount",
+              "currency"
+            ],
+            "title": "Money",
+            "type": "object",
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "lines",
+          "subtotal",
+          "total"
+        ],
+        "title": "Invoice",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "Invoice"
+    }
+  }
+}

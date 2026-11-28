@@ -1,0 +1,103 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "M": {
+      "pydantic": {
+        "$defs": {
+          "Box_EmptyRecord_": {
+            "properties": {
+              "value": {
+                "$ref": "#/$defs/EmptyRecord"
+              }
+            },
+            "required": [
+              "value"
+            ],
+            "title": "Box[EmptyRecord]",
+            "type": "object"
+          },
+          "EmptyRecord": {
+            "additionalProperties": false,
+            "properties": {},
+            "title": "EmptyRecord",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "nothing": {
+            "$ref": "#/$defs/EmptyRecord"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/$defs/EmptyRecord"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "boxed": {
+            "$ref": "#/$defs/Box_EmptyRecord_"
+          }
+        },
+        "required": [
+          "nothing",
+          "items",
+          "boxed"
+        ],
+        "title": "M",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "Box_EmptyRecord_": {
+            "properties": {
+              "value": {
+                "$ref": "#/$defs/EmptyRecord"
+              }
+            },
+            "required": [
+              "value"
+            ],
+            "title": "Box[EmptyRecord]",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "EmptyRecord": {
+            "additionalProperties": false,
+            "properties": {},
+            "title": "EmptyRecord",
+            "type": "object",
+            "required": []
+          }
+        },
+        "properties": {
+          "nothing": {
+            "$ref": "#/$defs/EmptyRecord"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/$defs/EmptyRecord"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "boxed": {
+            "$ref": "#/$defs/Box_EmptyRecord_"
+          }
+        },
+        "required": [
+          "nothing",
+          "items",
+          "boxed"
+        ],
+        "title": "M",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "M"
+    }
+  }
+}

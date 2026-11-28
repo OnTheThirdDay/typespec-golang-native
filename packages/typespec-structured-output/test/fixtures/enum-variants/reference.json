@@ -1,0 +1,153 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Task": {
+      "pydantic": {
+        "$defs": {
+          "Mode": {
+            "enum": [
+              "auto",
+              "manual"
+            ],
+            "title": "Mode",
+            "type": "string"
+          },
+          "Priority": {
+            "enum": [
+              1,
+              2,
+              3
+            ],
+            "title": "Priority",
+            "type": "integer"
+          }
+        },
+        "properties": {
+          "priority": {
+            "$ref": "#/$defs/Priority"
+          },
+          "mode": {
+            "$ref": "#/$defs/Mode"
+          },
+          "fixed": {
+            "const": "auto",
+            "title": "Fixed",
+            "type": "string"
+          },
+          "either": {
+            "enum": [
+              "auto",
+              "manual"
+            ],
+            "title": "Either",
+            "type": "string"
+          },
+          "modes": {
+            "items": {
+              "$ref": "#/$defs/Mode"
+            },
+            "title": "Modes",
+            "type": "array"
+          },
+          "override_mode": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Mode"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Overridden mode."
+          }
+        },
+        "required": [
+          "priority",
+          "mode",
+          "fixed",
+          "either",
+          "modes",
+          "override_mode"
+        ],
+        "title": "Task",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "Mode": {
+            "enum": [
+              "auto",
+              "manual"
+            ],
+            "title": "Mode",
+            "type": "string"
+          },
+          "Priority": {
+            "enum": [
+              1,
+              2,
+              3
+            ],
+            "title": "Priority",
+            "type": "integer"
+          }
+        },
+        "properties": {
+          "priority": {
+            "$ref": "#/$defs/Priority"
+          },
+          "mode": {
+            "$ref": "#/$defs/Mode"
+          },
+          "fixed": {
+            "const": "auto",
+            "title": "Fixed",
+            "type": "string"
+          },
+          "either": {
+            "enum": [
+              "auto",
+              "manual"
+            ],
+            "title": "Either",
+            "type": "string"
+          },
+          "modes": {
+            "items": {
+              "$ref": "#/$defs/Mode"
+            },
+            "title": "Modes",
+            "type": "array"
+          },
+          "override_mode": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Mode"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Overridden mode."
+          }
+        },
+        "required": [
+          "priority",
+          "mode",
+          "fixed",
+          "either",
+          "modes",
+          "override_mode"
+        ],
+        "title": "Task",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "Task"
+    }
+  }
+}

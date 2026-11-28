@@ -1,0 +1,8 @@
+{
+  "ordered-records": true,
+  "float-format": "pydantic",
+  "string-escaping": "minimal",
+  "validation-hooks": true,
+  "response-unset-nullable": "null",
+  "file-layout": "per-namespace"
+}

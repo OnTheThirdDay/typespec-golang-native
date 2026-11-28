@@ -1,0 +1,73 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Derived": {
+      "pydantic": {
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "score": {
+            "default": 5,
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "title": "Score",
+            "type": "integer"
+          },
+          "mode": {
+            "default": "fast",
+            "enum": [
+              "fast",
+              "slow"
+            ],
+            "title": "Mode",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "title": "Derived",
+        "type": "object"
+      },
+      "strict": {
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "score": {
+            "default": 5,
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "title": "Score",
+            "type": "integer"
+          },
+          "mode": {
+            "default": "fast",
+            "enum": [
+              "fast",
+              "slow"
+            ],
+            "title": "Mode",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "score",
+          "mode"
+        ],
+        "title": "Derived",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "Derived"
+    }
+  }
+}

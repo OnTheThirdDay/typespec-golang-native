@@ -1,0 +1,113 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "M": {
+      "pydantic": {
+        "$defs": {
+          "Box_Annotated_int__FieldInfo_annotation_NoneType__required_True__metadata__Ge_ge_-2147483648___Le_le_2147483647_____": {
+            "properties": {
+              "v": {
+                "maximum": 2147483647,
+                "minimum": -2147483648,
+                "title": "V",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "v"
+            ],
+            "title": "Box[Annotated[int, FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=-2147483648), Le(le=2147483647)])]]",
+            "type": "object"
+          },
+          "Box_list_str__": {
+            "properties": {
+              "v": {
+                "items": {
+                  "type": "string"
+                },
+                "title": "V",
+                "type": "array"
+              }
+            },
+            "required": [
+              "v"
+            ],
+            "title": "Box[list[str]]",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "b": {
+            "$ref": "#/$defs/Box_Annotated_int__FieldInfo_annotation_NoneType__required_True__metadata__Ge_ge_-2147483648___Le_le_2147483647_____"
+          },
+          "tags": {
+            "$ref": "#/$defs/Box_list_str__"
+          }
+        },
+        "required": [
+          "b",
+          "tags"
+        ],
+        "title": "M",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "Box_Annotated_int__FieldInfo_annotation_NoneType__required_True__metadata__Ge_ge_-2147483648___Le_le_2147483647_____": {
+            "properties": {
+              "v": {
+                "maximum": 2147483647,
+                "minimum": -2147483648,
+                "title": "V",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "v"
+            ],
+            "title": "Box[Annotated[int, FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=-2147483648), Le(le=2147483647)])]]",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "Box_list_str__": {
+            "properties": {
+              "v": {
+                "items": {
+                  "type": "string"
+                },
+                "title": "V",
+                "type": "array"
+              }
+            },
+            "required": [
+              "v"
+            ],
+            "title": "Box[list[str]]",
+            "type": "object",
+            "additionalProperties": false
+          }
+        },
+        "properties": {
+          "b": {
+            "$ref": "#/$defs/Box_Annotated_int__FieldInfo_annotation_NoneType__required_True__metadata__Ge_ge_-2147483648___Le_le_2147483647_____"
+          },
+          "tags": {
+            "$ref": "#/$defs/Box_list_str__"
+          }
+        },
+        "required": [
+          "b",
+          "tags"
+        ],
+        "title": "M",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "M"
+    }
+  }
+}

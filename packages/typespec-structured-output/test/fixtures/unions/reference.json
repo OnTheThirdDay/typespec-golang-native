@@ -1,0 +1,193 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Household": {
+      "pydantic": {
+        "$defs": {
+          "Cat": {
+            "properties": {
+              "kind": {
+                "const": "cat",
+                "title": "Kind",
+                "type": "string"
+              },
+              "lives": {
+                "maximum": 127,
+                "minimum": -128,
+                "title": "Lives",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "kind",
+              "lives"
+            ],
+            "title": "Cat",
+            "type": "object"
+          },
+          "Dog": {
+            "properties": {
+              "kind": {
+                "const": "dog",
+                "title": "Kind",
+                "type": "string"
+              },
+              "good": {
+                "title": "Good",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "kind",
+              "good"
+            ],
+            "title": "Dog",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "pet": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Cat"
+              },
+              {
+                "$ref": "#/$defs/Dog"
+              }
+            ],
+            "title": "Pet"
+          },
+          "maybe": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Cat"
+              },
+              {
+                "$ref": "#/$defs/Dog"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Maybe"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "title": "Value"
+          }
+        },
+        "required": [
+          "pet",
+          "maybe",
+          "value"
+        ],
+        "title": "Household",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "Cat": {
+            "properties": {
+              "kind": {
+                "const": "cat",
+                "title": "Kind",
+                "type": "string"
+              },
+              "lives": {
+                "maximum": 127,
+                "minimum": -128,
+                "title": "Lives",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "kind",
+              "lives"
+            ],
+            "title": "Cat",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "Dog": {
+            "properties": {
+              "kind": {
+                "const": "dog",
+                "title": "Kind",
+                "type": "string"
+              },
+              "good": {
+                "title": "Good",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "kind",
+              "good"
+            ],
+            "title": "Dog",
+            "type": "object",
+            "additionalProperties": false
+          }
+        },
+        "properties": {
+          "pet": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Cat"
+              },
+              {
+                "$ref": "#/$defs/Dog"
+              }
+            ],
+            "title": "Pet"
+          },
+          "maybe": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Cat"
+              },
+              {
+                "$ref": "#/$defs/Dog"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Maybe"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "title": "Value"
+          }
+        },
+        "required": [
+          "pet",
+          "maybe",
+          "value"
+        ],
+        "title": "Household",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "Household"
+    }
+  }
+}

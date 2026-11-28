@@ -1,0 +1,255 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Catalog": {
+      "pydantic": {
+        "$defs": {
+          "Item": {
+            "properties": {
+              "name": {
+                "title": "Name",
+                "type": "string"
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "title": "Item",
+            "type": "object"
+          },
+          "Page_Item_": {
+            "properties": {
+              "items": {
+                "items": {
+                  "$ref": "#/$defs/Item"
+                },
+                "title": "Items",
+                "type": "array"
+              },
+              "next_link": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Next Link"
+              }
+            },
+            "required": [
+              "items",
+              "next_link"
+            ],
+            "title": "Page[Item]",
+            "type": "object"
+          },
+          "Page_Page_Item__": {
+            "properties": {
+              "items": {
+                "items": {
+                  "$ref": "#/$defs/Page_Item_"
+                },
+                "title": "Items",
+                "type": "array"
+              },
+              "next_link": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Next Link"
+              }
+            },
+            "required": [
+              "items",
+              "next_link"
+            ],
+            "title": "Page[Page[Item]]",
+            "type": "object"
+          },
+          "Page_str_": {
+            "properties": {
+              "items": {
+                "items": {
+                  "type": "string"
+                },
+                "title": "Items",
+                "type": "array"
+              },
+              "next_link": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Next Link"
+              }
+            },
+            "required": [
+              "items",
+              "next_link"
+            ],
+            "title": "Page[str]",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "first": {
+            "$ref": "#/$defs/Page_Item_"
+          },
+          "nested": {
+            "$ref": "#/$defs/Page_Page_Item__"
+          },
+          "words": {
+            "$ref": "#/$defs/Page_str_"
+          }
+        },
+        "required": [
+          "first",
+          "nested",
+          "words"
+        ],
+        "title": "Catalog",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "Item": {
+            "properties": {
+              "name": {
+                "title": "Name",
+                "type": "string"
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "title": "Item",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "Page_Item_": {
+            "properties": {
+              "items": {
+                "items": {
+                  "$ref": "#/$defs/Item"
+                },
+                "title": "Items",
+                "type": "array"
+              },
+              "next_link": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Next Link"
+              }
+            },
+            "required": [
+              "items",
+              "next_link"
+            ],
+            "title": "Page[Item]",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "Page_Page_Item__": {
+            "properties": {
+              "items": {
+                "items": {
+                  "$ref": "#/$defs/Page_Item_"
+                },
+                "title": "Items",
+                "type": "array"
+              },
+              "next_link": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Next Link"
+              }
+            },
+            "required": [
+              "items",
+              "next_link"
+            ],
+            "title": "Page[Page[Item]]",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "Page_str_": {
+            "properties": {
+              "items": {
+                "items": {
+                  "type": "string"
+                },
+                "title": "Items",
+                "type": "array"
+              },
+              "next_link": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Next Link"
+              }
+            },
+            "required": [
+              "items",
+              "next_link"
+            ],
+            "title": "Page[str]",
+            "type": "object",
+            "additionalProperties": false
+          }
+        },
+        "properties": {
+          "first": {
+            "$ref": "#/$defs/Page_Item_"
+          },
+          "nested": {
+            "$ref": "#/$defs/Page_Page_Item__"
+          },
+          "words": {
+            "$ref": "#/$defs/Page_str_"
+          }
+        },
+        "required": [
+          "first",
+          "nested",
+          "words"
+        ],
+        "title": "Catalog",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "Catalog"
+    }
+  }
+}

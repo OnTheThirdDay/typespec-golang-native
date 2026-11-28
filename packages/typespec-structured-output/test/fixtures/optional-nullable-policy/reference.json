@@ -1,0 +1,130 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Partial": {
+      "pydantic": {
+        "$defs": {
+          "Inner": {
+            "properties": {
+              "v": {
+                "title": "V",
+                "type": "string"
+              }
+            },
+            "required": [
+              "v"
+            ],
+            "title": "Inner",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "a": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "A"
+          },
+          "b": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Inner"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "c": {
+            "anyOf": [
+              {
+                "maxLength": 3,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "C"
+          }
+        },
+        "title": "Partial",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "Inner": {
+            "properties": {
+              "v": {
+                "title": "V",
+                "type": "string"
+              }
+            },
+            "required": [
+              "v"
+            ],
+            "title": "Inner",
+            "type": "object",
+            "additionalProperties": false
+          }
+        },
+        "properties": {
+          "a": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "A"
+          },
+          "b": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Inner"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "c": {
+            "anyOf": [
+              {
+                "maxLength": 3,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "C"
+          }
+        },
+        "title": "Partial",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      "name": "Partial"
+    }
+  }
+}

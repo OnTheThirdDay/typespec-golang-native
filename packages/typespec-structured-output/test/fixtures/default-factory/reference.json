@@ -1,0 +1,122 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Settings": {
+      "pydantic": {
+        "$defs": {
+          "Point": {
+            "properties": {
+              "x": {
+                "maximum": 2147483647,
+                "minimum": -2147483648,
+                "title": "X",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "x"
+            ],
+            "title": "Point",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "tags": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Tags",
+            "type": "array"
+          },
+          "origin": {
+            "$ref": "#/$defs/Point"
+          },
+          "retries": {
+            "default": 3,
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "title": "Retries",
+            "type": "integer"
+          },
+          "label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Label"
+          }
+        },
+        "title": "Settings",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "Point": {
+            "properties": {
+              "x": {
+                "maximum": 2147483647,
+                "minimum": -2147483648,
+                "title": "X",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "x"
+            ],
+            "title": "Point",
+            "type": "object",
+            "additionalProperties": false
+          }
+        },
+        "properties": {
+          "tags": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Tags",
+            "type": "array"
+          },
+          "origin": {
+            "$ref": "#/$defs/Point"
+          },
+          "retries": {
+            "default": 3,
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "title": "Retries",
+            "type": "integer"
+          },
+          "label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Label"
+          }
+        },
+        "title": "Settings",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "tags",
+          "origin",
+          "retries",
+          "label"
+        ]
+      },
+      "name": "Settings"
+    }
+  }
+}

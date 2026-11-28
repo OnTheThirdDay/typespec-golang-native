@@ -1,0 +1,255 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Discussion": {
+      "pydantic": {
+        "$defs": {
+          "Comment": {
+            "properties": {
+              "author": {
+                "description": "Author name.",
+                "title": "Author",
+                "type": "string"
+              },
+              "replies": {
+                "items": {
+                  "$ref": "#/$defs/Comment"
+                },
+                "title": "Replies",
+                "type": "array"
+              },
+              "parent": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/Comment"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "author",
+              "replies",
+              "parent"
+            ],
+            "title": "Comment",
+            "type": "object"
+          },
+          "Thread_Comment_": {
+            "properties": {
+              "root": {
+                "$ref": "#/$defs/Comment"
+              },
+              "pinned": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/Comment"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "tags": {
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "title": "Tags",
+                "type": "array"
+              }
+            },
+            "required": [
+              "root",
+              "pinned",
+              "tags"
+            ],
+            "title": "Thread[Comment]",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "thread": {
+            "$ref": "#/$defs/Thread_Comment_"
+          },
+          "alt": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Thread_Comment_"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Alternative thread."
+          },
+          "scores": {
+            "items": {
+              "items": {
+                "anyOf": [
+                  {
+                    "maximum": 2147483647,
+                    "minimum": -2147483648,
+                    "type": "integer"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "type": "array"
+            },
+            "title": "Scores",
+            "type": "array"
+          }
+        },
+        "required": [
+          "thread",
+          "scores"
+        ],
+        "title": "Discussion",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "Comment": {
+            "properties": {
+              "author": {
+                "description": "Author name.",
+                "title": "Author",
+                "type": "string"
+              },
+              "replies": {
+                "items": {
+                  "$ref": "#/$defs/Comment"
+                },
+                "title": "Replies",
+                "type": "array"
+              },
+              "parent": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/Comment"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "author",
+              "replies",
+              "parent"
+            ],
+            "title": "Comment",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "Thread_Comment_": {
+            "properties": {
+              "root": {
+                "$ref": "#/$defs/Comment"
+              },
+              "pinned": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/Comment"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "tags": {
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "title": "Tags",
+                "type": "array"
+              }
+            },
+            "required": [
+              "root",
+              "pinned",
+              "tags"
+            ],
+            "title": "Thread[Comment]",
+            "type": "object",
+            "additionalProperties": false
+          }
+        },
+        "properties": {
+          "thread": {
+            "$ref": "#/$defs/Thread_Comment_"
+          },
+          "alt": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Thread_Comment_"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Alternative thread."
+          },
+          "scores": {
+            "items": {
+              "items": {
+                "anyOf": [
+                  {
+                    "maximum": 2147483647,
+                    "minimum": -2147483648,
+                    "type": "integer"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "type": "array"
+            },
+            "title": "Scores",
+            "type": "array"
+          }
+        },
+        "required": [
+          "thread",
+          "alt",
+          "scores"
+        ],
+        "title": "Discussion",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "Discussion"
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "name": "typespec-golang-native-monorepo",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/typespec-structured-output",
+    "packages/typespec-go"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "test": "npm run build && npm run test --workspaces && npm run test:runtime && npm run test:cross && npm run check:matrix",
+    "test:runtime": "cd packages/typespec-go/runtime && go vet ./... && go test ./...",
+    "check:matrix": "node tools/feature-matrix/check.mjs",
+    "refresh:pydantic-fixtures": "cd tools/pydantic-reference && uv run --frozen python -I generate.py",
+    "test:openai": "npm run test:openai -w typespec-structured-output",
+    "test:cross": "vitest run --config tests/vitest.config.ts",
+    "test:packed": "npm run build && node tools/packed-install.mjs",
+    "test:race": "npm run build && npm exec -w typespec-go -- vitest run test/go.test.ts test/external.test.ts && node tools/go-race.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "22.10.2",
+    "@typespec/compiler": "1.18.0",
+    "@typespec/openapi3": "1.18.0",
+    "ajv": "8.20.0",
+    "typescript": "5.7.2",
+    "vitest": "2.1.8"
+  },
+  "allowScripts": {
+    "esbuild@0.21.5": true
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

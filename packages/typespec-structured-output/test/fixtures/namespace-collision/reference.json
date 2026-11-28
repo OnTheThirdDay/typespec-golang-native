@@ -1,0 +1,113 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Shipment": {
+      "pydantic": {
+        "$defs": {
+          "Billing__Address": {
+            "properties": {
+              "line": {
+                "title": "Line",
+                "type": "string"
+              }
+            },
+            "required": [
+              "line"
+            ],
+            "title": "Address",
+            "type": "object"
+          },
+          "Shipping__Address": {
+            "properties": {
+              "street": {
+                "title": "Street",
+                "type": "string"
+              },
+              "zip": {
+                "title": "Zip",
+                "type": "string"
+              }
+            },
+            "required": [
+              "street",
+              "zip"
+            ],
+            "title": "Address",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "bill_to": {
+            "$ref": "#/$defs/Billing__Address"
+          },
+          "ship_to": {
+            "$ref": "#/$defs/Shipping__Address"
+          }
+        },
+        "required": [
+          "bill_to",
+          "ship_to"
+        ],
+        "title": "Shipment",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "Billing__Address": {
+            "properties": {
+              "line": {
+                "title": "Line",
+                "type": "string"
+              }
+            },
+            "required": [
+              "line"
+            ],
+            "title": "Address",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "Shipping__Address": {
+            "properties": {
+              "street": {
+                "title": "Street",
+                "type": "string"
+              },
+              "zip": {
+                "title": "Zip",
+                "type": "string"
+              }
+            },
+            "required": [
+              "street",
+              "zip"
+            ],
+            "title": "Address",
+            "type": "object",
+            "additionalProperties": false
+          }
+        },
+        "properties": {
+          "bill_to": {
+            "$ref": "#/$defs/Billing__Address"
+          },
+          "ship_to": {
+            "$ref": "#/$defs/Shipping__Address"
+          }
+        },
+        "required": [
+          "bill_to",
+          "ship_to"
+        ],
+        "title": "Shipment",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "Shipment"
+    }
+  }
+}

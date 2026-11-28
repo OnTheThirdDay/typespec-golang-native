@@ -1,0 +1,292 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Holder": {
+      "pydantic": {
+        "$defs": {
+          "A": {
+            "properties": {
+              "a": {
+                "title": "A",
+                "type": "string"
+              }
+            },
+            "required": [
+              "a"
+            ],
+            "title": "A",
+            "type": "object"
+          },
+          "B": {
+            "properties": {
+              "b": {
+                "title": "B",
+                "type": "string"
+              }
+            },
+            "required": [
+              "b"
+            ],
+            "title": "B",
+            "type": "object"
+          },
+          "C": {
+            "properties": {
+              "c": {
+                "title": "C",
+                "type": "string"
+              }
+            },
+            "required": [
+              "c"
+            ],
+            "title": "C",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "flat": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/A"
+              },
+              {
+                "$ref": "#/$defs/B"
+              },
+              {
+                "$ref": "#/$defs/C"
+              }
+            ],
+            "title": "Flat"
+          },
+          "nullable_nested": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/A"
+              },
+              {
+                "$ref": "#/$defs/B"
+              },
+              {
+                "$ref": "#/$defs/C"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Nullable Nested"
+          },
+          "literal_mix": {
+            "anyOf": [
+              {
+                "enum": [
+                  "x",
+                  "y"
+                ],
+                "type": "string"
+              },
+              {
+                "$ref": "#/$defs/A"
+              }
+            ],
+            "title": "Literal Mix"
+          },
+          "bools": {
+            "enum": [
+              true,
+              false
+            ],
+            "title": "Bools",
+            "type": "boolean"
+          },
+          "floats": {
+            "enum": [
+              1.5,
+              2.5
+            ],
+            "title": "Floats",
+            "type": "number"
+          },
+          "single": {
+            "const": true,
+            "title": "Single",
+            "type": "boolean"
+          },
+          "optional_literal": {
+            "anyOf": [
+              {
+                "enum": [
+                  "on",
+                  "off"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Optional Literal"
+          }
+        },
+        "required": [
+          "flat",
+          "nullable_nested",
+          "literal_mix",
+          "bools",
+          "floats",
+          "single"
+        ],
+        "title": "Holder",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "A": {
+            "properties": {
+              "a": {
+                "title": "A",
+                "type": "string"
+              }
+            },
+            "required": [
+              "a"
+            ],
+            "title": "A",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "B": {
+            "properties": {
+              "b": {
+                "title": "B",
+                "type": "string"
+              }
+            },
+            "required": [
+              "b"
+            ],
+            "title": "B",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "C": {
+            "properties": {
+              "c": {
+                "title": "C",
+                "type": "string"
+              }
+            },
+            "required": [
+              "c"
+            ],
+            "title": "C",
+            "type": "object",
+            "additionalProperties": false
+          }
+        },
+        "properties": {
+          "flat": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/A"
+              },
+              {
+                "$ref": "#/$defs/B"
+              },
+              {
+                "$ref": "#/$defs/C"
+              }
+            ],
+            "title": "Flat"
+          },
+          "nullable_nested": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/A"
+              },
+              {
+                "$ref": "#/$defs/B"
+              },
+              {
+                "$ref": "#/$defs/C"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Nullable Nested"
+          },
+          "literal_mix": {
+            "anyOf": [
+              {
+                "enum": [
+                  "x",
+                  "y"
+                ],
+                "type": "string"
+              },
+              {
+                "$ref": "#/$defs/A"
+              }
+            ],
+            "title": "Literal Mix"
+          },
+          "bools": {
+            "enum": [
+              true,
+              false
+            ],
+            "title": "Bools",
+            "type": "boolean"
+          },
+          "floats": {
+            "enum": [
+              1.5,
+              2.5
+            ],
+            "title": "Floats",
+            "type": "number"
+          },
+          "single": {
+            "const": true,
+            "title": "Single",
+            "type": "boolean"
+          },
+          "optional_literal": {
+            "anyOf": [
+              {
+                "enum": [
+                  "on",
+                  "off"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Optional Literal"
+          }
+        },
+        "required": [
+          "flat",
+          "nullable_nested",
+          "literal_mix",
+          "bools",
+          "floats",
+          "single",
+          "optional_literal"
+        ],
+        "title": "Holder",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "Holder"
+    }
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Exact": {
+      "pydantic": {
+        "$defs": {
+          "Choice": {
+            "enum": [
+              "ok",
+              9007199254740993
+            ],
+            "title": "Choice"
+          },
+          "Inner": {
+            "properties": {
+              "wire": {
+                "title": "Wire",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "wire"
+            ],
+            "title": "Inner",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "id": {
+            "const": 9007199254740993,
+            "title": "Id",
+            "type": "integer"
+          },
+          "choice": {
+            "$ref": "#/$defs/Choice"
+          },
+          "instance": {
+            "$ref": "#/$defs/Inner",
+            "default": {
+              "wire": 18446744073709551615
+            }
+          },
+          "values": {
+            "default": [
+              9007199254740997
+            ],
+            "items": {
+              "type": "integer"
+            },
+            "title": "Values",
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "choice"
+        ],
+        "title": "Exact",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "Choice": {
+            "enum": [
+              "ok",
+              9007199254740993
+            ],
+            "title": "Choice"
+          },
+          "Inner": {
+            "properties": {
+              "wire": {
+                "title": "Wire",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "wire"
+            ],
+            "title": "Inner",
+            "type": "object",
+            "additionalProperties": false
+          }
+        },
+        "properties": {
+          "id": {
+            "const": 9007199254740993,
+            "title": "Id",
+            "type": "integer"
+          },
+          "choice": {
+            "$ref": "#/$defs/Choice"
+          },
+          "instance": {
+            "default": {
+              "wire": 18446744073709551615
+            },
+            "properties": {
+              "wire": {
+                "title": "Wire",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "wire"
+            ],
+            "title": "Inner",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "values": {
+            "default": [
+              9007199254740997
+            ],
+            "items": {
+              "type": "integer"
+            },
+            "title": "Values",
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "choice",
+          "instance",
+          "values"
+        ],
+        "title": "Exact",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "Exact"
+    }
+  }
+}

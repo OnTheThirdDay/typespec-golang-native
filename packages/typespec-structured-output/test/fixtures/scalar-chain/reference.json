@@ -1,0 +1,201 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Entity": {
+      "pydantic": {
+        "properties": {
+          "id": {
+            "description": "An identifier.",
+            "maxLength": 10,
+            "minLength": 3,
+            "title": "Id",
+            "type": "string"
+          },
+          "code": {
+            "description": "Narrower.",
+            "maxLength": 5,
+            "minLength": 3,
+            "title": "Code",
+            "type": "string"
+          },
+          "ratio": {
+            "minimum": 0,
+            "title": "Ratio",
+            "type": "number"
+          },
+          "bounded": {
+            "maximum": 100,
+            "minimum": 0,
+            "title": "Bounded",
+            "type": "number"
+          },
+          "small": {
+            "maximum": 255,
+            "minimum": 0,
+            "title": "Small",
+            "type": "integer"
+          },
+          "positive": {
+            "exclusiveMinimum": 0,
+            "maximum": 32767,
+            "title": "Positive",
+            "type": "integer"
+          },
+          "safe": {
+            "maximum": 9007199254740991,
+            "minimum": -9007199254740991,
+            "title": "Safe",
+            "type": "integer"
+          },
+          "big": {
+            "maximum": 18446744073709551615,
+            "minimum": 0,
+            "title": "Big",
+            "type": "integer"
+          },
+          "maybe_id": {
+            "anyOf": [
+              {
+                "maxLength": 10,
+                "minLength": 3,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "An identifier.",
+            "title": "Maybe Id"
+          },
+          "pairs": {
+            "items": {
+              "items": {
+                "maximum": 2147483647,
+                "minimum": -2147483648,
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            "minItems": 2,
+            "title": "Pairs",
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "code",
+          "ratio",
+          "bounded",
+          "small",
+          "positive",
+          "safe",
+          "big",
+          "maybe_id",
+          "pairs"
+        ],
+        "title": "Entity",
+        "type": "object"
+      },
+      "strict": {
+        "properties": {
+          "id": {
+            "description": "An identifier.",
+            "maxLength": 10,
+            "minLength": 3,
+            "title": "Id",
+            "type": "string"
+          },
+          "code": {
+            "description": "Narrower.",
+            "maxLength": 5,
+            "minLength": 3,
+            "title": "Code",
+            "type": "string"
+          },
+          "ratio": {
+            "minimum": 0,
+            "title": "Ratio",
+            "type": "number"
+          },
+          "bounded": {
+            "maximum": 100,
+            "minimum": 0,
+            "title": "Bounded",
+            "type": "number"
+          },
+          "small": {
+            "maximum": 255,
+            "minimum": 0,
+            "title": "Small",
+            "type": "integer"
+          },
+          "positive": {
+            "exclusiveMinimum": 0,
+            "maximum": 32767,
+            "title": "Positive",
+            "type": "integer"
+          },
+          "safe": {
+            "maximum": 9007199254740991,
+            "minimum": -9007199254740991,
+            "title": "Safe",
+            "type": "integer"
+          },
+          "big": {
+            "maximum": 18446744073709551615,
+            "minimum": 0,
+            "title": "Big",
+            "type": "integer"
+          },
+          "maybe_id": {
+            "anyOf": [
+              {
+                "maxLength": 10,
+                "minLength": 3,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "An identifier.",
+            "title": "Maybe Id"
+          },
+          "pairs": {
+            "items": {
+              "items": {
+                "maximum": 2147483647,
+                "minimum": -2147483648,
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            "minItems": 2,
+            "title": "Pairs",
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "code",
+          "ratio",
+          "bounded",
+          "small",
+          "positive",
+          "safe",
+          "big",
+          "maybe_id",
+          "pairs"
+        ],
+        "title": "Entity",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "Entity"
+    }
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "M": {
+      "pydantic": {
+        "$defs": {
+          "Choice": {
+            "description": "An enum whose members mix string and integer values.",
+            "enum": [
+              "ok",
+              1
+            ],
+            "title": "Choice"
+          }
+        },
+        "properties": {
+          "choice": {
+            "$ref": "#/$defs/Choice"
+          },
+          "lit": {
+            "enum": [
+              "a",
+              1
+            ],
+            "title": "Lit"
+          },
+          "withNull": {
+            "anyOf": [
+              {
+                "enum": [
+                  "b",
+                  2
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Withnull"
+          }
+        },
+        "required": [
+          "choice",
+          "lit",
+          "withNull"
+        ],
+        "title": "M",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "Choice": {
+            "description": "An enum whose members mix string and integer values.",
+            "enum": [
+              "ok",
+              1
+            ],
+            "title": "Choice"
+          }
+        },
+        "properties": {
+          "choice": {
+            "$ref": "#/$defs/Choice"
+          },
+          "lit": {
+            "enum": [
+              "a",
+              1
+            ],
+            "title": "Lit"
+          },
+          "withNull": {
+            "anyOf": [
+              {
+                "enum": [
+                  "b",
+                  2
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Withnull"
+          }
+        },
+        "required": [
+          "choice",
+          "lit",
+          "withNull"
+        ],
+        "title": "M",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "M"
+    }
+  }
+}

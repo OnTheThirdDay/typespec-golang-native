@@ -1,0 +1,79 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "ColorDetection": {
+      "pydantic": {
+        "$defs": {
+          "Color": {
+            "enum": [
+              "red",
+              "blue",
+              "green"
+            ],
+            "title": "Color",
+            "type": "string"
+          }
+        },
+        "properties": {
+          "color": {
+            "$ref": "#/$defs/Color",
+            "description": "The detected color"
+          },
+          "hex_color_code": {
+            "description": "The hex color code of the detected color",
+            "title": "Hex Color Code",
+            "type": "string"
+          }
+        },
+        "required": [
+          "color",
+          "hex_color_code"
+        ],
+        "title": "ColorDetection",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "Color": {
+            "enum": [
+              "red",
+              "blue",
+              "green"
+            ],
+            "title": "Color",
+            "type": "string"
+          }
+        },
+        "properties": {
+          "color": {
+            "description": "The detected color",
+            "enum": [
+              "red",
+              "blue",
+              "green"
+            ],
+            "title": "Color",
+            "type": "string"
+          },
+          "hex_color_code": {
+            "description": "The hex color code of the detected color",
+            "title": "Hex Color Code",
+            "type": "string"
+          }
+        },
+        "required": [
+          "color",
+          "hex_color_code"
+        ],
+        "title": "ColorDetection",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "ColorDetection"
+    }
+  }
+}

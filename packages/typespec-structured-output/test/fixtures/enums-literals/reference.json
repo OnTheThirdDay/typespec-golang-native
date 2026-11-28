@@ -1,0 +1,133 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Paint": {
+      "pydantic": {
+        "$defs": {
+          "Color": {
+            "description": "Primary colors.",
+            "enum": [
+              "red",
+              "grn",
+              "blue"
+            ],
+            "title": "Color",
+            "type": "string"
+          }
+        },
+        "properties": {
+          "color": {
+            "$ref": "#/$defs/Color"
+          },
+          "finish": {
+            "enum": [
+              "matte",
+              "gloss"
+            ],
+            "title": "Finish",
+            "type": "string"
+          },
+          "kind": {
+            "const": "paint",
+            "title": "Kind",
+            "type": "string"
+          },
+          "shade": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Color"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "level": {
+            "enum": [
+              1,
+              2,
+              3
+            ],
+            "title": "Level",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "color",
+          "finish",
+          "kind",
+          "level"
+        ],
+        "title": "Paint",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "Color": {
+            "description": "Primary colors.",
+            "enum": [
+              "red",
+              "grn",
+              "blue"
+            ],
+            "title": "Color",
+            "type": "string"
+          }
+        },
+        "properties": {
+          "color": {
+            "$ref": "#/$defs/Color"
+          },
+          "finish": {
+            "enum": [
+              "matte",
+              "gloss"
+            ],
+            "title": "Finish",
+            "type": "string"
+          },
+          "kind": {
+            "const": "paint",
+            "title": "Kind",
+            "type": "string"
+          },
+          "shade": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Color"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "level": {
+            "enum": [
+              1,
+              2,
+              3
+            ],
+            "title": "Level",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "color",
+          "finish",
+          "kind",
+          "shade",
+          "level"
+        ],
+        "title": "Paint",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "Paint"
+    }
+  }
+}

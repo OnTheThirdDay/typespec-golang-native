@@ -1,0 +1,89 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Forest": {
+      "pydantic": {
+        "$defs": {
+          "Tree": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "items": {
+                  "$ref": "#/$defs/Tree"
+                },
+                "type": "array"
+              }
+            ]
+          }
+        },
+        "properties": {
+          "root": {
+            "$ref": "#/$defs/Tree"
+          },
+          "maybe": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Tree"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "root",
+          "maybe"
+        ],
+        "title": "Forest",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "Tree": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "items": {
+                  "$ref": "#/$defs/Tree"
+                },
+                "type": "array"
+              }
+            ]
+          }
+        },
+        "properties": {
+          "root": {
+            "$ref": "#/$defs/Tree"
+          },
+          "maybe": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Tree"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "root",
+          "maybe"
+        ],
+        "title": "Forest",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "Forest"
+    }
+  }
+}

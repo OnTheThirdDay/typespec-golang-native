@@ -1,0 +1,181 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Drawing": {
+      "pydantic": {
+        "$defs": {
+          "Circle": {
+            "properties": {
+              "shape": {
+                "const": "circle",
+                "title": "Shape",
+                "type": "string"
+              },
+              "radius": {
+                "title": "Radius",
+                "type": "number"
+              }
+            },
+            "required": [
+              "shape",
+              "radius"
+            ],
+            "title": "Circle",
+            "type": "object"
+          },
+          "Rect": {
+            "properties": {
+              "shape": {
+                "const": "rect",
+                "title": "Shape",
+                "type": "string"
+              },
+              "width": {
+                "title": "Width",
+                "type": "number"
+              },
+              "height": {
+                "title": "Height",
+                "type": "number"
+              }
+            },
+            "required": [
+              "shape",
+              "width",
+              "height"
+            ],
+            "title": "Rect",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "shapes": {
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Circle"
+                },
+                {
+                  "$ref": "#/$defs/Rect"
+                }
+              ]
+            },
+            "title": "Shapes",
+            "type": "array"
+          },
+          "primary": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Circle"
+              },
+              {
+                "$ref": "#/$defs/Rect"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Primary"
+          }
+        },
+        "required": [
+          "shapes",
+          "primary"
+        ],
+        "title": "Drawing",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "Circle": {
+            "properties": {
+              "shape": {
+                "const": "circle",
+                "title": "Shape",
+                "type": "string"
+              },
+              "radius": {
+                "title": "Radius",
+                "type": "number"
+              }
+            },
+            "required": [
+              "shape",
+              "radius"
+            ],
+            "title": "Circle",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "Rect": {
+            "properties": {
+              "shape": {
+                "const": "rect",
+                "title": "Shape",
+                "type": "string"
+              },
+              "width": {
+                "title": "Width",
+                "type": "number"
+              },
+              "height": {
+                "title": "Height",
+                "type": "number"
+              }
+            },
+            "required": [
+              "shape",
+              "width",
+              "height"
+            ],
+            "title": "Rect",
+            "type": "object",
+            "additionalProperties": false
+          }
+        },
+        "properties": {
+          "shapes": {
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Circle"
+                },
+                {
+                  "$ref": "#/$defs/Rect"
+                }
+              ]
+            },
+            "title": "Shapes",
+            "type": "array"
+          },
+          "primary": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Circle"
+              },
+              {
+                "$ref": "#/$defs/Rect"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Primary"
+          }
+        },
+        "required": [
+          "shapes",
+          "primary"
+        ],
+        "title": "Drawing",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "Drawing"
+    }
+  }
+}

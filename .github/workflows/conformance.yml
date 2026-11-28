@@ -1,0 +1,29 @@
+name: Conformance
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.21.0
+          cache: npm
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 1.26.7
+          cache-dependency-path: packages/typespec-go/runtime/go.sum
+      - run: npm ci
+      - run: npm test
+      - name: Test generated models and validation on 32-bit Go
+        working-directory: packages/typespec-go/test/.tmp/go-collect/out/typespec-go
+        env:
+          GOARCH: "386"
+          CGO_ENABLED: "0"
+          GOWORK: "off"
+        run: go test -count=1 ./...
+      - run: node tools/go-race.mjs
+      - run: npm run test:packed
+      - run: git diff --exit-code

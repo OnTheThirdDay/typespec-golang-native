@@ -1,0 +1,13 @@
+[project]
+name = "pydantic-reference-fixtures"
+version = "0.0.0"
+description = "Isolated tool that regenerates Pydantic + OpenAI SDK reference schemas for typespec-structured-output. Not needed for normal builds/tests."
+requires-python = ">=3.12"
+dependencies = [
+  "pydantic==2.14.4",
+  "openai==3.59.0",
+  "email-validator==2.3.0",
+]
+
+[tool.uv]
+package = false

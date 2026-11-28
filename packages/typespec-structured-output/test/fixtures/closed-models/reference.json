@@ -1,0 +1,500 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Root": {
+      "pydantic": {
+        "$defs": {
+          "Closed": {
+            "additionalProperties": false,
+            "description": "A closed model.",
+            "properties": {
+              "name": {
+                "title": "Name",
+                "type": "string"
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "title": "Closed",
+            "type": "object"
+          },
+          "ClosedFromOpen": {
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "title": "Name",
+                "type": "string"
+              },
+              "extra": {
+                "maximum": 2147483647,
+                "minimum": -2147483648,
+                "title": "Extra",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "name",
+              "extra"
+            ],
+            "title": "ClosedFromOpen",
+            "type": "object"
+          },
+          "DerivedFromClosed": {
+            "additionalProperties": false,
+            "description": "Inherits the closure of its base, as Pydantic subclasses inherit model_config.",
+            "properties": {
+              "id": {
+                "title": "Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "title": "DerivedFromClosed",
+            "type": "object"
+          },
+          "Empty": {
+            "additionalProperties": false,
+            "properties": {},
+            "title": "Empty",
+            "type": "object"
+          },
+          "Gen_Closed_": {
+            "additionalProperties": false,
+            "properties": {
+              "value": {
+                "$ref": "#/$defs/Closed"
+              }
+            },
+            "required": [
+              "value"
+            ],
+            "title": "Gen[Closed]",
+            "type": "object"
+          },
+          "Gen_str_": {
+            "additionalProperties": false,
+            "properties": {
+              "value": {
+                "title": "Value",
+                "type": "string"
+              }
+            },
+            "required": [
+              "value"
+            ],
+            "title": "Gen[str]",
+            "type": "object"
+          },
+          "Open": {
+            "properties": {
+              "name": {
+                "title": "Name",
+                "type": "string"
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "title": "Open",
+            "type": "object"
+          },
+          "SpreadOfClosed": {
+            "additionalProperties": false,
+            "description": "A spread copies the properties and the indexer, so the copy is closed too.",
+            "properties": {
+              "name": {
+                "title": "Name",
+                "type": "string"
+              },
+              "more": {
+                "title": "More",
+                "type": "string"
+              }
+            },
+            "required": [
+              "name",
+              "more"
+            ],
+            "title": "SpreadOfClosed",
+            "type": "object"
+          },
+          "Tree": {
+            "additionalProperties": false,
+            "properties": {
+              "label": {
+                "title": "Label",
+                "type": "string"
+              },
+              "kids": {
+                "items": {
+                  "$ref": "#/$defs/Tree"
+                },
+                "title": "Kids",
+                "type": "array"
+              }
+            },
+            "required": [
+              "label",
+              "kids"
+            ],
+            "title": "Tree",
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "properties": {
+          "closed": {
+            "$ref": "#/$defs/Closed"
+          },
+          "derived": {
+            "$ref": "#/$defs/DerivedFromClosed"
+          },
+          "closedFromOpen": {
+            "$ref": "#/$defs/ClosedFromOpen"
+          },
+          "spread": {
+            "$ref": "#/$defs/SpreadOfClosed"
+          },
+          "gen": {
+            "$ref": "#/$defs/Gen_str_"
+          },
+          "genClosed": {
+            "$ref": "#/$defs/Gen_Closed_"
+          },
+          "tree": {
+            "$ref": "#/$defs/Tree"
+          },
+          "empty": {
+            "$ref": "#/$defs/Empty"
+          },
+          "open": {
+            "$ref": "#/$defs/Open"
+          },
+          "maybe": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Closed"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "many": {
+            "items": {
+              "$ref": "#/$defs/Closed"
+            },
+            "title": "Many",
+            "type": "array"
+          }
+        },
+        "required": [
+          "closed",
+          "derived",
+          "closedFromOpen",
+          "spread",
+          "gen",
+          "genClosed",
+          "tree",
+          "empty",
+          "open",
+          "maybe",
+          "many"
+        ],
+        "title": "Root",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "Closed": {
+            "additionalProperties": false,
+            "description": "A closed model.",
+            "properties": {
+              "name": {
+                "title": "Name",
+                "type": "string"
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "title": "Closed",
+            "type": "object"
+          },
+          "ClosedFromOpen": {
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "title": "Name",
+                "type": "string"
+              },
+              "extra": {
+                "maximum": 2147483647,
+                "minimum": -2147483648,
+                "title": "Extra",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "name",
+              "extra"
+            ],
+            "title": "ClosedFromOpen",
+            "type": "object"
+          },
+          "DerivedFromClosed": {
+            "additionalProperties": false,
+            "description": "Inherits the closure of its base, as Pydantic subclasses inherit model_config.",
+            "properties": {
+              "id": {
+                "title": "Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "title": "DerivedFromClosed",
+            "type": "object"
+          },
+          "Empty": {
+            "additionalProperties": false,
+            "properties": {},
+            "title": "Empty",
+            "type": "object",
+            "required": []
+          },
+          "Gen_Closed_": {
+            "additionalProperties": false,
+            "properties": {
+              "value": {
+                "$ref": "#/$defs/Closed"
+              }
+            },
+            "required": [
+              "value"
+            ],
+            "title": "Gen[Closed]",
+            "type": "object"
+          },
+          "Gen_str_": {
+            "additionalProperties": false,
+            "properties": {
+              "value": {
+                "title": "Value",
+                "type": "string"
+              }
+            },
+            "required": [
+              "value"
+            ],
+            "title": "Gen[str]",
+            "type": "object"
+          },
+          "Open": {
+            "properties": {
+              "name": {
+                "title": "Name",
+                "type": "string"
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "title": "Open",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "SpreadOfClosed": {
+            "additionalProperties": false,
+            "description": "A spread copies the properties and the indexer, so the copy is closed too.",
+            "properties": {
+              "name": {
+                "title": "Name",
+                "type": "string"
+              },
+              "more": {
+                "title": "More",
+                "type": "string"
+              }
+            },
+            "required": [
+              "name",
+              "more"
+            ],
+            "title": "SpreadOfClosed",
+            "type": "object"
+          },
+          "Tree": {
+            "additionalProperties": false,
+            "properties": {
+              "label": {
+                "title": "Label",
+                "type": "string"
+              },
+              "kids": {
+                "items": {
+                  "$ref": "#/$defs/Tree"
+                },
+                "title": "Kids",
+                "type": "array"
+              }
+            },
+            "required": [
+              "label",
+              "kids"
+            ],
+            "title": "Tree",
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "properties": {
+          "closed": {
+            "$ref": "#/$defs/Closed"
+          },
+          "derived": {
+            "$ref": "#/$defs/DerivedFromClosed"
+          },
+          "closedFromOpen": {
+            "$ref": "#/$defs/ClosedFromOpen"
+          },
+          "spread": {
+            "$ref": "#/$defs/SpreadOfClosed"
+          },
+          "gen": {
+            "$ref": "#/$defs/Gen_str_"
+          },
+          "genClosed": {
+            "$ref": "#/$defs/Gen_Closed_"
+          },
+          "tree": {
+            "$ref": "#/$defs/Tree"
+          },
+          "empty": {
+            "$ref": "#/$defs/Empty"
+          },
+          "open": {
+            "$ref": "#/$defs/Open"
+          },
+          "maybe": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Closed"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "many": {
+            "items": {
+              "$ref": "#/$defs/Closed"
+            },
+            "title": "Many",
+            "type": "array"
+          }
+        },
+        "required": [
+          "closed",
+          "derived",
+          "closedFromOpen",
+          "spread",
+          "gen",
+          "genClosed",
+          "tree",
+          "empty",
+          "open",
+          "maybe",
+          "many"
+        ],
+        "title": "Root",
+        "type": "object"
+      },
+      "name": "Root"
+    },
+    "Tree": {
+      "pydantic": {
+        "$defs": {
+          "Tree": {
+            "additionalProperties": false,
+            "properties": {
+              "label": {
+                "title": "Label",
+                "type": "string"
+              },
+              "kids": {
+                "items": {
+                  "$ref": "#/$defs/Tree"
+                },
+                "title": "Kids",
+                "type": "array"
+              }
+            },
+            "required": [
+              "label",
+              "kids"
+            ],
+            "title": "Tree",
+            "type": "object"
+          }
+        },
+        "$ref": "#/$defs/Tree"
+      },
+      "strict": {
+        "$defs": {
+          "Tree": {
+            "additionalProperties": false,
+            "properties": {
+              "label": {
+                "title": "Label",
+                "type": "string"
+              },
+              "kids": {
+                "items": {
+                  "$ref": "#/$defs/Tree"
+                },
+                "title": "Kids",
+                "type": "array"
+              }
+            },
+            "required": [
+              "label",
+              "kids"
+            ],
+            "title": "Tree",
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "properties": {
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "kids": {
+            "items": {
+              "$ref": "#/$defs/Tree"
+            },
+            "title": "Kids",
+            "type": "array"
+          }
+        },
+        "required": [
+          "label",
+          "kids"
+        ],
+        "title": "Tree",
+        "type": "object"
+      },
+      "name": "Tree"
+    }
+  }
+}

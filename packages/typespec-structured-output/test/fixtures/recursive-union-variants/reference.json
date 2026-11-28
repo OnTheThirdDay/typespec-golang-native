@@ -1,0 +1,303 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Doc": {
+      "pydantic": {
+        "$defs": {
+          "A": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "items": {
+                  "$ref": "#/$defs/B"
+                },
+                "type": "array"
+              }
+            ]
+          },
+          "B": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "items": {
+                  "$ref": "#/$defs/A"
+                },
+                "type": "array"
+              }
+            ]
+          },
+          "Json": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "items": {
+                  "$ref": "#/$defs/Json"
+                },
+                "type": "array"
+              },
+              {
+                "additionalProperties": {
+                  "$ref": "#/$defs/Json"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "Node": {
+            "properties": {
+              "label": {
+                "title": "Label",
+                "type": "string"
+              },
+              "next": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/Node"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Next"
+              }
+            },
+            "required": [
+              "label",
+              "next"
+            ],
+            "title": "Node",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "value": {
+            "$ref": "#/$defs/Json",
+            "description": "The payload."
+          },
+          "pair": {
+            "$ref": "#/$defs/A"
+          },
+          "chain": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Node"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Chain"
+          },
+          "list": {
+            "items": {
+              "$ref": "#/$defs/Json"
+            },
+            "title": "List",
+            "type": "array"
+          },
+          "maybe": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/B"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "value",
+          "pair",
+          "chain",
+          "list",
+          "maybe"
+        ],
+        "title": "Doc",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "A": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "items": {
+                  "$ref": "#/$defs/B"
+                },
+                "type": "array"
+              }
+            ]
+          },
+          "B": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "items": {
+                  "$ref": "#/$defs/A"
+                },
+                "type": "array"
+              }
+            ]
+          },
+          "Json": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "items": {
+                  "$ref": "#/$defs/Json"
+                },
+                "type": "array"
+              },
+              {
+                "additionalProperties": {
+                  "$ref": "#/$defs/Json"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "Node": {
+            "properties": {
+              "label": {
+                "title": "Label",
+                "type": "string"
+              },
+              "next": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/Node"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Next"
+              }
+            },
+            "required": [
+              "label",
+              "next"
+            ],
+            "title": "Node",
+            "type": "object",
+            "additionalProperties": false
+          }
+        },
+        "properties": {
+          "value": {
+            "description": "The payload.",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "items": {
+                  "$ref": "#/$defs/Json"
+                },
+                "type": "array"
+              },
+              {
+                "additionalProperties": {
+                  "$ref": "#/$defs/Json"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "pair": {
+            "$ref": "#/$defs/A"
+          },
+          "chain": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Node"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Chain"
+          },
+          "list": {
+            "items": {
+              "$ref": "#/$defs/Json"
+            },
+            "title": "List",
+            "type": "array"
+          },
+          "maybe": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/B"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "value",
+          "pair",
+          "chain",
+          "list",
+          "maybe"
+        ],
+        "title": "Doc",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "Doc"
+    }
+  }
+}

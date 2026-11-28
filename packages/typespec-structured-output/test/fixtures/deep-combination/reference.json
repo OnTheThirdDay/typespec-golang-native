@@ -1,0 +1,280 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Timeline": {
+      "pydantic": {
+        "$defs": {
+          "Event_Venue_": {
+            "properties": {
+              "at": {
+                "description": "When it happened.",
+                "format": "date-time",
+                "title": "At",
+                "type": "string"
+              },
+              "payload": {
+                "$ref": "#/$defs/Venue"
+              },
+              "tags": {
+                "items": {
+                  "type": "string"
+                },
+                "title": "Tags",
+                "type": "array"
+              }
+            },
+            "required": [
+              "at",
+              "payload",
+              "tags"
+            ],
+            "title": "Event[Venue]",
+            "type": "object"
+          },
+          "Point": {
+            "description": "A geographic point.",
+            "properties": {
+              "lat": {
+                "title": "Lat",
+                "type": "number"
+              },
+              "lon": {
+                "title": "Lon",
+                "type": "number"
+              }
+            },
+            "required": [
+              "lat",
+              "lon"
+            ],
+            "title": "Point",
+            "type": "object"
+          },
+          "Status": {
+            "enum": [
+              "open",
+              "closed"
+            ],
+            "title": "Status",
+            "type": "string"
+          },
+          "Venue": {
+            "properties": {
+              "name": {
+                "title": "Name",
+                "type": "string"
+              },
+              "location": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/Point"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/$defs/Status"
+              },
+              "sub_venues": {
+                "items": {
+                  "$ref": "#/$defs/Venue"
+                },
+                "title": "Sub Venues",
+                "type": "array"
+              }
+            },
+            "required": [
+              "name",
+              "location",
+              "status",
+              "sub_venues"
+            ],
+            "title": "Venue",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "events": {
+            "items": {
+              "$ref": "#/$defs/Event_Venue_"
+            },
+            "title": "Events",
+            "type": "array"
+          },
+          "primary": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Venue"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "The primary venue."
+          },
+          "status_or_text": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Status"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Status Or Text"
+          }
+        },
+        "required": [
+          "events",
+          "status_or_text"
+        ],
+        "title": "Timeline",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "Event_Venue_": {
+            "properties": {
+              "at": {
+                "description": "When it happened.",
+                "format": "date-time",
+                "title": "At",
+                "type": "string"
+              },
+              "payload": {
+                "$ref": "#/$defs/Venue"
+              },
+              "tags": {
+                "items": {
+                  "type": "string"
+                },
+                "title": "Tags",
+                "type": "array"
+              }
+            },
+            "required": [
+              "at",
+              "payload",
+              "tags"
+            ],
+            "title": "Event[Venue]",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "Point": {
+            "description": "A geographic point.",
+            "properties": {
+              "lat": {
+                "title": "Lat",
+                "type": "number"
+              },
+              "lon": {
+                "title": "Lon",
+                "type": "number"
+              }
+            },
+            "required": [
+              "lat",
+              "lon"
+            ],
+            "title": "Point",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "Status": {
+            "enum": [
+              "open",
+              "closed"
+            ],
+            "title": "Status",
+            "type": "string"
+          },
+          "Venue": {
+            "properties": {
+              "name": {
+                "title": "Name",
+                "type": "string"
+              },
+              "location": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/Point"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/$defs/Status"
+              },
+              "sub_venues": {
+                "items": {
+                  "$ref": "#/$defs/Venue"
+                },
+                "title": "Sub Venues",
+                "type": "array"
+              }
+            },
+            "required": [
+              "name",
+              "location",
+              "status",
+              "sub_venues"
+            ],
+            "title": "Venue",
+            "type": "object",
+            "additionalProperties": false
+          }
+        },
+        "properties": {
+          "events": {
+            "items": {
+              "$ref": "#/$defs/Event_Venue_"
+            },
+            "title": "Events",
+            "type": "array"
+          },
+          "primary": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Venue"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The primary venue."
+          },
+          "status_or_text": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Status"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Status Or Text"
+          }
+        },
+        "required": [
+          "events",
+          "primary",
+          "status_or_text"
+        ],
+        "title": "Timeline",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "Timeline"
+    }
+  }
+}

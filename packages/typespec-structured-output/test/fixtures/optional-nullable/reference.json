@@ -1,0 +1,195 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Person": {
+      "pydantic": {
+        "$defs": {
+          "Person": {
+            "properties": {
+              "name": {
+                "title": "Name",
+                "type": "string"
+              },
+              "nickname": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Nickname"
+              },
+              "age": {
+                "anyOf": [
+                  {
+                    "maximum": 2147483647,
+                    "minimum": -2147483648,
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Age"
+              },
+              "tags": {
+                "items": {
+                  "type": "string"
+                },
+                "title": "Tags",
+                "type": "array"
+              },
+              "partner": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/Person"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              }
+            },
+            "required": [
+              "name",
+              "nickname",
+              "tags"
+            ],
+            "title": "Person",
+            "type": "object"
+          }
+        },
+        "$ref": "#/$defs/Person"
+      },
+      "strict": {
+        "$defs": {
+          "Person": {
+            "properties": {
+              "name": {
+                "title": "Name",
+                "type": "string"
+              },
+              "nickname": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Nickname"
+              },
+              "age": {
+                "anyOf": [
+                  {
+                    "maximum": 2147483647,
+                    "minimum": -2147483648,
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Age"
+              },
+              "tags": {
+                "items": {
+                  "type": "string"
+                },
+                "title": "Tags",
+                "type": "array"
+              },
+              "partner": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/Person"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "name",
+              "nickname",
+              "age",
+              "tags",
+              "partner"
+            ],
+            "title": "Person",
+            "type": "object",
+            "additionalProperties": false
+          }
+        },
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "nickname": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Nickname"
+          },
+          "age": {
+            "anyOf": [
+              {
+                "maximum": 2147483647,
+                "minimum": -2147483648,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Age"
+          },
+          "tags": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Tags",
+            "type": "array"
+          },
+          "partner": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Person"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "nickname",
+          "age",
+          "tags",
+          "partner"
+        ],
+        "title": "Person",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "Person"
+    }
+  }
+}

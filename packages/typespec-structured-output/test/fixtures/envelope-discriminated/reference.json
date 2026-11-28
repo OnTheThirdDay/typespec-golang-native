@@ -1,0 +1,185 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "M": {
+      "pydantic": {
+        "$defs": {
+          "A": {
+            "properties": {
+              "x": {
+                "title": "X",
+                "type": "string"
+              }
+            },
+            "required": [
+              "x"
+            ],
+            "title": "A",
+            "type": "object"
+          },
+          "B": {
+            "properties": {
+              "y": {
+                "title": "Y",
+                "type": "string"
+              }
+            },
+            "required": [
+              "y"
+            ],
+            "title": "B",
+            "type": "object"
+          },
+          "U_a": {
+            "properties": {
+              "kind": {
+                "const": "a",
+                "title": "Kind",
+                "type": "string"
+              },
+              "value": {
+                "$ref": "#/$defs/A"
+              }
+            },
+            "required": [
+              "kind",
+              "value"
+            ],
+            "title": "U_a",
+            "type": "object"
+          },
+          "U_b": {
+            "properties": {
+              "kind": {
+                "const": "b",
+                "title": "Kind",
+                "type": "string"
+              },
+              "value": {
+                "$ref": "#/$defs/B"
+              }
+            },
+            "required": [
+              "kind",
+              "value"
+            ],
+            "title": "U_b",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "u": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/U_a"
+              },
+              {
+                "$ref": "#/$defs/U_b"
+              }
+            ],
+            "title": "U"
+          }
+        },
+        "required": [
+          "u"
+        ],
+        "title": "M",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "A": {
+            "properties": {
+              "x": {
+                "title": "X",
+                "type": "string"
+              }
+            },
+            "required": [
+              "x"
+            ],
+            "title": "A",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "B": {
+            "properties": {
+              "y": {
+                "title": "Y",
+                "type": "string"
+              }
+            },
+            "required": [
+              "y"
+            ],
+            "title": "B",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "U_a": {
+            "properties": {
+              "kind": {
+                "const": "a",
+                "title": "Kind",
+                "type": "string"
+              },
+              "value": {
+                "$ref": "#/$defs/A"
+              }
+            },
+            "required": [
+              "kind",
+              "value"
+            ],
+            "title": "U_a",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "U_b": {
+            "properties": {
+              "kind": {
+                "const": "b",
+                "title": "Kind",
+                "type": "string"
+              },
+              "value": {
+                "$ref": "#/$defs/B"
+              }
+            },
+            "required": [
+              "kind",
+              "value"
+            ],
+            "title": "U_b",
+            "type": "object",
+            "additionalProperties": false
+          }
+        },
+        "properties": {
+          "u": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/U_a"
+              },
+              {
+                "$ref": "#/$defs/U_b"
+              }
+            ],
+            "title": "U"
+          }
+        },
+        "required": [
+          "u"
+        ],
+        "title": "M",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "M"
+    }
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "custom_name": {
+      "pydantic": {
+        "$defs": {
+          "Empty": {
+            "properties": {},
+            "title": "Empty",
+            "type": "object"
+          }
+        },
+        "description": "Multi-line\ndocumentation.",
+        "properties": {
+          "empty": {
+            "$ref": "#/$defs/Empty"
+          },
+          "snake_case_name": {
+            "title": "Snake Case Name",
+            "type": "string"
+          },
+          "camelCaseName": {
+            "title": "Camelcasename",
+            "type": "string"
+          },
+          "x1y2": {
+            "title": "X1Y2",
+            "type": "string"
+          },
+          "_private": {
+            "title": "Private",
+            "type": "string"
+          }
+        },
+        "required": [
+          "empty",
+          "snake_case_name",
+          "camelCaseName",
+          "x1y2",
+          "_private"
+        ],
+        "title": "Custom Title",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "Empty": {
+            "properties": {},
+            "title": "Empty",
+            "type": "object",
+            "additionalProperties": false,
+            "required": []
+          }
+        },
+        "description": "Multi-line\ndocumentation.",
+        "properties": {
+          "empty": {
+            "$ref": "#/$defs/Empty"
+          },
+          "snake_case_name": {
+            "title": "Snake Case Name",
+            "type": "string"
+          },
+          "camelCaseName": {
+            "title": "Camelcasename",
+            "type": "string"
+          },
+          "x1y2": {
+            "title": "X1Y2",
+            "type": "string"
+          },
+          "_private": {
+            "title": "Private",
+            "type": "string"
+          }
+        },
+        "required": [
+          "empty",
+          "snake_case_name",
+          "camelCaseName",
+          "x1y2",
+          "_private"
+        ],
+        "title": "Custom Title",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "custom_name"
+    }
+  }
+}

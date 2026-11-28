@@ -1,0 +1,130 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Forest": {
+      "pydantic": {
+        "$defs": {
+          "Packet_Branches_": {
+            "properties": {
+              "value": {
+                "$ref": "#/$defs/__main____Branches__1"
+              }
+            },
+            "required": [
+              "value"
+            ],
+            "title": "Packet[Branches]",
+            "type": "object"
+          },
+          "Tree": {
+            "additionalProperties": {
+              "$ref": "#/$defs/Tree"
+            },
+            "type": "object"
+          },
+          "__main____Branches__1": {
+            "items": {
+              "$ref": "#/$defs/__main____Branches__1"
+            },
+            "maxItems": 3,
+            "type": "array"
+          },
+          "__main____Branches__2": {
+            "items": {
+              "$ref": "#/$defs/__main____Branches__1"
+            },
+            "maxItems": 1,
+            "type": "array"
+          }
+        },
+        "properties": {
+          "roots": {
+            "$ref": "#/$defs/__main____Branches__1"
+          },
+          "short": {
+            "$ref": "#/$defs/__main____Branches__2"
+          },
+          "named": {
+            "$ref": "#/$defs/Tree"
+          },
+          "packet": {
+            "$ref": "#/$defs/Packet_Branches_"
+          }
+        },
+        "required": [
+          "roots",
+          "short",
+          "named",
+          "packet"
+        ],
+        "title": "Forest",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "Packet_Branches_": {
+            "properties": {
+              "value": {
+                "$ref": "#/$defs/__main____Branches__1"
+              }
+            },
+            "required": [
+              "value"
+            ],
+            "title": "Packet[Branches]",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "Tree": {
+            "additionalProperties": {
+              "$ref": "#/$defs/Tree"
+            },
+            "type": "object"
+          },
+          "__main____Branches__1": {
+            "items": {
+              "$ref": "#/$defs/__main____Branches__1"
+            },
+            "maxItems": 3,
+            "type": "array"
+          },
+          "__main____Branches__2": {
+            "items": {
+              "$ref": "#/$defs/__main____Branches__1"
+            },
+            "maxItems": 1,
+            "type": "array"
+          }
+        },
+        "properties": {
+          "roots": {
+            "$ref": "#/$defs/__main____Branches__1"
+          },
+          "short": {
+            "$ref": "#/$defs/__main____Branches__2"
+          },
+          "named": {
+            "$ref": "#/$defs/Tree"
+          },
+          "packet": {
+            "$ref": "#/$defs/Packet_Branches_"
+          }
+        },
+        "required": [
+          "roots",
+          "short",
+          "named",
+          "packet"
+        ],
+        "title": "Forest",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "Forest"
+    }
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Customer": {
+      "pydantic": {
+        "$defs": {
+          "Address": {
+            "description": "A postal address.",
+            "properties": {
+              "street": {
+                "description": "Street line.",
+                "title": "Street",
+                "type": "string"
+              },
+              "city": {
+                "title": "City",
+                "type": "string"
+              }
+            },
+            "required": [
+              "street",
+              "city"
+            ],
+            "title": "Address",
+            "type": "object"
+          }
+        },
+        "description": "A customer record.",
+        "properties": {
+          "home": {
+            "$ref": "#/$defs/Address",
+            "description": "Where the customer lives."
+          },
+          "work": {
+            "$ref": "#/$defs/Address"
+          },
+          "display_name": {
+            "title": "Display Name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "home",
+          "work",
+          "display_name"
+        ],
+        "title": "Customer",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "Address": {
+            "description": "A postal address.",
+            "properties": {
+              "street": {
+                "description": "Street line.",
+                "title": "Street",
+                "type": "string"
+              },
+              "city": {
+                "title": "City",
+                "type": "string"
+              }
+            },
+            "required": [
+              "street",
+              "city"
+            ],
+            "title": "Address",
+            "type": "object",
+            "additionalProperties": false
+          }
+        },
+        "description": "A customer record.",
+        "properties": {
+          "home": {
+            "description": "Where the customer lives.",
+            "properties": {
+              "street": {
+                "description": "Street line.",
+                "title": "Street",
+                "type": "string"
+              },
+              "city": {
+                "title": "City",
+                "type": "string"
+              }
+            },
+            "required": [
+              "street",
+              "city"
+            ],
+            "title": "Address",
+            "type": "object",
+            "additionalProperties": false
+          },
+          "work": {
+            "$ref": "#/$defs/Address"
+          },
+          "display_name": {
+            "title": "Display Name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "home",
+          "work",
+          "display_name"
+        ],
+        "title": "Customer",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "Customer"
+    }
+  }
+}

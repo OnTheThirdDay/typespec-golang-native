@@ -1,0 +1,102 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Page": {
+      "pydantic": {
+        "$defs": {
+          "Item": {
+            "description": "An item as it is read back.",
+            "properties": {
+              "id": {
+                "title": "Id",
+                "type": "string"
+              },
+              "name": {
+                "title": "Name",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "title": "Item",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/$defs/Item"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "total": {
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "title": "Total",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "items",
+          "total"
+        ],
+        "title": "Page",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "Item": {
+            "description": "An item as it is read back.",
+            "properties": {
+              "id": {
+                "title": "Id",
+                "type": "string"
+              },
+              "name": {
+                "title": "Name",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "title": "Item",
+            "type": "object",
+            "additionalProperties": false
+          }
+        },
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/$defs/Item"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "total": {
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "title": "Total",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "items",
+          "total"
+        ],
+        "title": "Page",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "Page"
+    }
+  }
+}

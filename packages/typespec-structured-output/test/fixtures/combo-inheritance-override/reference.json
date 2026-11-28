@@ -1,0 +1,153 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Premium": {
+      "pydantic": {
+        "$defs": {
+          "Tier": {
+            "enum": [
+              "free",
+              "pro"
+            ],
+            "title": "Tier",
+            "type": "string"
+          }
+        },
+        "description": "A premium account.",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "tier": {
+            "const": "pro",
+            "title": "Tier",
+            "type": "string"
+          },
+          "name": {
+            "minLength": 1,
+            "title": "Name",
+            "type": "string"
+          },
+          "nickname": {
+            "anyOf": [
+              {
+                "maxLength": 10,
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Nickname"
+          },
+          "since": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Since"
+          },
+          "level": {
+            "$ref": "#/$defs/Tier",
+            "default": "pro"
+          }
+        },
+        "required": [
+          "id",
+          "tier",
+          "name"
+        ],
+        "title": "Premium",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "Tier": {
+            "enum": [
+              "free",
+              "pro"
+            ],
+            "title": "Tier",
+            "type": "string"
+          }
+        },
+        "description": "A premium account.",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "tier": {
+            "const": "pro",
+            "title": "Tier",
+            "type": "string"
+          },
+          "name": {
+            "minLength": 1,
+            "title": "Name",
+            "type": "string"
+          },
+          "nickname": {
+            "anyOf": [
+              {
+                "maxLength": 10,
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Nickname"
+          },
+          "since": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Since"
+          },
+          "level": {
+            "default": "pro",
+            "enum": [
+              "free",
+              "pro"
+            ],
+            "title": "Tier",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "tier",
+          "name",
+          "nickname",
+          "since",
+          "level"
+        ],
+        "title": "Premium",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "Premium"
+    }
+  }
+}

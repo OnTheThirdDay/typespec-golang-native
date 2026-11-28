@@ -1,0 +1,76 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Tagged": {
+      "pydantic": {
+        "$defs": {
+          "Tag": {
+            "properties": {
+              "name": {
+                "title": "Name",
+                "type": "string"
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "title": "Tag",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "a": {
+            "$ref": "#/$defs/Tag"
+          },
+          "b": {
+            "$ref": "#/$defs/Tag"
+          }
+        },
+        "required": [
+          "a",
+          "b"
+        ],
+        "title": "Tagged",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "Tag": {
+            "properties": {
+              "name": {
+                "title": "Name",
+                "type": "string"
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "title": "Tag",
+            "type": "object",
+            "additionalProperties": false
+          }
+        },
+        "properties": {
+          "a": {
+            "$ref": "#/$defs/Tag"
+          },
+          "b": {
+            "$ref": "#/$defs/Tag"
+          }
+        },
+        "required": [
+          "a",
+          "b"
+        ],
+        "title": "Tagged",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "Tagged"
+    }
+  }
+}

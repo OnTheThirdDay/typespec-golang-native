@@ -1,0 +1,248 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Index": {
+      "pydantic": {
+        "$defs": {
+          "Cell_bool_": {
+            "additionalProperties": false,
+            "properties": {
+              "value": {
+                "title": "Value",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "value"
+            ],
+            "title": "Cell[bool]",
+            "type": "object"
+          },
+          "Cell_str_": {
+            "additionalProperties": false,
+            "properties": {
+              "value": {
+                "title": "Value",
+                "type": "string"
+              }
+            },
+            "required": [
+              "value"
+            ],
+            "title": "Cell[str]",
+            "type": "object"
+          },
+          "Group": {
+            "additionalProperties": false,
+            "properties": {
+              "10": {
+                "$ref": "#/$defs/Cell_str_"
+              },
+              "2": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/Cell_bool_"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "descendants": {
+                "items": {
+                  "$ref": "#/$defs/Group"
+                },
+                "maxItems": 2,
+                "title": "Descendants",
+                "type": "array"
+              }
+            },
+            "required": [
+              "10",
+              "2",
+              "descendants"
+            ],
+            "title": "Group",
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "properties": {
+          "group": {
+            "$ref": "#/$defs/Group"
+          },
+          "annotation": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Annotation"
+          }
+        },
+        "required": [
+          "group"
+        ],
+        "title": "Index",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "Cell_bool_": {
+            "additionalProperties": false,
+            "properties": {
+              "value": {
+                "title": "Value",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "value"
+            ],
+            "title": "Cell[bool]",
+            "type": "object"
+          },
+          "Cell_str_": {
+            "additionalProperties": false,
+            "properties": {
+              "value": {
+                "title": "Value",
+                "type": "string"
+              }
+            },
+            "required": [
+              "value"
+            ],
+            "title": "Cell[str]",
+            "type": "object"
+          },
+          "Group": {
+            "additionalProperties": false,
+            "properties": {
+              "10": {
+                "$ref": "#/$defs/Cell_str_"
+              },
+              "2": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/Cell_bool_"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "descendants": {
+                "items": {
+                  "$ref": "#/$defs/Group"
+                },
+                "maxItems": 2,
+                "title": "Descendants",
+                "type": "array"
+              }
+            },
+            "required": [
+              "10",
+              "2",
+              "descendants"
+            ],
+            "title": "Group",
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "properties": {
+          "group": {
+            "$ref": "#/$defs/Group"
+          },
+          "annotation": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Annotation"
+          }
+        },
+        "required": [
+          "group",
+          "annotation"
+        ],
+        "title": "Index",
+        "type": "object"
+      },
+      "name": "Index"
+    },
+    "Measurements": {
+      "pydantic": {
+        "$defs": {
+          "Cell_float_": {
+            "additionalProperties": false,
+            "properties": {
+              "value": {
+                "title": "Value",
+                "type": "number"
+              }
+            },
+            "required": [
+              "value"
+            ],
+            "title": "Cell[float]",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "cell": {
+            "$ref": "#/$defs/Cell_float_"
+          }
+        },
+        "required": [
+          "cell"
+        ],
+        "title": "Measurements",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "Cell_float_": {
+            "additionalProperties": false,
+            "properties": {
+              "value": {
+                "title": "Value",
+                "type": "number"
+              }
+            },
+            "required": [
+              "value"
+            ],
+            "title": "Cell[float]",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "cell": {
+            "$ref": "#/$defs/Cell_float_"
+          }
+        },
+        "required": [
+          "cell"
+        ],
+        "title": "Measurements",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "Measurements"
+    }
+  }
+}

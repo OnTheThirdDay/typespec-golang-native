@@ -1,0 +1,148 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Settings": {
+      "pydantic": {
+        "$defs": {
+          "Level": {
+            "enum": [
+              "info",
+              "warn"
+            ],
+            "title": "Level",
+            "type": "string"
+          }
+        },
+        "properties": {
+          "level": {
+            "$ref": "#/$defs/Level",
+            "default": "warn"
+          },
+          "retries": {
+            "default": 3,
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "title": "Retries",
+            "type": "integer"
+          },
+          "label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": "x",
+            "title": "Label"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Note"
+          },
+          "tags": {
+            "default": [
+              "a",
+              "b"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "title": "Tags",
+            "type": "array"
+          }
+        },
+        "title": "Settings",
+        "type": "object"
+      },
+      "strict": {
+        "$defs": {
+          "Level": {
+            "enum": [
+              "info",
+              "warn"
+            ],
+            "title": "Level",
+            "type": "string"
+          }
+        },
+        "properties": {
+          "level": {
+            "default": "warn",
+            "enum": [
+              "info",
+              "warn"
+            ],
+            "title": "Level",
+            "type": "string"
+          },
+          "retries": {
+            "default": 3,
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "title": "Retries",
+            "type": "integer"
+          },
+          "label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": "x",
+            "title": "Label"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          },
+          "tags": {
+            "default": [
+              "a",
+              "b"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "title": "Tags",
+            "type": "array"
+          }
+        },
+        "title": "Settings",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "level",
+          "retries",
+          "label",
+          "note",
+          "tags"
+        ]
+      },
+      "name": "Settings"
+    }
+  }
+}

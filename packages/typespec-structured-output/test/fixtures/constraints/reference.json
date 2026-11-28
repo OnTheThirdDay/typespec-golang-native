@@ -1,0 +1,101 @@
+{
+  "reference": {
+    "pydantic": "2.14.4",
+    "pydantic-core": "2.50.5",
+    "openai": "3.59.0"
+  },
+  "roots": {
+    "Order": {
+      "pydantic": {
+        "properties": {
+          "title": {
+            "maxLength": 40,
+            "minLength": 1,
+            "title": "Title",
+            "type": "string"
+          },
+          "currency": {
+            "pattern": "^[A-Z]{3}$",
+            "title": "Currency",
+            "type": "string"
+          },
+          "discount": {
+            "exclusiveMaximum": 100,
+            "minimum": 0,
+            "title": "Discount",
+            "type": "number"
+          },
+          "lines": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 5,
+            "minItems": 1,
+            "title": "Lines",
+            "type": "array"
+          },
+          "contact": {
+            "format": "email",
+            "title": "Contact",
+            "type": "string"
+          }
+        },
+        "required": [
+          "title",
+          "currency",
+          "discount",
+          "lines",
+          "contact"
+        ],
+        "title": "Order",
+        "type": "object"
+      },
+      "strict": {
+        "properties": {
+          "title": {
+            "maxLength": 40,
+            "minLength": 1,
+            "title": "Title",
+            "type": "string"
+          },
+          "currency": {
+            "pattern": "^[A-Z]{3}$",
+            "title": "Currency",
+            "type": "string"
+          },
+          "discount": {
+            "exclusiveMaximum": 100,
+            "minimum": 0,
+            "title": "Discount",
+            "type": "number"
+          },
+          "lines": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 5,
+            "minItems": 1,
+            "title": "Lines",
+            "type": "array"
+          },
+          "contact": {
+            "format": "email",
+            "title": "Contact",
+            "type": "string"
+          }
+        },
+        "required": [
+          "title",
+          "currency",
+          "discount",
+          "lines",
+          "contact"
+        ],
+        "title": "Order",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "name": "Order"
+    }
+  }
+}
